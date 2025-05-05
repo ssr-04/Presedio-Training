@@ -1,0 +1,49 @@
+1) Movies
+- Movie_ID (PK)
+- Title
+- Category_ID (FK Categories)
+- Format_ID (FK Formats)
+
+2) Categories
+- Category_ID (PK)
+- Category_Name
+
+3) Formats
+- Format_ID (PK)
+- Format_Type
+
+4) Memberships
+- Membership_ID (PK)
+- Membership_Name {Gold, Bronze}
+
+4) Memebers
+- Member_ID (PK)
+- Name
+- Phone_number (Unique)
+- Membership_ID (FK Memberships)
+- favorite_category_ID (FK Categories)
+- Card_ID (FK CardDetails)
+
+5) CardDetails
+- Card_ID (PK)
+- Card_holder_name
+- Card_number
+- cvv
+
+6) Dependents
+- Dependent_ID (PK)
+- Member_ID (FK Memebers)
+
+7) MovieCopies
+- Copy_ID (PK)
+- Movie_ID (FK Movies)
+- Status {Available, Rented}
+
+8) Rentals
+- Rental_ID (PK)
+- Renter_type (Enum: 'Member', 'Dependent')
+- Renter_id (FK to Members.member_id or Dependents.dependent_id)
+- Copy_id (FK MovieCopies)
+- Rental_date
+- Return_date
+
