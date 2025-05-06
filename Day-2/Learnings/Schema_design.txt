@@ -1,0 +1,90 @@
+Design the database for a shop which sells products
+
+Points for consideration
+
+  1) One product can be supplied by many suppliers
+
+  2) One supplier can supply many products
+
+  3) All customers details have to present
+
+  4) A customer can buy more than one product in every purchase
+
+  5) Bill for every purchase has to be stored
+
+  6) These are just details of one shop
+
+Country
+- Country_ID [PK]
+- Name
+
+State
+- State_ID [PK]
+- Name
+- Country_ID [FK Country]
+
+City
+- City_ID [PK]
+- Name
+- State_ID [FK State]
+
+Area
+- Zipcode [PK]
+- Name
+- City_ID [FK City]
+
+Address
+- Address_ID [PK]
+- Door_number
+- Address_Line
+- Zipcode [FK Area]
+ 
+Products 
+- Product_ID [PK]
+- Name
+- Brand
+- Image
+- Price (Selling price)
+- Stock
+
+Suppliers
+- Supplier_ID [PK]
+- Supplier_Name
+- Contact_Person
+- Phone
+- Email
+- Address_ID [FK Address]
+
+Product_Supplier
+- Transaction_ID
+- Product_ID [FK Products]
+- Supplier_ID [FK Suppliers]
+- Quantity
+- Supply_Price
+- Supply_Date
+
+Customer:
+- Customer_ID [PK]
+- Name
+- Email
+- Phone
+- Address_ID [FK Address]
+
+Bills
+- Bill_ID [PK]
+- Customer_ID
+- Bill_Date
+- Bill_Status {'Pending Payment', 'Paid', 'Cancelled', 'Processing', 'Completed', 'Refunded'}
+
+Bill_Items
+- ID [PK]
+- Bill_ID [FK Bills]
+- Product_ID [FK Products]
+- Quantity
+- Purchase_Price
+
+Payments
+- Payment_ID [PK]
+- Bill_ID [FK Bills]
+- Payment_Method
+- Payment_Status {Success', 'Failed', 'Pending'}
