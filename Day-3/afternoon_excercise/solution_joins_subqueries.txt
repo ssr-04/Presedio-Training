@@ -1,0 +1,78 @@
+Link- https://pgexercises.com/questions/joins/
+
+1. How can you produce a list of the start times for bookings by members named 'David Farrell'?
+
+SELECT b.starttime
+FROM cd.bookings b
+LEFT JOIN cd.members mem ON b.memid = mem.memid
+WHERE mem.firstname = 'David' AND mem.surname = 'Farrell';
+
+
+2. How can you produce a list of the start times for bookings for tennis courts, for the date '2012-09-21'? Return a list of start time and facility name pairings, ordered by the time.
+
+SELECT bks.starttime AS start, fa.name AS name
+FROM cd.bookings bks
+LEFT JOIN cd.facilities fa ON bks.facid = fa.facid
+WHERE bks.starttime::DATE = '2012-09-21' AND fa.name LIKE 'Tennis%'
+ORDER BY bks.starttime, fa.name;
+
+
+3. How can you output a list of all members who have recommended another member? Ensure that there are no duplicates in the list, and that results are ordered by (surname, firstname).
+
+SELECT firstname, surname
+FROM cd.members
+WHERE memid IN (SELECT DISTINCT(recommendedby) FROM cd.members WHERE recommendedby IS NOT NULL)
+ORDER BY surname, firstname;
+
+
+4. How can you output a list of all members, including the individual who recommended them (if any)? Ensure that results are ordered by (surname, firstname).
+
+SELECT
+    mem.firstname AS memfname,
+    mem.surname AS memsname,
+    rec.firstname AS recfname,
+    rec.surname AS recsname
+FROM cd.members mem
+LEFT OUTER JOIN cd.members rec ON mem.recommendedby = rec.memid
+ORDER BY memsname, memfname;
+
+
+5. How can you produce a list of all members who have used a tennis court? Include in your output the name of the court, and the name of the member formatted as a single column. Ensure no duplicate data, and order by the member name followed by the facility name.
+
+SELECT DISTINCT
+    CONCAT(mem.firstname, ' ', mem.surname) AS member,
+    fa.name AS facility
+FROM cd.facilities fa
+LEFT JOIN cd.bookings bks ON fa.facid = bks.facid
+JOIN cd.members mem ON bks.memid = mem.memid
+WHERE fa.name LIKE 'Tennis%'
+ORDER BY member, facility;
+
+
+6. How can you produce a list of bookings on the day of 2012-09-14 which will cost the member (or guest) more than $30? Remember that guests have different costs to members (the listed costs are per half-hour 'slot'), and the guest user is always ID 0. Include in your output the name of the facility, the name of the member formatted as a single column, and the cost. Order by descending cost, and do not use any subqueries.
+
+SELECT
+    CONCAT(mem.firstname, ' ', mem.surname) AS member,
+    fa.name AS facility,
+    CASE WHEN (mem.memid = 0)
+         THEN fa.guestcost * bks.slots
+         ELSE fa.membercost * bks.slots
+    END AS cost
+FROM cd.bookings bks
+JOIN cd.facilities fa ON bks.facid = fa.facid
+JOIN cd.members mem ON bks.memid = mem.memid
+WHERE bks.starttime::DATE = '2012-09-14' AND
+      ((bks.memid = 0 AND fa.guestcost * bks.slots > 30) OR
+       (bks.memid != 0 AND fa.membercost * bks.slots > 30))
+ORDER BY cost DESC;
+
+
+7. How can you output a list of all members, including the individual who recommended them (if any), without using any joins? Ensure that there are no duplicates in the list, and that each firstname + surname pairing is formatted as a column and ordered.
+
+SELECT DISTINCT
+    CONCAT(mem.firstname, ' ', mem.surname) AS member,
+    (SELECT CONCAT(rec.firstname, ' ', rec.surname)
+     FROM cd.members rec
+     WHERE rec.memid = mem.recommendedby) AS recommender
+FROM cd.members mem
+ORDER BY member;
