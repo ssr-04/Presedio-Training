@@ -15,9 +15,12 @@ Scenario:
 •	Using  their credit cards gold members can rent one or more movies and bronze members max. of one movie.  
 •	A member may have a number of dependents (with known names).
 •	Each dependent is allowed to rent one (1) movie at a time.
- 
+
+(My design is in ./Case-1-schema.txt)
 ---------------------------------------------------------------------------------------------------------------------
+
 1) https://www.hackerrank.com/challenges/plus-minus/problem?isFullScreen=true
+
 2) https://www.hackerrank.com/challenges/staircase/problem?isFullScreen=true
  
 3) https://www.hackerrank.com/challenges/mini-max-sum/problem?isFullScreen=true
@@ -45,3 +48,7 @@ Scenario:
 14) https://www.hackerrank.com/challenges/day-of-the-programmer/problem?isFullScreen=true
 
 15) https://www.hackerrank.com/challenges/bon-appetit/problem?isFullScreen=true
+
+(Solutions to this are inside problems_python folder)
+
+---------------------------------------------------------------------------------------------------------
