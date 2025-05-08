@@ -113,3 +113,15 @@ EXEC proc_GetPostsByUserId 1;
 -- Checking by passing variable as param
 DECLARE @user_id INT = 1;
 EXEC proc_GetPostsByUserId @user_id;
+
+-- Working with out param
+CREATE PROCEDURE proc_FilterProducts (@pCpu NVARCHAR(10), @pCount INT OUT)
+AS
+BEGIN
+	SET @pCount = (SELECT COUNT(*) FROM products WHERE
+				TRY_CAST(JSON_VALUE(details, '$.spec.cpu') AS NVARCHAR(10)) = @pCpu)
+END
+
+DECLARE @result INT
+EXEC proc_FilterProducts 'i7', @result OUT
+PRINT CONCAT('No of items with i7: ', @result)
