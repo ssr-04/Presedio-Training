@@ -1,0 +1,61 @@
+
+1) List all orders with the customer name and the employee who handled the order.
+
+(Join Orders, Customers, and Employees)
+
+2) Get a list of products along with their category and supplier name.
+
+(Join Products, Categories, and Suppliers)
+
+3) Show all orders and the products included in each order with quantity and unit price.
+
+(Join Orders, Order Details, Products)
+
+4) List employees who report to other employees (manager-subordinate relationship).
+
+(Self join on Employees)
+
+5) Display each customer and their total order count.
+
+(Join Customers and Orders, then GROUP BY)
+
+
+6) Find the average unit price of products per category.
+
+Use AVG() with GROUP BY
+
+7) List customers where the contact title starts with 'Owner'.
+
+Use LIKE or LEFT(ContactTitle, 5)
+
+8) Show the top 5 most expensive products.
+
+Use ORDER BY UnitPrice DESC and TOP 5
+
+9) Return the total sales amount (quantity × unit price) per order.
+
+Use SUM(OrderDetails.Quantity * OrderDetails.UnitPrice) and GROUP BY
+
+
+10) Create a stored procedure that returns all orders for a given customer ID.
+
+Input: @CustomerID
+
+11) Write a stored procedure that inserts a new product.
+
+Inputs: ProductName, SupplierID, CategoryID, UnitPrice, etc.
+
+12) Create a stored procedure that returns total sales per employee.
+
+Join Orders, Order Details, and Employees
+
+
+13) Use a CTE to rank products by unit price within each category.
+
+Use ROW_NUMBER() or RANK() with PARTITION BY CategoryID
+
+14) Create a CTE to calculate total revenue per product and filter products with revenue > 10,000.
+
+15) Use a CTE with recursion to display employee hierarchy.
+
+Start from top-level employee (ReportsTo IS NULL) and drill down
