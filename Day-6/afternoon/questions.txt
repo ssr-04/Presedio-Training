@@ -1,0 +1,44 @@
+12 May 2025: Transactions and Concurrency
+
+1️⃣ Question:
+In a transaction, if I perform multiple updates and an error happens in the third statement, but I have not used SAVEPOINT, what will happen if I issue a ROLLBACK?
+Will my first two updates persist?
+Ans - No the changes won't persist as we haven't saved any savepoint for the first two updates alones and rolling back to that specific savepoint, so the rollback will completely revert the transaction to ensure atomicity.
+
+2️⃣ Question:
+Suppose Transaction A updates Alice’s balance but does not commit. Can Transaction B read the new balance if the isolation level is set to READ COMMITTED?
+Ans - No, the transaction B can't read the updated value of Alice balance because the transaction A hasn't commited it yet, and also the isolation is set to 'Read commited' (default) one set to avoid dirty reads.
+
+3️⃣ Question:
+What will happen if two concurrent transactions both execute:
+UPDATE tbl_bank_accounts SET balance = balance - 100 WHERE account_name = 'Alice';
+at the same time? Will one overwrite the other?
+Ans - No, They won't overwrite, as each transaction executes in isolation and are executing concurrently no matter the order, one transaction doesn't have access to the update made by the another transaction unless it's been commited and 2nd transaction starts after it's commit.
+
+4️⃣ Question:
+If I issue ROLLBACK TO SAVEPOINT after_alice;, will it only undo changes made after the savepoint or everything?
+Ans - It will undo the changes made only after the savepoint, so the state will be same as when the 'SAVEPOINT after_alice' was created
+
+5️⃣ Question:
+Which isolation level in PostgreSQL prevents phantom reads?
+Ans- it's the serializable isolation level (highest) which prevents phantom reads (Inconsistent number of records happenning due to insertion and deletion anomalies happening in between)
+
+6️⃣ Question:
+Can Postgres perform a dirty read (reading uncommitted data from another transaction)?
+Ans - No, by default the postgres doesn't support dirty reads (even if we specify Read uncommited, it will use the default Read commited)
+
+7️⃣ Question:
+If autocommit is ON (default in Postgres), and I execute an UPDATE, is it safe to assume the change is immediately committed?
+Ans - If the update statement isn't part of a transaction, then it's safe to say that the postgres have auto-commited it (unless expliciltly the auto-commit has been turned off by the user).
+
+8️⃣ Question:
+If I do this:
+
+BEGIN;
+UPDATE accounts SET balance = balance - 500 WHERE id = 1;
+-- (No COMMIT yet)
+And from another session, I run:
+
+SELECT balance FROM accounts WHERE id = 1;
+Will the second session see the deducted balance?
+Ans - It will see the updated value (ie. balance - 500), because the update wasn't part of the transaction (meaning which it auto-commits), so the another session or the instance is able to read the updated value of the balance.
