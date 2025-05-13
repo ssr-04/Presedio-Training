@@ -13,15 +13,15 @@ Ans - No, the transaction B can't read the updated value of Alice balance becaus
 What will happen if two concurrent transactions both execute:
 UPDATE tbl_bank_accounts SET balance = balance - 100 WHERE account_name = 'Alice';
 at the same time? Will one overwrite the other?
-Ans - No, They won't overwrite, as each transaction executes in isolation and are executing concurrently no matter the order, one transaction doesn't have access to the update made by the another transaction unless it's been commited and 2nd transaction starts after it's commit.
+Ans - No, They won't overwrite, as each transaction executes in isolation and also even though they are running concurrently, one of the transactions first acquires lock over the row and updates it, the another transaction can access that row for upadte only when the first transaction commits/rollbacks and releases the lock. So in essence if both executions are commited and successful we will have the final balance as (original balance before transactions - 100 - 100)
 
 4️⃣ Question:
 If I issue ROLLBACK TO SAVEPOINT after_alice;, will it only undo changes made after the savepoint or everything?
-Ans - It will undo the changes made only after the savepoint, so the state will be same as when the 'SAVEPOINT after_alice' was created
+Ans - It will undo the changes made only after the savepoint, so the state will be same as when the 'SAVEPOINT after_alice' was created.
 
 5️⃣ Question:
 Which isolation level in PostgreSQL prevents phantom reads?
-Ans- it's the serializable isolation level (highest) which prevents phantom reads (Inconsistent number of records happenning due to insertion and deletion anomalies happening in between)
+Ans- it's the SERIALIZABLE isolation level (highest) which prevents phantom reads (Inconsistent number of records happenning due to insertion and deletion anomalies happening in between)
 
 6️⃣ Question:
 Can Postgres perform a dirty read (reading uncommitted data from another transaction)?
