@@ -1,0 +1,19 @@
+C:\Program Files\PostgreSQL\17\bin>psql -p 5435 -d postgres
+psql (17.4)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# select pg_is_in_recovery();
+ pg_is_in_recovery
+-------------------
+ t
+(1 row)
+
+
+postgres=# select * from test;
+ id |   name    |  created
+----+-----------+------------
+  1 | Test user | 2025-05-14
+(1 row)

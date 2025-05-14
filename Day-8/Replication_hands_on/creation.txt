@@ -1,0 +1,58 @@
+Microsoft Windows [Version 10.0.22631.5189]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\PostgreSQL\17>initdb -D C:\Users\VC\Documents\Test_postgres_servers
+'initdb' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Program Files\PostgreSQL\17>ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Program Files\PostgreSQL\17>cd bin
+
+C:\Program Files\PostgreSQL\17\bin>initdb -D "C:\Users\VC\Documents\Test_postgres_servers\Primary"
+The files belonging to this database system will be owned by user "VC".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "English_United States.1252".
+The default database encoding has accordingly been set to "WIN1252".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory C:/Users/VC/Documents/Test_postgres_servers/Primary ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... windows
+selecting default "max_connections" ... 100
+selecting default "shared_buffers" ... 128MB
+selecting default time zone ... Asia/Calcutta
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+initdb: warning: enabling "trust" authentication for local connections
+initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    pg_ctl -D ^"C^:^\Users^\VC^\Documents^\Test^_postgres^_servers^\Primary^" -l logfile start
+
+
+C:\Program Files\PostgreSQL\17\bin>pg_ctl -D  C:\Users\VC\Documents\Test_postgres_servers\Primary -o "-p 5433" -l  C:\Users\VC\Documents\Test_postgres_servers\Primary\logfile start
+waiting for server to start.... done
+server started
+
+C:\Program Files\PostgreSQL\17\bin>psql -p 5433 -d postgres -c "CREATE ROLE replicator with REPLICATION LOGIN PASSWORD 'test';"
+CREATE ROLE
+
+C:\Program Files\PostgreSQL\17\bin>pg_basebackup -D  C:\Users\VC\Documents\Test_postgres_servers\Secondary -Fp -Xs -P -R -h 127.0.0.1 -U replicator -p 5433
+24197/24197 kB (100%), 1/1 tablespace
+
+C:\Program Files\PostgreSQL\17\bin>echo "After this, go inside the /Secondary/postgresql.conf and change the port to 5435, because as we are running both servers (primary and secondary) on same machine so we should have different port numbers"
+"After this, go inside the /Secondary/postgresql.conf and change the port to 5435, because as we are running both servers (primary and secondary) on same machine so we should have different port numbers"
+
+C:\Program Files\PostgreSQL\17\bin>pg_ctl -D  C:\Users\VC\Documents\Test_postgres_servers\Secondary -o "-p 5435" -l  C:\Users\VC\Documents\Test_postgres_servers\Secondary\logfile start
+waiting for server to start.................................. done
+server started

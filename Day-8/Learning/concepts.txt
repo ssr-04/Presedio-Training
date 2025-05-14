@@ -1,0 +1,27 @@
+Availability:
+ - Minimize downtime (To ensure the uptime of the system)
+ - Ways:
+    - Replication or redundancy (copy of the server for the reader only)
+    - Auto Recovery
+ - Causes (Maintainance time, Crashes, Hardware failure, Network failure)
+ - In case of crashes -> Auto Recovery
+ - Network & Hardware failure -> Monitor and switch to Replication
+
+ Redundancy:
+    - Master and slave architecture
+    - Master -> Primary server
+    - Slave -> Secondary standby (in case of crashes/other failures and also as load balancer)
+    -- When Master goes down promote slave as Primary
+    -- Also on high traffic, use slave as load balancer
+    -- Tools --
+        -> REPMGR - Node manager for failover
+        -> PgBouncer - Connection pooling
+        -> Pgpool - Load balancing + connection pooling
+
+Streaming replication - WAL (Write ahead log) -> Inbuilt
+- Replication created is read only
+
+Logical replication - Table level replication 
+- It's bidirectly uses pub/sub model
+
+Synchorized and Asynzhorized replication -> Good to use Synchorized

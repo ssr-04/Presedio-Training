@@ -1,0 +1,28 @@
+C:\Program Files\PostgreSQL\17\bin>psql -p 5433 -d postgres
+psql (17.4)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# select * from pg_stat_replication;
+  pid  | usesysid |  usename   | application_name | client_addr | client_hostname | client_port |          backend_start           | backend_xmin |   state   | sent_lsn  | write_lsn | flush_lsn | replay_lsn | write_lag | flush_lag | replay_lag | sync_priority | sync_state |            reply_time
+-------+----------+------------+------------------+-------------+-----------------+-------------+----------------------------------+--------------+-----------+-----------+-----------+-----------+------------+-----------+-----------+------------+---------------+------------+----------------------------------
+ 27988 |    16388 | replicator | walreceiver      | 127.0.0.1   |                 |       59844 | 2025-05-14 13:00:04.743549+05:30 |              | streaming | 0/3000168 | 0/3000168 | 0/3000168 | 0/3000168  |           |           |            |             0 | async      | 2025-05-14 13:02:17.444835+05:30
+(1 row)
+
+
+postgres=# create table test(id int, name text, created date);
+CREATE TABLE
+postgres=# select * from test;
+ id | name | created
+----+------+---------
+(0 rows)
+
+postgres=#  insert into test values(1, 'Test user', now());
+INSERT 0 1
+postgres=# select * from test;
+ id |   name    |  created
+----+-----------+------------
+  1 | Test user | 2025-05-14
+(1 row)
