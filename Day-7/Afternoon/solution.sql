@@ -132,6 +132,35 @@ $$
 
 select * from inactive_customers;
 
+--------------------------------------------------------------------------------------
+-- 5) Loop through all films and update the rental rate by +1 for the films where rental count < 5 (using stored procedure)
+create or replace procedure proc_update_rental_rate()
+language plpgsql
+as $$
+declare
+	rec record;
+	cur_film_rental_count cursor for
+		select f.film_id, f.rental_rate, count(r.rental_id) as rental_count
+		from film f left join inventory i on f.film_id = i.film_id
+		left join rental r on i.inventory_id = r.inventory_id
+		group by f.film_id, f.rental_rate;
+
+begin
+	open cur_film_rental_count;
+	loop
+		fetch cur_film_rental_count into rec;
+		exit when not found;
+		if rec.rental_count < 5 then
+			update film set rental_rate = rental_rate + 1
+			where film_id = rec.film_id;
+
+			raise notice 'updated film with id %. The new rental rate is %',rec.film_id, rec.rental_rate+1;
+		end if;
+	end loop;
+	close cur_film_rental_count;
+end;
+$$;
+call proc_update_rental_rate();
 -----------------------------------------------------------------------------------------
 --------------------------------------- Transactions --------------------------
 -- 1) Write a transaction that inserts a new customer, adds their rental, 
@@ -156,6 +185,39 @@ $$;
 -- Note: Even though it doesnt have explicit begin and commit/rollback, the entire do block
 -- is treated as one transaction in pgsql so all executes or fails together (rolled back)
 -------------------------------------------------------------------------------------------
+------------ Writing same inside stored procedure -------------------------------------------
+create or replace procedure proc_create_customer_rental_payment(
+p_first_name text, p_last_name text, p_email text, p_address_id int,
+p_inventory_id int, p_store_id int,
+p_staff_id int, p_amount numeric
+)
+language plpgsql
+as $$
+declare
+	v_customer_id int;
+	v_rental_id int;
+begin
+	begin
+		INSERT INTO customer (store_id, first_name, last_name, email, address_id, active, create_date)
+		values (p_store_id, p_first_name, p_last_name, p_email, p_address_id, 1, current_date)
+		returning customer_id into v_customer_id;
+
+		INSERT INTO rental (rental_date, inventory_id, customer_id, staff_id)
+		VALUES (CURRENT_TIMESTAMP, p_inventory_id, v_customer_id, p_staff_id)
+		RETURNING rental_id INTO v_rental_id;
+		
+		INSERT INTO payment (customer_id, staff_id, rental_id, amount, payment_date)
+		VALUES (v_customer_id, p_staff_id, v_rental_id, p_amount, CURRENT_TIMESTAMP);
+	exception
+		when others then
+			raise notice 'Transaction failed: %', sqlerrm;
+	end;
+end;
+$$;
+
+call proc_create_customer_rental_payment ('Ram','Som','ram_som@gmail.com',1,1,1,1,10);
+call proc_create_customer_rental_payment ('Ram','Som','ram_som@gmail.com',1,1,1,1,0);
+---------------------------------------------------------------------------------------------
 -- 2) Simulate a transaction where one update fails (e.g., invalid rental ID), 
 -- and ensure the entire transaction rolls back.
 do $$
