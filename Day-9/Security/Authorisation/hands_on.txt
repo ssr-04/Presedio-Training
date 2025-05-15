@@ -1,0 +1,147 @@
+C:\Program Files\PostgreSQL\17\bin>pg_ctl -D  C:\Users\VC\Documents\Test_postgres_servers\Primary -o "-p 5433" -l  C:\Users\VC\Documents\Test_postgres_servers\Primary\logfile start
+waiting for server to start.... done
+server started
+
+C:\Program Files\PostgreSQL\17\bin>psql -p 5433 -d postgres
+psql (17.4)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# create database sample_for_auth;
+CREATE DATABASE
+postgres=# \c sample_for_auth;
+You are now connected to database "sample_for_auth" as user "VC".
+
+sample_for_auth=# create user app_user with password 'pass';
+CREATE ROLE
+sample_for_auth=# create user reporting_user with password 'pass';
+CREATE ROLE
+
+sample_for_auth=# create role app_role;
+CREATE ROLE
+sample_for_auth=# create role read_only_role;
+CREATE ROLE
+
+sample_for_auth=# grant app_role to app_user;
+GRANT ROLE
+sample_for_auth=# grant read_only_role to reporting_user;
+GRANT ROLE
+
+sample_for_auth=# create table sensitive_data(
+sample_for_auth(# id serial primary key,
+sample_for_auth(# name text,
+sample_for_auth(# salary decimal(10,2)
+sample_for_auth(# );
+CREATE TABLE
+
+sample_for_auth=# create table public_data(
+sample_for_auth(# id serial primary key,
+sample_for_auth(# name text,
+sample_for_auth(# description text
+sample_for_auth(# );
+CREATE TABLE
+
+sample_for_auth=# grant select on public_data to read_only_role;
+GRANT
+sample_for_auth=# grant select, insert, update, delete on public_data to app_role;
+GRANT
+sample_for_auth=# grant select, insert, update on sensitive_data to app_role;
+GRANT
+sample_for_auth=# grant select on sensitive_data to read_only_role;
+GRANT
+sample_for_auth=# grant usage on sequence sensitive_data_id_seq to app_role;
+GRANT
+sample_for_auth=# grant usage on sequence public_data_id_seq to app_role;
+GRANT
+
+sample_for_auth=# \q
+
+C:\Program Files\PostgreSQL\17\bin>pg_ctl -D  C:\Users\VC\Documents\Test_postgres_servers\Primary -o "-p 5433" -l  C:\Users\VC\Documents\Test_postgres_servers\Primary\logfile start
+waiting for server to start.... done
+server started
+
+
+C:\Program Files\PostgreSQL\17\bin> psql -p 5433 -U app_user -d sample_for_auth -W
+Password:
+
+psql (17.4)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+sample_for_auth=> select current_user;
+ current_user
+--------------
+ app_user
+(1 row)
+
+
+sample_for_auth=> INSERT INTO public_data (name, description) VALUES ('Test Item 1', 'Description 1');
+INSERT 0 1
+sample_for_auth=> select * from public_data;
+ id |    name     |  description
+----+-------------+---------------
+  1 | Test Item 1 | Description 1
+(1 row)
+
+
+sample_for_auth=> INSERT INTO sensitive_data (name, salary) VALUES ('Confidential Person', 100000.00);
+INSERT 0 1
+sample_for_auth=> select * from sensitive_data;
+ id |        name         |  salary
+----+---------------------+-----------
+  1 | Confidential Person | 100000.00
+(1 row)
+
+
+sample_for_auth=> \q
+
+
+C:\Program Files\PostgreSQL\17\bin>pg_ctl -D  C:\Users\VC\Documents\Test_postgres_servers\Primary -o "-p 5433" -l  C:\Users\VC\Documents\Test_postgres_servers\Primary\logfile start
+waiting for server to start.... done
+server started
+
+C:\Program Files\PostgreSQL\17\bin>psql -p 5433 -U reporting_user -d test_auth -W
+Password:
+
+psql (17.4)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+
+psql (17.4)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+sample_for_auth=> select current_user;
+  current_user
+----------------
+ reporting_user
+(1 row)
+
+sample_for_auth=> select * from public_data;
+ id |    name     |  description
+----+-------------+---------------
+  1 | Test Item 1 | Description 1
+(1 row)
+
+
+sample_for_auth=> select * from sensitive_data;
+ id |        name         |  salary
+----+---------------------+-----------
+  1 | Confidential Person | 100000.00
+(1 row)
+
+
+sample_for_auth=> INSERT INTO public_data (name, description) VALUES ('Report Data', 'From reporting user');
+ERROR:  permission denied for table public_data
+
+sample_for_auth=> UPDATE sensitive_data SET salary = 110000.00 WHERE id = 1;
+ERROR:  permission denied for table sensitive_data
