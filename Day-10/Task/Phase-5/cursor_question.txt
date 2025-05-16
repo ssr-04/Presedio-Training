@@ -1,0 +1,8 @@
+Phase 5: Cursor
+
+Use a cursor to:
+
+* Loop through all students in a course
+* Print name and email of those who do not yet have certificates
+
+---

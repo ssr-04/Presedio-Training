@@ -1,0 +1,80 @@
+Solution:
+    -- Database: edtech_platform
+
+-- Table: students
+-- Stores information about students.
+    student_id PRIMARY KEY, -- Unique for each student
+    first_name NOT NULL,
+    last_name NOT NULL,
+    email NOT NULL UNIQUE, -- must be unique
+    registration_date NOT NULL DEFAULT CURRENT_DATE,
+    phone_number,
+
+
+-- Table: trainers
+-- Stores information about trainers.
+    trainer_id PRIMARY KEY, -- Unique for each trainer
+    first_name NOT NULL,
+    last_name NOT NULL,
+    email NOT NULL UNIQUE, -- Email must be unique
+    hire_date DATE,
+    bio/expertise TEXT
+
+-- Table category
+-- Stores categories of the courses offered
+    category_id PRIMARY KEY, -- Unique for each course
+    category_name not null,
+
+-- Table: courses
+-- Stores information about the courses offered.
+    course_id PRIMARY KEY, -- Unique for each course
+    course_name NOT NULL UNIQUE, -- Course names maybe be unique?
+    category_id NOT NULL,
+    description TEXT,
+    duration_days INT CHECK (duration_days > 0), -- Duration in days
+    price DECIMAL(10, 2) CHECK (price >= 0), -- Course price
+    trainer_id INT NOT NULL, -- Foreign key linking to the trainer
+
+    CONSTRAINT fk_course_trainer
+        FOREIGN KEY (trainer_id)
+        REFERENCES trainers (trainer_id)
+
+    CONSTRAINT fk_course_category
+        FOREIGN KEY (category_id)
+        REFERENCES trainers (category_id)
+
+
+-- Table: enrollments
+-- Links students to courses they are enrolled in. (Many-to-Many relationship).
+    enrollment_id PRIMARY KEY, -- Surrogate key
+    student_id NOT NULL, -- Foreign key linking to student
+    course_id NOT NULL, -- Foreign key linking to course
+    enrollment_date NOT NULL DEFAULT CURRENT_DATE,
+    completion_status NOT NULL DEFAULT 'In Progress', -- e.g., 'In Progress', 'Completed', 'Dropped', 'Failed'
+    completion_date, -- Date when the course was completed
+    final_grade DECIMAL(3, 2), -- Final grade
+
+    -- student can only enroll in the same course once
+    UNIQUE (student_id, course_id),
+
+    CONSTRAINT fk_enrollment_student
+        FOREIGN KEY (student_id)
+        REFERENCES students (student_id)
+
+    CONSTRAINT fk_enrollment_course
+        FOREIGN KEY (course_id)
+        REFERENCES courses (course_id)
+
+    CHECK (completion_status IN ('In Progress', 'Completed', 'Dropped', 'Failed')) -- Valid statuses
+
+
+-- Table: certificate
+-- Records certificates issued to students for completed courses.
+    certificate_id PRIMARY KEY, -- Unique for each issued certificate
+    enrollment_id NOT NULL, -- Foreign key linking to the enrollment
+    serial_number NOT NULL UNIQUE, -- Required: Each certificate has a unique serial number
+    issue_date DATE NOT NULL DEFAULT CURRENT_DATE,
+
+    CONSTRAINT fk_cert_instance_enrollment
+        FOREIGN KEY (enrollment_id)
+        REFERENCES enrollments (enrollment_id)

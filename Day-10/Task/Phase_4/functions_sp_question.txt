@@ -1,0 +1,13 @@
+Phase 4: Functions & Stored Procedures
+
+Function:
+
+Create `get_certified_students(course_id INT)`
+→ Returns a list of students who completed the given course and received certificates.
+
+Stored Procedure:
+
+Create `sp_enroll_student(p_student_id, p_course_id)`
+→ Inserts into `enrollments` and conditionally adds a certificate if completed (simulate with status flag).
+
+---

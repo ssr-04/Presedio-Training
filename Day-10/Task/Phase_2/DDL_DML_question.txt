@@ -1,0 +1,5 @@
+Phase 2: DDL & DML
+
+* Create all tables with appropriate constraints (PK, FK, UNIQUE, NOT NULL)
+* Insert sample data using `INSERT` statements
+* Create indexes on `student_id`, `email`, and `course_id`

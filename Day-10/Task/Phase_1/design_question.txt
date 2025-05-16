@@ -1,0 +1,24 @@
+Question:
+    You are tasked with building a PostgreSQL-backed database for an EdTech company that manages online training and certification programs for individuals across various technologies.
+
+    The goal is to:
+
+    Design a normalized schema
+
+    Support querying of training data
+
+    Ensure secure access
+
+    Maintain data integrity and control over transactional updates
+
+    Database planning (Nomalized till 3NF)
+
+    A student can enroll in multiple courses
+
+    Each course is led by one trainer
+
+    Students can receive a certificate after passing
+
+    Each certificate has a unique serial number
+
+    Trainers may teach multiple courses

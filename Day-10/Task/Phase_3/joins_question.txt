@@ -1,0 +1,7 @@
+Phase 3: SQL Joins Practice
+
+Write queries to:
+
+1. List students and the courses they enrolled in
+2. Show students who received certificates with trainer names
+3. Count number of students per course

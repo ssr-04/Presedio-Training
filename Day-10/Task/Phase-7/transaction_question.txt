@@ -1,0 +1,16 @@
+Phase 7: Transactions & Atomicity
+
+Write a transaction block that:
+
+* Enrolls a student
+* Issues a certificate
+* Fails if certificate generation fails (rollback)
+
+```sql
+BEGIN;
+-- insert into enrollments
+-- insert into certificates
+-- COMMIT or ROLLBACK on error
+```
+
+---
