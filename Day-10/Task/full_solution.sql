@@ -485,6 +485,10 @@ grant select on table certificates to readonly_user;
 grant usage on schema public to readonly_user;
 -- Allows the role to see and access objects within the schema
 
+
+create user readonly_person with password 'pass';
+grant readonly_user to readonly_person;
+
 ----------------------------------------------------------------------------------------------
 -- 2. Create a `data_entry_user` role:
 --    * Can `INSERT` into `students`, `enrollments`
@@ -501,6 +505,9 @@ grant usage on sequence enrollments_enrollment_id_seq to data_entry_user;
 
 grant usage on schema public to data_entry_user;
 -- Allows the role to see and access objects within the schema
+
+create user data_entry_person with password 'pass';
+grant data_entry_user to data_entry_person;
 -----------------------------------------------------------------------------------------------
 -------------------------------------- Phase-7 ------------------------------------------------
 ------------------------------- Transactions and Atomicity ---------------------------------------
