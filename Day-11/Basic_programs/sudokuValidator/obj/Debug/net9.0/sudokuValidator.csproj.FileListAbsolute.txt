@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\obj\Debug\net9.0\sudokuValidator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\obj\Debug\net9.0\sudokuValidator.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\obj\Debug\net9.0\sudokuValidator.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\obj\Debug\net9.0\sudokuValidator.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\obj\Debug\net9.0\sudokuValidator.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\bin\Debug\net9.0\sudokuValidator.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\bin\Debug\net9.0\sudokuValidator.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\bin\Debug\net9.0\sudokuValidator.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\bin\Debug\net9.0\sudokuValidator.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\bin\Debug\net9.0\sudokuValidator.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\obj\Debug\net9.0\sudokuValidator.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\obj\Debug\net9.0\refint\sudokuValidator.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\obj\Debug\net9.0\sudokuValidator.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\obj\Debug\net9.0\sudokuValidator.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudokuValidator\obj\Debug\net9.0\ref\sudokuValidator.dll

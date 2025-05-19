@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\obj\Debug\net9.0\wordle.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\obj\Debug\net9.0\wordle.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\obj\Debug\net9.0\wordle.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\obj\Debug\net9.0\wordle.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\obj\Debug\net9.0\wordle.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\bin\Debug\net9.0\wordle.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\bin\Debug\net9.0\wordle.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\bin\Debug\net9.0\wordle.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\bin\Debug\net9.0\wordle.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\bin\Debug\net9.0\wordle.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\obj\Debug\net9.0\wordle.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\obj\Debug\net9.0\refint\wordle.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\obj\Debug\net9.0\wordle.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\obj\Debug\net9.0\wordle.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\wordle\obj\Debug\net9.0\ref\wordle.dll

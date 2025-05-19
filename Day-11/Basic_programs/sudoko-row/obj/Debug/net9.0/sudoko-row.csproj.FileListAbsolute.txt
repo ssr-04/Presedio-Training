@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\obj\Debug\net9.0\sudoko-row.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\obj\Debug\net9.0\sudoko-row.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\obj\Debug\net9.0\sudoko-row.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\obj\Debug\net9.0\sudoko-row.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\obj\Debug\net9.0\sudoko-row.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\bin\Debug\net9.0\sudoko-row.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\bin\Debug\net9.0\sudoko-row.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\bin\Debug\net9.0\sudoko-row.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\bin\Debug\net9.0\sudoko-row.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\bin\Debug\net9.0\sudoko-row.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\obj\Debug\net9.0\sudoko-row.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\obj\Debug\net9.0\refint\sudoko-row.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\obj\Debug\net9.0\sudoko-row.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\obj\Debug\net9.0\sudoko-row.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\sudoko-row\obj\Debug\net9.0\ref\sudoko-row.dll
