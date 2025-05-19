@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\bin\Debug\net9.0\DivisibleTen.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\bin\Debug\net9.0\DivisibleTen.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\bin\Debug\net9.0\DivisibleTen.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\bin\Debug\net9.0\DivisibleTen.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\bin\Debug\net9.0\DivisibleTen.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\obj\Debug\net9.0\DivisibleTen.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\obj\Debug\net9.0\DivisibleTen.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\obj\Debug\net9.0\DivisibleTen.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\obj\Debug\net9.0\DivisibleTen.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\obj\Debug\net9.0\DivisibleTen.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\obj\Debug\net9.0\DivisibleTen.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\obj\Debug\net9.0\refint\DivisibleTen.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\obj\Debug\net9.0\DivisibleTen.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\obj\Debug\net9.0\DivisibleTen.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\DivisibleTen\obj\Debug\net9.0\ref\DivisibleTen.dll

@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\bin\Debug\net9.0\greet.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\bin\Debug\net9.0\greet.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\bin\Debug\net9.0\greet.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\bin\Debug\net9.0\greet.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\bin\Debug\net9.0\greet.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\obj\Debug\net9.0\greet.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\obj\Debug\net9.0\greet.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\obj\Debug\net9.0\greet.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\obj\Debug\net9.0\greet.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\obj\Debug\net9.0\greet.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\obj\Debug\net9.0\greet.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\obj\Debug\net9.0\refint\greet.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\obj\Debug\net9.0\greet.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\obj\Debug\net9.0\greet.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\greet\obj\Debug\net9.0\ref\greet.dll

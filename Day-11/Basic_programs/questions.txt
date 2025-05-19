@@ -1,0 +1,11 @@
+x1) create a program that will take name from user and greet the user
+
+2) Take 2 numbers from user and print the largest
+
+3) Take 2 numbers from user, check the operation user wants to perform (+,-,*,/). Do the operation and print the result
+
+4) Take username and password from user. Check if user name is "Admin" and password is "pass" if yes then print success message.
+Give 3 attempts to user. In the end of eh 3rd attempt if user still is unable to provide valid creds then exit the application after print the message 
+"Invalid attempts for 3 times. Exiting...."
+
+5) Take 10 numbers from user and print the number of numbers that are divisible by 7	
