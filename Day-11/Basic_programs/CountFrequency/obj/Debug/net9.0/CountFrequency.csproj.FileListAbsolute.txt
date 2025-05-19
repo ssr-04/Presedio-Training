@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\obj\Debug\net9.0\CountFrequency.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\obj\Debug\net9.0\CountFrequency.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\obj\Debug\net9.0\CountFrequency.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\obj\Debug\net9.0\CountFrequency.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\obj\Debug\net9.0\CountFrequency.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\bin\Debug\net9.0\CountFrequency.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\bin\Debug\net9.0\CountFrequency.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\bin\Debug\net9.0\CountFrequency.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\bin\Debug\net9.0\CountFrequency.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\bin\Debug\net9.0\CountFrequency.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\obj\Debug\net9.0\CountFrequency.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\obj\Debug\net9.0\refint\CountFrequency.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\obj\Debug\net9.0\CountFrequency.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\obj\Debug\net9.0\CountFrequency.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\CountFrequency\obj\Debug\net9.0\ref\CountFrequency.dll

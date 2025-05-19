@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\obj\Debug\net9.0\RotateArray.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\obj\Debug\net9.0\RotateArray.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\obj\Debug\net9.0\RotateArray.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\obj\Debug\net9.0\RotateArray.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\obj\Debug\net9.0\RotateArray.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\bin\Debug\net9.0\RotateArray.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\bin\Debug\net9.0\RotateArray.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\bin\Debug\net9.0\RotateArray.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\bin\Debug\net9.0\RotateArray.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\bin\Debug\net9.0\RotateArray.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\obj\Debug\net9.0\RotateArray.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\obj\Debug\net9.0\refint\RotateArray.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\obj\Debug\net9.0\RotateArray.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\obj\Debug\net9.0\RotateArray.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-11\Basic_programs\RotateArray\obj\Debug\net9.0\ref\RotateArray.dll
