@@ -54,11 +54,11 @@ public class SudokuRowValidator
         }
     }
 
-    public static bool IsValidSudokuLine(List<int> row)
+    public static bool IsValidSudokuLine(List<int> line)
     {
         HashSet<int> numbers = new();
 
-        foreach (int num in row)
+        foreach (int num in line)
         {
             if (num < 1 || num > 9)
             {
@@ -109,12 +109,36 @@ public class SudokuRowValidator
             bool isValid = IsValidSudokuLine(Column);
             if(!isValid)
             {
+                Console.WriteLine($"Issue found in column {i+1}");
                 return false;
             }
         }
 
         return true;
     }
+
+    public static bool ValidateSubgrids(List<List<int>> board)
+    {
+        
+        for (int blockRow = 0; blockRow < 9; blockRow += 3)
+        {
+            for (int blockCol = 0; blockCol < 9; blockCol += 3)
+            {
+                var block = new List<int>(9);
+                for (int i = 0; i < 3; i++)
+                    for (int j = 0; j < 3; j++)
+                        block.Add(board[blockRow + i][blockCol + j]);
+
+                if (!IsValidSudokuLine(block))
+                {
+                    Console.WriteLine($"\nInvalid: 3×3 block starting at row {blockRow + 1}, column {blockCol + 1} is invalid.");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 
     public static void Main(string[] args)
     {
@@ -123,7 +147,7 @@ public class SudokuRowValidator
         {
             Console.WriteLine("\nSudoku Board Collected Successfully!");
         }
-        if(validateColumns(board))
+        if(validateColumns(board) && ValidateSubgrids(board))
         {
             Console.WriteLine("\nIt's a Valid Sudoku Board");
         }
