@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\obj\Debug\net9.0\medium.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\obj\Debug\net9.0\medium.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\obj\Debug\net9.0\medium.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\obj\Debug\net9.0\medium.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\obj\Debug\net9.0\medium.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\bin\Debug\net9.0\medium.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\bin\Debug\net9.0\medium.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\bin\Debug\net9.0\medium.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\bin\Debug\net9.0\medium.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\bin\Debug\net9.0\medium.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\obj\Debug\net9.0\medium.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\obj\Debug\net9.0\refint\medium.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\obj\Debug\net9.0\medium.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\obj\Debug\net9.0\medium.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\medium\obj\Debug\net9.0\ref\medium.dll

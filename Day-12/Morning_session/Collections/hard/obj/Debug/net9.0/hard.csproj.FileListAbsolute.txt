@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\bin\Debug\net9.0\hard.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\bin\Debug\net9.0\hard.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\bin\Debug\net9.0\hard.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\bin\Debug\net9.0\hard.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\bin\Debug\net9.0\hard.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\obj\Debug\net9.0\hard.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\obj\Debug\net9.0\hard.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\obj\Debug\net9.0\hard.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\obj\Debug\net9.0\hard.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\obj\Debug\net9.0\hard.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\obj\Debug\net9.0\hard.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\obj\Debug\net9.0\refint\hard.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\obj\Debug\net9.0\hard.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\obj\Debug\net9.0\hard.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\Collections\hard\obj\Debug\net9.0\ref\hard.dll

@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\obj\Debug\net9.0\jacked-array.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\obj\Debug\net9.0\jacked-array.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\obj\Debug\net9.0\jacked-array.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\obj\Debug\net9.0\jacked-array.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\obj\Debug\net9.0\jacked-array.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\bin\Debug\net9.0\jacked-array.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\bin\Debug\net9.0\jacked-array.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\bin\Debug\net9.0\jacked-array.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\bin\Debug\net9.0\jacked-array.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\bin\Debug\net9.0\jacked-array.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\obj\Debug\net9.0\jacked-array.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\obj\Debug\net9.0\refint\jacked-array.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\obj\Debug\net9.0\jacked-array.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\obj\Debug\net9.0\jacked-array.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-12\Morning_session\jacked-array\obj\Debug\net9.0\ref\jacked-array.dll

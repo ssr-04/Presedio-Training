@@ -1,0 +1,49 @@
+https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays
+
+https://learn.microsoft.com/en-us/dotnet/standard/generics/collections
+------------------------------------------------------------------------------
+
+1) Design a C# console app that uses a jagged array to store data for Instagram posts by multiple users. Each user can have a different number of posts, and each post stores a caption and number of likes.
+
+You have N users, and each user can have M posts (varies per user).
+
+Each post has:
+
+A caption (string)
+
+A number of likes (int)
+
+Store this in a jagged array, where each index represents one user's list of posts.
+
+Display all posts grouped by user.
+
+No file/database needed — console input/output only.
+
+Example output
+Enter number of users: 2
+
+User 1: How many posts? 2
+Enter caption for post 1: Sunset at beach
+Enter likes: 150
+Enter caption for post 2: Coffee time
+Enter likes: 89
+
+User 2: How many posts? 1
+Enter caption for post 1: Hiking adventure
+Enter likes: 230
+
+--- Displaying Instagram Posts ---
+User 1:
+Post 1 - Caption: Sunset at beach | Likes: 150
+Post 2 - Caption: Coffee time | Likes: 89
+
+User 2:
+Post 1 - Caption: Hiking adventure | Likes: 230
+
+
+Test case
+| User | Number of Posts | Post Captions        | Likes      |
+| ---- | --------------- | -------------------- | ---------- |
+| 1    | 2               | "Lunch", "Road Trip" | 40, 120    |
+| 2    | 1               | "Workout"            | 75         |
+| 3    | 3               | "Book", "Tea", "Cat" | 30, 15, 60 |
