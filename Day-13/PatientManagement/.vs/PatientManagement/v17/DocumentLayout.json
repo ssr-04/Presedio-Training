@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\PatientManagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E052A4FE-892E-4F11-BA3C-28F61EE9F951}|PatientManagement\\PatientManagement.csproj|c:\\users\\vc\\documents\\learning\\internship-training\\presedio-training\\day-13\\patientmanagement\\patientmanagement\\services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E052A4FE-892E-4F11-BA3C-28F61EE9F951}|PatientManagement\\PatientManagement.csproj|solutionrelative:patientmanagement\\services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E052A4FE-892E-4F11-BA3C-28F61EE9F951}|PatientManagement\\PatientManagement.csproj|c:\\users\\vc\\documents\\learning\\internship-training\\presedio-training\\day-13\\patientmanagement\\patientmanagement\\interfaces\\iappointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E052A4FE-892E-4F11-BA3C-28F61EE9F951}|PatientManagement\\PatientManagement.csproj|solutionrelative:patientmanagement\\interfaces\\iappointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E052A4FE-892E-4F11-BA3C-28F61EE9F951}|PatientManagement\\PatientManagement.csproj|c:\\users\\vc\\documents\\learning\\internship-training\\presedio-training\\day-13\\patientmanagement\\patientmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E052A4FE-892E-4F11-BA3C-28F61EE9F951}|PatientManagement\\PatientManagement.csproj|solutionrelative:patientmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E052A4FE-892E-4F11-BA3C-28F61EE9F951}|PatientManagement\\PatientManagement.csproj|c:\\users\\vc\\documents\\learning\\internship-training\\presedio-training\\day-13\\patientmanagement\\patientmanagement\\ui\\manageappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E052A4FE-892E-4F11-BA3C-28F61EE9F951}|PatientManagement\\PatientManagement.csproj|solutionrelative:patientmanagement\\ui\\manageappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E052A4FE-892E-4F11-BA3C-28F61EE9F951}|PatientManagement\\PatientManagement.csproj|c:\\users\\vc\\documents\\learning\\internship-training\\presedio-training\\day-13\\patientmanagement\\patientmanagement\\repositories\\appointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E052A4FE-892E-4F11-BA3C-28F61EE9F951}|PatientManagement\\PatientManagement.csproj|solutionrelative:patientmanagement\\repositories\\appointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\PatientManagement\\PatientManagement\\Program.cs",
+              "RelativeDocumentMoniker": "PatientManagement\\Program.cs",
+              "ToolTip": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\PatientManagement\\PatientManagement\\Program.cs",
+              "RelativeToolTip": "PatientManagement\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T10:14:04.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IAppointmentService.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\PatientManagement\\PatientManagement\\Interfaces\\IAppointmentService.cs",
+              "RelativeDocumentMoniker": "PatientManagement\\Interfaces\\IAppointmentService.cs",
+              "ToolTip": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\PatientManagement\\PatientManagement\\Interfaces\\IAppointmentService.cs",
+              "RelativeToolTip": "PatientManagement\\Interfaces\\IAppointmentService.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAewAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T10:02:44.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ManageAppointment.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\PatientManagement\\PatientManagement\\UI\\ManageAppointment.cs",
+              "RelativeDocumentMoniker": "PatientManagement\\UI\\ManageAppointment.cs",
+              "ToolTip": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\PatientManagement\\PatientManagement\\UI\\ManageAppointment.cs",
+              "RelativeToolTip": "PatientManagement\\UI\\ManageAppointment.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAqwHQAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T09:59:50.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppointmentService.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\PatientManagement\\PatientManagement\\Services\\AppointmentService.cs",
+              "RelativeDocumentMoniker": "PatientManagement\\Services\\AppointmentService.cs",
+              "ToolTip": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\PatientManagement\\PatientManagement\\Services\\AppointmentService.cs",
+              "RelativeToolTip": "PatientManagement\\Services\\AppointmentService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCMAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T09:38:46.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AppointmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\PatientManagement\\PatientManagement\\Repositories\\AppointmentRepository.cs",
+              "RelativeDocumentMoniker": "PatientManagement\\Repositories\\AppointmentRepository.cs",
+              "ToolTip": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\PatientManagement\\PatientManagement\\Repositories\\AppointmentRepository.cs",
+              "RelativeToolTip": "PatientManagement\\Repositories\\AppointmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T09:32:19.455Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

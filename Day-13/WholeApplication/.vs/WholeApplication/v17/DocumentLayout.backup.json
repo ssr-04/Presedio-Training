@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|c:\\users\\vc\\documents\\learning\\internship-training\\presedio-training\\day-13\\wholeapplication\\wholeapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|solutionrelative:wholeapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|c:\\users\\vc\\documents\\learning\\internship-training\\presedio-training\\day-13\\wholeapplication\\wholeapplication\\manageemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|solutionrelative:wholeapplication\\manageemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|c:\\users\\vc\\documents\\learning\\internship-training\\presedio-training\\day-13\\wholeapplication\\wholeapplication\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|solutionrelative:wholeapplication\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|c:\\users\\vc\\documents\\learning\\internship-training\\presedio-training\\day-13\\wholeapplication\\wholeapplication\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|solutionrelative:wholeapplication\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|c:\\users\\vc\\documents\\learning\\internship-training\\presedio-training\\day-13\\wholeapplication\\wholeapplication\\models\\serachmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|solutionrelative:wholeapplication\\models\\serachmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|c:\\users\\vc\\documents\\learning\\internship-training\\presedio-training\\day-13\\wholeapplication\\wholeapplication\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{641ACD4E-1FB1-4358-A995-3195482F2BA0}|WholeApplication\\WholeApplication.csproj|solutionrelative:wholeapplication\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\Program.cs",
+              "RelativeDocumentMoniker": "WholeApplication\\Program.cs",
+              "ToolTip": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\Program.cs",
+              "RelativeToolTip": "WholeApplication\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T07:03:02.979Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ManageEmployee.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\ManageEmployee.cs",
+              "RelativeDocumentMoniker": "WholeApplication\\ManageEmployee.cs",
+              "ToolTip": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\ManageEmployee.cs",
+              "RelativeToolTip": "WholeApplication\\ManageEmployee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:54:58.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "WholeApplication\\Models\\Employee.cs",
+              "ToolTip": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\Models\\Employee.cs",
+              "RelativeToolTip": "WholeApplication\\Models\\Employee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:31:59.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "WholeApplication\\Services\\EmployeeService.cs",
+              "ToolTip": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "WholeApplication\\Services\\EmployeeService.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAUwEQAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:27:55.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SerachModel.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\Models\\SerachModel.cs",
+              "RelativeDocumentMoniker": "WholeApplication\\Models\\SerachModel.cs",
+              "ToolTip": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\Models\\SerachModel.cs",
+              "RelativeToolTip": "WholeApplication\\Models\\SerachModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:26:46.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IEmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\Interfaces\\IEmployeeService.cs",
+              "RelativeDocumentMoniker": "WholeApplication\\Interfaces\\IEmployeeService.cs",
+              "ToolTip": "C:\\Users\\VC\\Documents\\Learning\\Internship-training\\Presedio-Training\\Day-13\\WholeApplication\\WholeApplication\\Interfaces\\IEmployeeService.cs",
+              "RelativeToolTip": "WholeApplication\\Interfaces\\IEmployeeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:24:42.834Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

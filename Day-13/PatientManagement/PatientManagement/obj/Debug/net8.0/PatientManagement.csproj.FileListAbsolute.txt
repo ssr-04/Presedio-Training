@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\bin\Debug\net8.0\PatientManagement.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\bin\Debug\net8.0\PatientManagement.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\bin\Debug\net8.0\PatientManagement.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\bin\Debug\net8.0\PatientManagement.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\bin\Debug\net8.0\PatientManagement.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\obj\Debug\net8.0\PatientManagement.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\obj\Debug\net8.0\PatientManagement.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\obj\Debug\net8.0\PatientManagement.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\obj\Debug\net8.0\PatientManagement.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\obj\Debug\net8.0\PatientManagement.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\obj\Debug\net8.0\PatientManagement.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\obj\Debug\net8.0\refint\PatientManagement.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\obj\Debug\net8.0\PatientManagement.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\obj\Debug\net8.0\PatientManagement.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\PatientManagement\PatientManagement\obj\Debug\net8.0\ref\PatientManagement.dll

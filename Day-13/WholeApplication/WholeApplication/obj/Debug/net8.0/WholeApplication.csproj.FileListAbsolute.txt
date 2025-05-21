@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\bin\Debug\net8.0\WholeApplication.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\bin\Debug\net8.0\WholeApplication.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\bin\Debug\net8.0\WholeApplication.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\bin\Debug\net8.0\WholeApplication.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\bin\Debug\net8.0\WholeApplication.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\obj\Debug\net8.0\WholeApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\obj\Debug\net8.0\WholeApplication.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\obj\Debug\net8.0\WholeApplication.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\obj\Debug\net8.0\WholeApplication.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\obj\Debug\net8.0\WholeApplication.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\obj\Debug\net8.0\WholeApplication.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\obj\Debug\net8.0\refint\WholeApplication.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\obj\Debug\net8.0\WholeApplication.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\obj\Debug\net8.0\WholeApplication.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-13\WholeApplication\WholeApplication\obj\Debug\net8.0\ref\WholeApplication.dll
