@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\obj\Debug\net9.0\good_example.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\obj\Debug\net9.0\good_example.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\obj\Debug\net9.0\good_example.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\obj\Debug\net9.0\good_example.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\obj\Debug\net9.0\good_example.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\bin\Debug\net9.0\good_example.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\bin\Debug\net9.0\good_example.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\bin\Debug\net9.0\good_example.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\bin\Debug\net9.0\good_example.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\bin\Debug\net9.0\good_example.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\obj\Debug\net9.0\good_example.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\obj\Debug\net9.0\refint\good_example.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\obj\Debug\net9.0\good_example.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\obj\Debug\net9.0\good_example.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\SOLID_principles\L\good_example\obj\Debug\net9.0\ref\good_example.dll

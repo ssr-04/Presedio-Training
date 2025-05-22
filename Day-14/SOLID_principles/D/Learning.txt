@@ -1,0 +1,27 @@
+The Dependency Inversion Principle (DIP)
+
+Formal Definition (as introduced by Robert C. Martin):
+- High-level modules should not depend on low-level modules. Both should depend on abstractions.
+- Abstractions should not depend on details. Details should depend on abstractions.
+
+What does this mean in plain language?
+
+- High-level modules: These contain the important business logic or core functionality of your application (e.g., a OrderProcessor, ReportGenerator, UserCreator). They define what the application does.
+
+- Low-level modules: These contain the specific implementation details, utilities, or infrastructure components (e.g., a DatabaseConnector, EmailSender, FileSystemWriter, PayPalGateway). They define how a particular task is done.
+
+- Abstractions: These are typically interfaces or abstract classes that define a contract or a common behavior (e.g., IPaymentGateway, ILogger, IUserRepository).
+
+The principle states that your core business logic (high-level) should not directly rely on the specific ways things are implemented (low-level). Instead, both should rely on an intermediate layer of abstractions.
+
+This effectively "inverts" the traditional dependency flow. Traditionally, high-level modules depend on low-level modules
+
+why?
+
+- Loose coupling (Not depends on the lower level details)
+- Flexibility and extensibilty (easy to swap out implementations that are from same interface)
+- Reusability and higher level picture
+
+how?
+- The primary mechanism for implementing DIP is Dependency Injection (DI). 
+- Dependency Injection is a technique where objects receive their dependencies from an external source (like a constructor, property, or method parameter) rather than creating them internally.

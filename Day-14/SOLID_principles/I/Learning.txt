@@ -1,0 +1,19 @@
+The Interface Segregation Principle (ISP)
+
+Formal Definition:
+- "Clients should not be forced to depend on interfaces they do not use."
+Or,
+- "Many client-specific interfaces are better than one general-purpose interface."
+
+Imagine a large, "fat" interface that contains many methods. If a class implements this interface, it's forced to provide implementations for all those methods, even if it only needs to use a few of them. This creates unnecessary dependencies and can lead to problems.
+
+ISP suggests that instead of having one big, monolithic interface, you should break it down into smaller, more specific interfaces. Each of these smaller interfaces should serve a single, cohesive purpose. Clients can then depend only on the specific interfaces that are relevant to their needs.
+
+Why?
+
+- Reduces coupling - when we have a large interface all the classes that implement it are forced which naturally leads to coupling to unrelated things
+- Improves maintainabiliy and testability
+- Supports LSP - Make inheritance or design interfaces in such a way that it makes sense for all of it's implementations or the derived classes.
+
+how it happens
+- Mostly with chunky interfaces.

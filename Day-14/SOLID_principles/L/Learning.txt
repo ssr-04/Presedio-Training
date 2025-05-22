@@ -1,0 +1,30 @@
+The Liskov Substitution Principle (LSP)
+Formal Definition:
+"If for each object o1 of type S there is an object o2 of type T such that, for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2, then S is a subtype of T."
+
+In simpler terms:
+"Subtypes must be substitutable for their base types without altering the correctness of the program."
+
+This means that if you have a base class (or interface) T and a derived class S, you should be able to use an object of type S anywhere an object of type T is expected, and the program should still function correctly and produce the expected results without unexpected behavior or errors.
+
+why?
+
+- Consistency - Any client using base class should also be able to use it's derived class without any compromise
+- Reduced complexity - If we are able to use the sub type or the derived class without issues, the idea of having derived types simplifies code (by mwans of abstraction)
+- Foundation of OCP (open-closed principle), LSP ensures that the derived classes works properly, allowing for extension (core of LSP)
+
+Violations:
+
+when:
+    - Subtype throws exceptions
+    - requires different preconditions (stronger) - Arguments/params different from base.(like non null attribue)
+    - providing weaker postcoditions - return type (maybe a wrong or null type) unlike base promised.
+    - Having 'not implemented exception'
+
+- Square/rectangle problem is demostrated in example. (sqaure is a rectangle (with equal sides))
+
+how to fix?
+
+- Re-evaluate the inheritance hierarchy.
+- Redefine the abstraction (interface or abstract class) to include only the truly common and consistent behaviors.
+- Break down the larger interface into smaller, more specific ones

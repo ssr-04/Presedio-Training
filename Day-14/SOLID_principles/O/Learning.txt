@@ -1,0 +1,23 @@
+The Open/Closed Principle (OCP)
+Formal Definition:
+"Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification."
+
+what does this mean?
+
+- Open for extension: Means new functionality can be added to the system with minimal efforts
+- Closed for modifications: Means addition of new functionality shouldn't involve changes in the existing source code.
+
+Why?
+
+- Modifications to already tested and running code may introduce new bugs
+- So we need to test the system all over again which is costly and time consuming
+- Makes addition of new features cumbersome
+
+How?
+OCP is primarily achieved through abstraction and polymorphism
+- Using Interfaces or Abstract Classes
+- Dependency Injection: Injecting dependencies (often implementations of interfaces) rather than creating them directly within a class
+
+Anology.
+Laptop vs custom build PC
+- Once bought laptops are harder for upgrade (mostly RAM and storage maybe upgraded), but a custom built PC with modular components offers lot of room for improvements and upgrades

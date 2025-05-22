@@ -1,0 +1,8 @@
+The SOLID principles are a set of guidelines that help developers create software that is:
+
+Single Responsibility Principle
+Open/Closed Principle
+Liskov Substitution Principle
+Interface Segregation Principle
+Dependency Inversion Principle
+These principles, popularized by Robert C. Martin (Uncle Bob), are designed to make software designs more understandable, flexible, and maintainable.

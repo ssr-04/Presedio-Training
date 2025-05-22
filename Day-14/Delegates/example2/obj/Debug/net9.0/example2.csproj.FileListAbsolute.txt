@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\obj\Debug\net9.0\example2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\obj\Debug\net9.0\example2.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\obj\Debug\net9.0\example2.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\obj\Debug\net9.0\example2.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\obj\Debug\net9.0\example2.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\bin\Debug\net9.0\example2.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\bin\Debug\net9.0\example2.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\bin\Debug\net9.0\example2.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\bin\Debug\net9.0\example2.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\bin\Debug\net9.0\example2.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\obj\Debug\net9.0\example2.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\obj\Debug\net9.0\refint\example2.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\obj\Debug\net9.0\example2.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\obj\Debug\net9.0\example2.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\day-14\Delegates\example2\obj\Debug\net9.0\ref\example2.dll

@@ -1,0 +1,19 @@
+The Single Responsibility Principle (SRP)
+Formal Definition:
+"A class should have only one reason to change."
+Or, rephrased: "A class should have only one primary responsibility."
+
+What does "one reason to change" mean?
+It doesn't mean a class should only do one thing. A class can have many methods and perform many actions. The key is that all those actions should be related to a single, cohesive responsibility.
+
+If a class has more than one reason to change, it means that changes in different, unrelated areas of the application could force you to modify that one class. This leads to:
+Fragility: A change for one reason might *accidentally break something else* in the same class related to a different reason.
+Tight Coupling: The class becomes coupled to multiple, unrelated concerns.
+Difficulty in Maintenance: It's harder to understand, test, and maintain a class that tries to do too much.
+
+Example:
+* Swiss Army knife (All in one bundled togther as a single thing)
+* Toolkit (Many things that has a single specific function)
+
+-- Tookit is better than Swiss knife because if one of it (knife/screwdriver/opner) becomes old or faulty we need to chaneg the complete thing and affects the functionaliy of another, but with toolkit it's seperated concerns
+
