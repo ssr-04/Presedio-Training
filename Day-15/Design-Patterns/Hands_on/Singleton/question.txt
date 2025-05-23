@@ -1,0 +1,3 @@
+https://refactoring.guru/design-patterns/csharp
+
+Create a application that will read and write to a file.Please ensure teh file is open and closed only once during teh time of exection. 

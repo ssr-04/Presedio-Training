@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\obj\Debug\net9.0\Thread-safe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\obj\Debug\net9.0\Thread-safe.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\obj\Debug\net9.0\Thread-safe.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\obj\Debug\net9.0\Thread-safe.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\obj\Debug\net9.0\Thread-safe.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\bin\Debug\net9.0\Thread-safe.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\bin\Debug\net9.0\Thread-safe.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\bin\Debug\net9.0\Thread-safe.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\bin\Debug\net9.0\Thread-safe.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\bin\Debug\net9.0\Thread-safe.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\obj\Debug\net9.0\Thread-safe.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\obj\Debug\net9.0\refint\Thread-safe.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\obj\Debug\net9.0\Thread-safe.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\obj\Debug\net9.0\Thread-safe.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Singleton\Thread-safe\obj\Debug\net9.0\ref\Thread-safe.dll

@@ -1,0 +1,69 @@
+Factory Method Pattern (Single Product Hierarchy):
+
+                                  +-------------------+
+                                  |    <<Product>>    |
+                                  |     IDocument     |
+                                  +-------------------+
+                                            ^
+                                            |
+                         +------------------+------------------+
+                         |                  |                  |
+               +----------------+ +----------------+ +--------------------+
+               | WordDocument   | | PdfDocument    | | SpreadsheetDocument|
+               +----------------+ +----------------+ +--------------------+
+
+And the Creator Hierarchy:
+
+                                  +-------------------+
+                                  |     Creator       |
+                                  |  DocumentCreator  |
+                                  | - CreateDocument()|  <-- Factory Method
+                                  +-------------------+
+                                            ^
+                                            |
+                         +------------------+------------------+
+                         |                  |                  |
+               +----------------+ +----------------+ +--------------------+
+               | WordDocCreator | | PdfDocCreator  | | SpreadsheetDocCreator|
+               +----------------+ +----------------+ +--------------------+
+               (Overrides CreateDocument to return WordDoc)
+
+
+
+--------------------------------------------------------------------------------------------
+Abstract Factory Pattern (Multiple, Related Product Hierarchies)
+
+               <<Abstract Product A>>    <<Abstract Product B>>   <<Abstract Product C>>
+               +------------------+      +------------------+     +------------------+
+               |     IButton      |      |     ICheckbox    |     |     ITextBox     |
+               +------------------+      +------------------+     +------------------+
+                         ^                         ^                         ^
+                         |                         |                         |
+               +---------+---------+   +---------+---------+   +---------+---------+
+               | WindowsButton     |   | WindowsCheckbox   |   | WindowsTextBox    |  <-- Concrete Product Family 1
+               +-------------------+   +-------------------+   +-------------------+
+               | MacOSButton       |   | MacOSCheckbox     |   | MacOSTextBox      |  <-- Concrete Product Family 2
+               +-------------------+   +-------------------+   +-------------------+
+
+And the Factory Hierarchy:
+
+                                     +-------------------+
+                                     |  <<Abstract Factory>> |
+                                     |     IUIFactory    |
+                                     | + CreateButton()  |
+                                     | + CreateCheckbox()|
+                                     | + CreateTextBox() |
+                                     +-------------------+
+                                               ^
+                                               |
+                          +--------------------+---------------------+
+                          |                                          |
+               +-----------------------+              +-----------------------+
+               |   Concrete Factory 1  |              |   Concrete Factory 2  |
+               |  WindowsUIFactory     |              |   MacOSUIFactory      |
+               | - CreateButton() --> WindowsButton   | - CreateButton() --> MacOSButton   |
+               | - CreateCheckbox() -> WindowsCheckbox| - CreateCheckbox() -> MacOSCheckbox|
+               | - CreateTextBox() --> WindowsTextBox | - CreateTextBox() --> MacOSTextBox |
+               +-----------------------+              +-----------------------+
+
+---------------------------------------------------------------------------------------------------------

@@ -1,0 +1,12 @@
+The Adapter Design Pattern
+Intent:
+Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
+
+Key Concepts:
+
+- Target (Desired Interface): This is the interface that the client code expects to work with. It defines the domain-specific interface that the client understands.
+- Adaptee (Existing Service/Incompatible Class): This is the existing class or object whose interface doesn't match the Target interface. It's the "legacy" or "third-party" code that you want to integrate.
+- Adapter: This is the class that implements the Target interface and contains an instance of (or inherits from) the Adaptee. It translates calls from the Target interface into calls that the Adaptee understands, and vice-versa if necessary. It's the "translator" or "connector."
+- Client: The code that uses the Target interface. It doesn't know (and shouldn't care) that an Adapter is being used to communicate with an Adaptee.
+
+Analogy: More like a Travel adapter for plugs

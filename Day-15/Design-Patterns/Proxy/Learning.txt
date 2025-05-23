@@ -1,0 +1,23 @@
+The Proxy Design Pattern
+Intent:
+Provide a surrogate or placeholder for another object to control access to it.
+
+Key Concepts:
+
+- Subject (Interface): Declares the interface common to both the Real Subject and the Proxy. This is crucial because it allows the client to treat the Proxy and the Real Subject interchangeably.
+- Real Subject (Real Object): The actual object that the Proxy represents. This object contains the core business logic.
+- Proxy: The surrogate object that maintains a reference to the Real Subject. It controls access to the Real Subject and can perform operations before or after forwarding a request to the Real Subject.
+
+Why use it?
+
+The Proxy pattern is used when you need a more sophisticated reference to an object than a simple pointer. It can be used for various purposes:
+
+- Lazy Initialization (Virtual Proxy): To defer the creation of an expensive object until it's actually needed. The proxy creates the real object only when a method on it is called for the first time.
+
+- Access Control (Protection Proxy): To control access to the real object based on permissions or security rules. The proxy checks if the client has the necessary rights before allowing access.
+
+- Logging/Auditing (Logging Proxy): To log method calls, arguments, and return values.
+
+- Caching (Caching Proxy): To cache the results of operations to avoid redundant computations or network calls.
+
+- Counting References (Counting Proxy): To keep track of how many references there are to the real object.

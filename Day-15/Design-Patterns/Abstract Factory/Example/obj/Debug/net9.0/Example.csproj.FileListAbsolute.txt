@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\bin\Debug\net9.0\Example.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\bin\Debug\net9.0\Example.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\bin\Debug\net9.0\Example.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\bin\Debug\net9.0\Example.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\bin\Debug\net9.0\Example.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\obj\Debug\net9.0\Example.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\obj\Debug\net9.0\Example.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\obj\Debug\net9.0\Example.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\obj\Debug\net9.0\Example.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\obj\Debug\net9.0\Example.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\obj\Debug\net9.0\Example.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\obj\Debug\net9.0\refint\Example.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\obj\Debug\net9.0\Example.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\obj\Debug\net9.0\Example.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Abstract Factory\Example\obj\Debug\net9.0\ref\Example.dll

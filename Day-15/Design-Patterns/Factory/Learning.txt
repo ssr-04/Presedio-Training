@@ -1,0 +1,22 @@
+The Factory Method Design Pattern
+Intent:
+Define an interface for creating an object, but let subclasses decide which class to instantiate. The Factory Method lets a class defer instantiation to subclasses.
+
+Key Concepts:
+
+- Product: The interface or abstract class for the objects the factory method creates (e.g., IDocument, IVehicle).
+- Concrete Product: The concrete implementation of the Product interface (e.g., WordDocument, Car, Bike).
+- Creator: The abstract class or interface that declares the factory method, which returns an object of the Product type. It often contains some default implementation of the factory method that returns a default Concrete Product.
+- Concrete Creator: Subclasses of the Creator that override the factory method to return a specific Concrete Product.
+
+Analogy: A Digital Camera: 
+Imagine you have a digital camera (the "Creator"). It has a "Take Photo" button. When you press it, the camera creates a "Photo" object (the "Product").
+
+- Without Factory Method: The "Take Photo" button internally has code like new JPEGPhoto() or new RawPhoto(). If you get a new camera model that can also take HEICPhoto photos, you'd have to modify the internal logic of the "Take Photo" button.
+
+- With Factory Method: The camera has an abstract CreatePhoto() method. Different camera models (Concrete Creators) can override this method:
+    - StandardCamera (Concrete Creator) overrides CreatePhoto() to return a JPEGPhoto.
+    - ProCamera (Concrete Creator) overrides CreatePhoto() to return a RawPhoto.
+    - NewerProCamera (Concrete Creator) overrides CreatePhoto() to return a HEICPhoto.
+    
+The user (client) just presses "Take Photo." They don't care how the photo object is created, only that a photo is created. When a new photo format comes out, you just create a NewerProCamera class, without ever touching the StandardCamera or ProCamera classes, or the core "Take Photo" logic.

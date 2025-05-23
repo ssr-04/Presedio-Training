@@ -1,0 +1,15 @@
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\bin\Debug\net9.0\solution.exe
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\bin\Debug\net9.0\solution.deps.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\bin\Debug\net9.0\solution.runtimeconfig.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\bin\Debug\net9.0\solution.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\bin\Debug\net9.0\solution.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\obj\Debug\net9.0\solution.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\obj\Debug\net9.0\solution.AssemblyInfoInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\obj\Debug\net9.0\solution.AssemblyInfo.cs
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\obj\Debug\net9.0\solution.csproj.CoreCompileInputs.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\obj\Debug\net9.0\solution.sourcelink.json
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\obj\Debug\net9.0\solution.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\obj\Debug\net9.0\refint\solution.dll
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\obj\Debug\net9.0\solution.pdb
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\obj\Debug\net9.0\solution.genruntimeconfig.cache
+C:\Users\VC\Documents\Learning\Internship-training\Presedio-Training\Day-15\Design-Patterns\Hands_on\Proxy\solution\obj\Debug\net9.0\ref\solution.dll
