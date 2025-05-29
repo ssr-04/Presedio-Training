@@ -1,0 +1,5 @@
+- Modified the creation of doctor (AddDoctorSync) to take in the specialities along with POST request.
+- Created a stored procedure/function to get doctors by speciality name, invoked the procedure call in misc/othercontextfunctionalites
+and used in doctorService
+- Created a Transaction based doctor adding to ensure atomicity (doctor creation, speciality creation/linking, linking docSpec) 
+- AddDoctorAsyncTransaction that uses method in misc/othercontextfunctionalites
