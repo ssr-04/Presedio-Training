@@ -1,8 +1,10 @@
 public interface IDoctorService
 {
-    Task<IEnumerable<DoctorResponseDto>> GetAllDoctorsAsync();
-    Task<DoctorResponseDto?> GetDoctorByIdAsync(int id);
-    Task<(DoctorResponseDto? doctor, string? error)> AddDoctorAsync(DoctorCreateDto doctorDto);
-    Task<(DoctorResponseDto? doctor, string? error)> UpdateDoctorAsync(DoctorUpdateDto doctorDto);
-    Task<bool> DeleteDoctorAsync(int id); // Soft delete
+    Task<DoctorResponseDto?> GetDoctorByIdAsync(int id, bool includeDeleted = false);
+    Task<IEnumerable<DoctorResponseDto>> GetAllDoctorsAsync(bool includeDeleted = false);
+    Task<DoctorResponseDto> AddDoctorAsync(DoctorCreateDto doctorDto);
+    Task<DoctorResponseDto?> UpdateDoctorAsync(int id, DoctorUpdateDto doctorDto);
+    Task<bool> SoftDeleteDoctorAsync(int id);
+    Task<bool> DoctorExistsAsync(int id, bool includeDeleted = false);
+    Task<bool> DoctorExistsByEmailAsync(string email, bool includeDeleted = false);
 }

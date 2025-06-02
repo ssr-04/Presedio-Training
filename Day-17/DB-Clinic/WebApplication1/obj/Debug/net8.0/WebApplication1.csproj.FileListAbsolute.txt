@@ -195,3 +195,4 @@
 /Users/sabari/Documents/Learning/Presedio-Training/Day-17/DB-Clinic/WebApplication1/obj/Debug/net8.0/WebAppli.7D14BD69.Up2Date
 /Users/sabari/Documents/Learning/Presedio-Training/Day-17/DB-Clinic/WebApplication1/obj/Debug/net8.0/WebApplication1.genruntimeconfig.cache
 /Users/sabari/Documents/Learning/Presedio-Training/Day-17/DB-Clinic/WebApplication1/obj/Debug/net8.0/ref/WebApplication1.dll
+/Users/sabari/Documents/Learning/Presedio-Training/Day-17/DB-Clinic/WebApplication1/bin/Debug/net8.0/AutoMapper.dll

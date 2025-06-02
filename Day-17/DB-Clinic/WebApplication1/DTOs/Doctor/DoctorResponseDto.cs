@@ -6,6 +6,6 @@ public class DoctorResponseDto
     public float YearsOfExperience { get; set; }
     public string Email { get; set; } = string.Empty;
     public string Phone { get; set; } = string.Empty;
-    public bool IsDeleted { get; set; }
-    public List<SpecialityResponseDto> Specialties { get; set; } = new List<SpecialityResponseDto>();
+    // public bool IsDeleted { get; set; }
+    public ICollection<SpecialityResponseDto>? Specialities { get; set; }
 }

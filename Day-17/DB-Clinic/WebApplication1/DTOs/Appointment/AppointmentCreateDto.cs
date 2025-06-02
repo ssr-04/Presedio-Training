@@ -2,9 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 public class AppointmentCreateDto
 {
-    [Required(ErrorMessage = "Appointment Number is required.")]
-    [StringLength(15, ErrorMessage = "Appointment Number cannot exceed 15 characters.")]
-    public string AppointmentNumber { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Patient ID is required.")]
     public int PatientId { get; set; }
@@ -13,9 +10,10 @@ public class AppointmentCreateDto
     public int DoctorId { get; set; }
 
     [Required(ErrorMessage = "Appointment date and time is required.")]
-    public DateTime AppointmentDateTime { get; set; }
+    [RegularExpression(@"^\d{2}-\d{2}-\d{4} \d{2}:\d{2}$", ErrorMessage = "Appointment time must be in 'dd-MM-yyyy hh:mm' format.")]
+    public string AppointmentDateTimeString { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Status is required.")]
     [StringLength(20, ErrorMessage = "Status cannot exceed 20 characters.")]
-    public string Status { get; set; } = string.Empty; // e.g., "Scheduled", "Confirmed", "Completed", "Cancelled"
+    public string Status { get; set; } = "Scheduled"; // e.g., "Scheduled", "Confirmed", "Completed", "Cancelled"
 }

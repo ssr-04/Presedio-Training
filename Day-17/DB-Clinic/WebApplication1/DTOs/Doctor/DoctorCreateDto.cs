@@ -22,6 +22,4 @@ public class DoctorCreateDto
     [StringLength(20, ErrorMessage = "Phone number cannot exceed 20 characters.")]
     public string Phone { get; set; } = string.Empty;
 
-    [Required(ErrorMessage = "At least one Specialty ID is required.")]
-    public List<int> SpecialtyIds { get; set; } = new List<int>();
 }

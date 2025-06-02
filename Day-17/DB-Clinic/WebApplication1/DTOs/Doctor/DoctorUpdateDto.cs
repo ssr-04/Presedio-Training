@@ -2,8 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class DoctorUpdateDto
 {
-    [Required(ErrorMessage = "Id is required.")]
-    public int Id { get; set; }
+    // ID from the param
 
     [Required(ErrorMessage = "Name is required.")]
     [StringLength(30, ErrorMessage = "Name cannot exceed 30 characters.")]
@@ -25,6 +24,4 @@ public class DoctorUpdateDto
     [StringLength(20, ErrorMessage = "Phone number cannot exceed 20 characters.")]
     public string Phone { get; set; } = string.Empty;
 
-    [Required(ErrorMessage = "At least one Specialty ID is required.")]
-    public List<int> SpecialtyIds { get; set; } = new List<int>();
 }

@@ -487,11 +487,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sabari/Documents/Learning/Presedio-Training/Day-17/WebApplication1/WebApplication1.csproj",
+      "projectUniqueName": "/Users/sabari/Documents/Learning/Presedio-Training/Day-17/InMemory-Clinic/WebApplication1/WebApplication1.csproj",
       "projectName": "WebApplication1",
-      "projectPath": "/Users/sabari/Documents/Learning/Presedio-Training/Day-17/WebApplication1/WebApplication1.csproj",
+      "projectPath": "/Users/sabari/Documents/Learning/Presedio-Training/Day-17/InMemory-Clinic/WebApplication1/WebApplication1.csproj",
       "packagesPath": "/Users/sabari/.nuget/packages/",
-      "outputPath": "/Users/sabari/Documents/Learning/Presedio-Training/Day-17/WebApplication1/obj/",
+      "outputPath": "/Users/sabari/Documents/Learning/Presedio-Training/Day-17/InMemory-Clinic/WebApplication1/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/sabari/.nuget/NuGet/NuGet.Config"

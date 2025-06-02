@@ -14,21 +14,21 @@ builder.Services.AddDbContext<ClinicContext>(opts =>
     opts.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-// Register repositories
-// builder.Services.AddSingleton<IPatientRepository, PatientRepository>(); // Using AddSingleton for in-memory (one is used throughout app)
-// builder.Services.AddSingleton<IDoctorRepository, DoctorRepository>();
-// builder.Services.AddSingleton<IAppointmentRepository, AppointmentRepository>();
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
-// Register services
-/*
-why scoped?
-- A new instance of the service is created once per HTTP request.
-- The same instance is used throughout that request.
-- On the next request, a new instance is created.
-*/
-// builder.Services.AddScoped<IPatientService, PatientService>();
-// builder.Services.AddScoped<IDoctorService, DoctorService>();          
-// builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+// Register repositories
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+builder.Services.AddScoped<ISpecialityRepository, SpecialityRepository>();
+builder.Services.AddScoped<IDoctorSpecialityRepository, DoctorSpecialityRepository>();
+
+
+builder.Services.AddScoped<IPatientService, PatientService>();
+builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddScoped<ISpecialityService, SpecialityService>();
+builder.Services.AddScoped<IDoctorSpecialityService, DoctorSpecialityService>();
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
 
 var app = builder.Build();

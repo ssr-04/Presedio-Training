@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "eoxwCkCGOxI=",
+  "dgSpecHash": "Dlfuf6FbR1g=",
   "success": true,
   "projectFilePath": "/Users/sabari/Documents/Learning/Presedio-Training/Day-17/DB-Clinic/WebApplication1/WebApplication1.csproj",
   "expectedPackageFiles": [
+    "/Users/sabari/.nuget/packages/automapper/14.0.0/automapper.14.0.0.nupkg.sha512",
     "/Users/sabari/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/sabari/.nuget/packages/microsoft.aspnetcore.openapi/8.0.16/microsoft.aspnetcore.openapi.8.0.16.nupkg.sha512",
     "/Users/sabari/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",

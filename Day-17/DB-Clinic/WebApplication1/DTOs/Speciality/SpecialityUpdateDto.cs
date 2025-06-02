@@ -2,9 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 public class SpecialityUpdateDto
 {
-    [Required(ErrorMessage = "Id is required.")]
-    public int Id { get; set; }
-
+    //Id in param
+    
     [Required(ErrorMessage = "Name is required.")]
     [StringLength(75, ErrorMessage = "Name cannot exceed 75 characters.")]
     public string Name { get; set; } = string.Empty;

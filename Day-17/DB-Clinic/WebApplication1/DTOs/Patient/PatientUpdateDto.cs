@@ -2,8 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class PatientUpdateDto
 {
-    [Required(ErrorMessage = "Id is required.")]
-    public int Id { get; set; }
+    // ID is passed in the URL
 
     [Required(ErrorMessage = "Name is required.")]
     [StringLength(30, ErrorMessage = "Name cannot exceed 30 characters.")]

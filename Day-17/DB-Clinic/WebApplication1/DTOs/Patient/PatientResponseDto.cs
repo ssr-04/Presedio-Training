@@ -5,5 +5,5 @@ public class PatientResponseDto
     public int Age { get; set; }
     public string Email { get; set; } = string.Empty;
     public string Phone { get; set; } = string.Empty;
-    public bool IsDeleted { get; set; }
+    // public bool IsDeleted { get; set; } Not needed mostly
 }

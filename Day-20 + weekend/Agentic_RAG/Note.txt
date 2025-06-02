@@ -1,0 +1,4 @@
+Note:
+- For security reasons the following files weren't included in the repository
+    * .env containing API keys for Gemini and Serper API
+    * Phase 1 cache generation files

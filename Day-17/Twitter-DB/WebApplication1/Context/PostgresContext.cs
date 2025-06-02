@@ -15,9 +15,11 @@ public class Postgres : DbContext
 
     public DbSet<Follow> Follows { get; set; }
 
-    public DbSet<Hashtag> Hashtags { get; set; } 
+    public DbSet<Hashtag> Hashtags { get; set; }
+
+    public DbSet<TweetHashtag> TweetHashtags { get; set; }
     
-    public DbSet<TweetHashtag> TweetHashtags { get; set;  }
+    
 }
 
 // dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL

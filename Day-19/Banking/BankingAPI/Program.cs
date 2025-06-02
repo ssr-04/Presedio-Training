@@ -23,7 +23,7 @@ builder.Services.AddControllers() //added controller
     {
         // Configure JSON serializer to convert enums to their string names
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-        // Optionally, configure naming policy for property names (e.g., camelCase)
+        // naming policy for property names (like camelCase)
         options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
     });; 
 
