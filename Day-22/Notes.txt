@@ -1,0 +1,8 @@
+dotnet new nunit -n ClinicApi.Tests
+dotnet add ClinicApi.Tests/ClinicApi.Tests.csproj reference DB-Clinic-Updates/WebApplication1/WebApplication1.csproj
+cd ClinicApi.Tests
+dotnet add package Microsoft.EntityFrameworkCore.InMemory
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package NUnit
+dotnet add package NUnit3TestAdapter
+dotnet add package Microsoft.NET.Test.Sdk
