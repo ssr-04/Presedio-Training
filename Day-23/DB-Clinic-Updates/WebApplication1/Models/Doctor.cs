@@ -11,5 +11,5 @@ public class Doctor
     // Navigation properties for many-to-many and one-to-many
     public ICollection<DoctorSpeciality>? DoctorSpecialities { get; set; }
     public ICollection<Appointment>? Appointments { get; set; }
-    public required User User;
+    public User? User;
 }

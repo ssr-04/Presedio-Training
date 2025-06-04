@@ -104,6 +104,30 @@ public class ResourceOwnerAuthorizationHandler : AuthorizationHandler<OperationA
                 }
             }
         }
+
+        else if (resource is AppointmentResponseDto appointmentResponse)
+        {
+            // Patient can interact with their own appointments
+            if (user.Role == "Patient" && user.PatientId.HasValue && appointmentResponse.Patient != null && user.PatientId.Value == appointmentResponse.Patient.Id)
+            {
+                // Patient can create, read, update (reschedule) their own appointments
+                if (requirement == ResourceOperations.Read || requirement == ResourceOperations.Update || requirement == ResourceOperations.Create)
+                {
+                    context.Succeed(requirement);
+                    return;
+                }
+            }
+            // Doctor can interact with appointments assigned to them
+            else if (user.Role == "Doctor" && user.DoctorId.HasValue && appointmentResponse.Doctor != null && user.DoctorId.Value == appointmentResponse.Doctor.Id)
+            {
+                // Doctor can read, update (reschedule/status) their own appointments
+                if (requirement == ResourceOperations.Read || requirement == ResourceOperations.Update)
+                {
+                    context.Succeed(requirement);
+                    return;
+                }
+            }
+        }
         
          // If no condition matched
         return;

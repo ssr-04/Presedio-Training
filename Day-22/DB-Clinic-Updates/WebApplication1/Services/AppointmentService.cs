@@ -1,5 +1,6 @@
 using System.Globalization;
 using AutoMapper;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 public class AppointmentService : IAppointmentService
 {
@@ -155,28 +156,50 @@ public class AppointmentService : IAppointmentService
             return null;
         }
 
-        switch (existingAppointment.Status)
+        if (statusChangeDto.NewStatus == "Cancelled")
         {
-            case "Scheduled":
-                if (statusChangeDto.NewStatus != "Confirmed" && statusChangeDto.NewStatus != "Cancelled")
-                {
-                    throw new InvalidOperationException($"Cannot change status from 'Scheduled' to '{statusChangeDto.NewStatus}'. Valid transitions are 'Confirmed' or 'Cancelled'.");
-                }
-                break;
-            case "Confirmed":
-                if (statusChangeDto.NewStatus != "Completed" && statusChangeDto.NewStatus != "Cancelled")
-                {
-                    throw new InvalidOperationException($"Cannot change status from 'Confirmed' to '{statusChangeDto.NewStatus}'. Valid transitions are 'Completed' or 'Cancelled'.");
-                }
-                break;
-            case "Cancelled":
-            case "Completed":
-                throw new InvalidOperationException($"Cannot change status of an appointment that is already '{existingAppointment.Status}'.");
+            throw new InvalidOperationException("Use the cancel endpoint to cancel a appointment");
         }
+
+        switch (existingAppointment.Status)
+            {
+                case "Scheduled":
+                    if (statusChangeDto.NewStatus != "Confirmed" && statusChangeDto.NewStatus != "Cancelled")
+                    {
+                        throw new InvalidOperationException($"Cannot change status from 'Scheduled' to '{statusChangeDto.NewStatus}'. Valid transitions are 'Confirmed' or 'Cancelled'.");
+                    }
+                    break;
+                case "Confirmed":
+                    if (statusChangeDto.NewStatus != "Completed" && statusChangeDto.NewStatus != "Cancelled")
+                    {
+                        throw new InvalidOperationException($"Cannot change status from 'Confirmed' to '{statusChangeDto.NewStatus}'. Valid transitions are 'Completed' or 'Cancelled'.");
+                    }
+                    break;
+                case "Cancelled":
+                case "Completed":
+                    throw new InvalidOperationException($"Cannot change status of an appointment that is already '{existingAppointment.Status}'.");
+            }
 
         var updatedAppointment = await _appointmentRepository.ChangeAppointmentStatusAsync(appointmentNumber, statusChangeDto.NewStatus);
         return _mapper.Map<AppointmentResponseDto>(updatedAppointment);
     }
+
+    public async Task<AppointmentResponseDto?> CancelAppointment(string appointmentNumber)
+    {
+        var existingAppointment = await _appointmentRepository.GetAppointmentByNumberAsync(appointmentNumber, includeDeleted: false);
+        if (existingAppointment == null)
+        {
+            return null;
+        }
+
+        if (existingAppointment.Status == "Cancelled" || existingAppointment.Status == "Completed")
+        {
+            throw new InvalidOperationException($"Cannot Cancel an appointment that is already '{existingAppointment.Status}'.");
+        }
+
+        var updatedAppointment = await _appointmentRepository.ChangeAppointmentStatusAsync(appointmentNumber, "Cancelled");
+        return _mapper.Map<AppointmentResponseDto>(updatedAppointment);
+    } 
 
     public async Task<bool> AppointmentExistsAsync(string appointmentNumber, bool includeDeleted = false)
     {

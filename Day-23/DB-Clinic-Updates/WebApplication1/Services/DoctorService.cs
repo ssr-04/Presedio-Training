@@ -61,28 +61,16 @@ public class DoctorService : IDoctorService
         {
             createdAuth0User = await _auth0ManagementService.CreateAuth0UserAsync(
                 doctorDto.Email,
-                doctorDto.Password, // Auth0 will hash this
+                doctorDto.Password,
                 "Doctor" // Role to assign in Auth0's metadata
             );
         }
         catch (Exception ex)
         {
-            // Log the error and rethrow or handle specific Auth0 errors
             throw new InvalidOperationException($"Failed to create user in Auth0: {ex.Message}", ex);
         }
 
-        // 3) Creating User locally
-        var localUser = new User
-        {
-            Username = doctorDto.Email,
-            Auth0UserId = createdAuth0User.UserId,
-            Role = "Doctor", // Assign the Doctor role
-            IsActive = true,
-            CreatedAt = DateTime.UtcNow
-            // DoctorId will be set after the doctor is added
-        };
-
-        // 4. Doctor creation
+        // 3. Doctor creation
         if (await _doctorRepository.DoctorExistsByEmailAsync(doctorDto.Email))
         {
             throw new InvalidOperationException($"Doctor with email '{doctorDto.Email}' already exists.");
@@ -90,8 +78,16 @@ public class DoctorService : IDoctorService
         var doctor = _mapper.Map<Doctor>(doctorDto);
         var addedDoctor = await _doctorRepository.AddDoctorAsync(doctor);
 
-         // 3. Link the created Doctor to the User
-        localUser.DoctorId = addedDoctor.Id;
+         // 4. Create local User record linked to Auth0 user
+        var localUser = new User
+        {
+            Username = doctorDto.Email,
+            Auth0UserId = createdAuth0User.UserId, // Store Auth0's unique user ID
+            Role = "Doctor", // Assign the Patient role locally
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow,
+            DoctorId = addedDoctor.Id
+        };
         await _userRepository.AddUserAsync(localUser);
 
         // If provided specialities

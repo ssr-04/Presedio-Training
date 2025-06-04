@@ -9,5 +9,5 @@ public class Patient
 
     // Navigation property
     public ICollection<Appointment>? Appointments { get; set; } 
-    public required User User { get; set;}
+    public User? User { get; set;}
 }

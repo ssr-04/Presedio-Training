@@ -225,7 +225,7 @@ public class AppointmentsController : ControllerBase
 
     // PUT: api/appointments/{appointmentNumber}/status
     [HttpPut("{appointmentNumber}/status")]
-    [Authorize(Roles = "Doctor,Admin")] // Only Doctors (or Admin) can change status (Only experienced doctor can cancel)
+    [Authorize(Roles = "Doctor,Admin")] // Only Doctors (or Admin) can change status.
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -246,21 +246,6 @@ public class AppointmentsController : ControllerBase
             return NotFound($"Appointment with number '{appointmentNumber}' not found.");
         }
 
-        // Conditional Authorization Check for Cancellation
-        // If the doctor is trying to change the status to "Cancelled"
-        // and not an Admin
-        if (statusChangeDto.NewStatus.Equals("Cancelled", StringComparison.OrdinalIgnoreCase) && User.IsInRole("Doctor"))
-        {
-            // Perform the specific authorization check for minimum experience
-            var authorizationResult = await _authorizationService.AuthorizeAsync(User, null, "DoctorHasMinimumExperienceToCancel");
-
-            if (!authorizationResult.Succeeded)
-            {
-                // This means the doctor tried to cancel but didn't meet the experience requirement
-                return Forbid("Doctor does not have sufficient experience to cancel appointments.");
-            }
-        }
-
         try
         {
             var updatedAppointment = await _appointmentService.ChangeAppointmentStatusAsync(appointmentNumber, statusChangeDto);
@@ -273,6 +258,46 @@ public class AppointmentsController : ControllerBase
         catch (Exception ex)
         {
             return Conflict(ex.Message); // invalid status transitions
+        }
+    }
+
+    // PUT: api/appointments/{appointmentNumber} (Soft Delete)
+    [HttpPut("cancel/{appointmentNumber}")]
+    [Authorize(Policy = "DoctorHasMinimumExperienceToCancel", Roles = "Admin,Doctor,Patient")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<IActionResult> CancelAppointment(string appointmentNumber)
+    {
+        // Get the appointment first to check existence
+        var existingAppointment = await _appointmentService.GetAppointmentByNumberAsync(appointmentNumber, includeDeleted: true);
+        if (existingAppointment == null)
+        {
+            return NotFound($"Appointment with number '{appointmentNumber}' not found.");
+        }
+
+        // Policy-based authorization: Patient/Doctor can only cancel their own appointments
+        if (User.IsInRole("Patient") || User.IsInRole("Doctor"))
+        {
+            var authorizationResult = await _authorizationService.AuthorizeAsync(User, existingAppointment, ResourceOperations.Update);
+            if (!authorizationResult.Succeeded)
+            {
+                return Forbid();
+            }
+        }
+
+        try
+        {
+            var CancelledAppointment = await _appointmentService.CancelAppointment(appointmentNumber);
+            if (CancelledAppointment == null)
+            {
+                return NotFound($"Appointment with number '{appointmentNumber}' not found.");
+            }
+            return Ok(CancelledAppointment);
+        }
+        catch (Exception ex)
+        {
+            return Conflict(ex.Message); //  alreay cancelled/completed
         }
     }
 

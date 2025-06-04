@@ -8,5 +8,6 @@ public interface IAppointmentService
     Task<bool> SoftDeleteAppointmentAsync(string appointmentNumber);
     Task<AppointmentResponseDto?> RescheduleAppointmentAsync(string appointmentNumber, AppointmentRescheduleDto rescheduleDto);
     Task<AppointmentResponseDto?> ChangeAppointmentStatusAsync(string appointmentNumber, AppointmentStatusChangeDto statusChangeDto);
+    Task<AppointmentResponseDto?> CancelAppointment(string appointmentNumber);
     Task<bool> AppointmentExistsAsync(string appointmentNumber, bool includeDeleted = false);
 }

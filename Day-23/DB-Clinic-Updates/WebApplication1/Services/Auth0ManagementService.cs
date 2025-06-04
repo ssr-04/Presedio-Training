@@ -26,7 +26,7 @@ public class Auth0ManagementService : IAuth0ManagementService
         };
         var managementTokenResponse = managementTokenClient.GetTokenAsync(tokenRequest).Result; // Sync call for simplicity, consider async
         var managementAccessToken = managementTokenResponse.AccessToken;
-        System.Console.WriteLine(managementAccessToken);
+        //System.Console.WriteLine(managementAccessToken);
         _managementApiClient = new ManagementApiClient(managementAccessToken, new Uri($"https://{_auth0Domain}/api/v2/"));
     }
 

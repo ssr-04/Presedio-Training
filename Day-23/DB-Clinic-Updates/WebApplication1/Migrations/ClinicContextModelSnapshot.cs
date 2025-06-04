@@ -311,8 +311,7 @@ namespace WebApplication1.Migrations
                 {
                     b.Navigation("Appointments");
 
-                    b.Navigation("User")
-                        .IsRequired();
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Speciality", b =>
