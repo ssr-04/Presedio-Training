@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SignalR Notification Client</title>
+</head>
+<body>
+    <h1>SignalR Notification Client</h1>
+
+    <div id="connectionStatus">Status: <span>Disconnected</span></div>
+
+    <h2>Send Message</h2>
+    <div>
+        <input type="text" id="usernameInput" placeholder="Your Username">
+        <input type="text" id="messageInput" placeholder="Enter message">
+        <button id="sendMessageButton" disabled>Send Message</button>
+    </div>
+
+    <h2>Notifications</h2>
+    <ul id="messagesList">
+        </ul>
+
+    <script src="https://unpkg.com/@microsoft/signalr/dist/browser/signalr.js"></script>
+    <script>
+        const messagesList = document.getElementById('messagesList');
+        const usernameInput = document.getElementById('usernameInput');
+        const messageInput = document.getElementById('messageInput');
+        const sendMessageButton = document.getElementById('sendMessageButton');
+        const connectionStatusSpan = document.getElementById('connectionStatus').querySelector('span');
+
+        // --- SignalR Connection Setup ---
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("http://localhost:5130/notificationhub") 
+            .build();
+
+        // --- Connection Event Handlers ---
+        connection.onclose(async (error) => {
+            console.error('Connection closed:', error);
+            connectionStatusSpan.textContent = 'Disconnected';
+            sendMessageButton.disabled = true;
+            console.log("Attempting to reconnect...");
+            await startConnection();
+        });
+
+        connection.onreconnecting((error) => {
+            console.warn('Reconnecting...', error);
+            connectionStatusSpan.textContent = 'Reconnecting...';
+            sendMessageButton.disabled = true;
+        });
+
+        connection.onreconnected((connectionId) => {
+            console.log('Reconnected. Connection ID:', connectionId);
+            connectionStatusSpan.textContent = 'Connected';
+            sendMessageButton.disabled = false;
+        });
+
+
+        async function startConnection() {
+            try {
+                await connection.start();
+                console.log("SignalR Connected!");
+                connectionStatusSpan.textContent = 'Connected';
+                sendMessageButton.disabled = false;
+            } catch (err) {
+                console.error("SignalR Connection Error: ", err);
+                connectionStatusSpan.textContent = 'Disconnected (Error)';
+                sendMessageButton.disabled = true;
+                // Retry connection after a delay
+                setTimeout(startConnection, 5000); // Retry every 5 seconds
+            }
+        }
+
+
+        startConnection();
+
+
+        // Listening for "ReceiveMessage" 
+        connection.on("ReceivedMessage", (username, message) => {
+            const li = document.createElement("li");
+            li.textContent = `${username || 'Anonymous'}: ${message}`;
+            messagesList.appendChild(li);
+            messagesList.scrollTop = messagesList.scrollHeight; // Auto-scroll to bottom
+        });
+
+        // Listening for "ReceiveTimeNotification"
+        connection.on("ReceiveTimeNotification", (timeMessage) => {
+            const li = document.createElement("li");
+            li.textContent = timeMessage;
+            messagesList.appendChild(li);
+            messagesList.scrollTop = messagesList.scrollHeight; // Auto-scroll to bottom
+        });
+
+
+        // --- Send Message Button Logic ---
+        sendMessageButton.addEventListener('click', () => {
+            const username = usernameInput.value.trim();
+            const message = messageInput.value.trim();
+
+            if (message) {
+                // Invoking the "SendMessage" method on the hub
+                connection.invoke("SendMessage", username, message)
+                    .catch(err => console.error(err));
+                messageInput.value = ""; // Clearing message input after sending
+            }
+        });
+
+        // Allowing pressing Enter key to send message
+        messageInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                sendMessageButton.click();
+            }
+        });
+    </script>
+</body>
+</html>
