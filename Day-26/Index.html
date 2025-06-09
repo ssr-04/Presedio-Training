@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Clinic - Quality Care for Your Health</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i data-lucide="stethoscope" class="logo-icon"></i>
+                    Doctor's Clinic
+                </a>
+                
+                <nav class="nav">
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                    
+                    <div class="auth-buttons">
+                        <a href="#" class="btn btn-primary">Log In</a>
+                        <a href="#" class="btn btn-outline">Register</a>
+                    </div>
+                    
+                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Quality Care <br>for Your Health</h1>
+                    <p>Our clinic provides the best medical services for you and your family.</p>
+                    <a href="#" class="btn btn-primary">Book Appointment</a>
+                </div>
+
+                <div class="hero-image">
+                    <div class="doctor-image">
+                        <img src="./images/doctor-hero.webp" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icons">
+                        <i data-lucide="clipboard" class="service-icon"></i>
+                    </div>
+                    <h3>Primary Care</h3>
+                    <p>Comprehensive healthcare for adults including preventive care and treatment of common illnesses.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icons">
+                        <i data-lucide="stethoscope" class="service-icon"></i>
+                    </div>
+                    <h3>Pediatrics</h3>
+                    <p>Specialized medical care for infants, children, and adolescents up to age 18.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icons">
+                        <i data-lucide="plus-circle" class="service-icon"></i>
+                    </div>
+                    <h3>Specialty Care</h3>
+                    <p>Expert care for specific conditions from our team of specialized physicians.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Patients Are Saying</h2>
+            
+            <div class="testimonial-card">
+                <div>
+                    <p class="testimonial-text">Excellent service and wonderful staff. I always feel well taken care of.</p>
+                    <p class="testimonial-author">John D.</p>
+                </div>
+                <div class="testimonial-icons">
+                    <i data-lucide="quote" class="testimonial-icon"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clinic Hours Section -->
+    <section class="clinic-hours">
+        <div class="container">
+            <h2 class="section-title">Clinic Hours</h2>
+            <ul class="hours-list">
+                <li>
+                    <span>Monday – Friday</span>
+                    <span>8:00 AM - 6:00 PM</span>
+                </li>
+                <li>
+                    <span>Saturday</span>
+                    <span>9:00 AM - 1:00 PM</span>
+                </li>
+                <li>
+                    <span>Sunday</span>
+                    <span>Closed</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Doctor's Clinic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const authButtons = document.querySelector('.auth-buttons');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                authButtons.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

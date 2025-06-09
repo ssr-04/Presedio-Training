@@ -1,0 +1,62 @@
+1. Typography
+Use system fonts or Google Fonts for consistency and accessibility.
+
+Use	Font	Style	Size	Weight
+Main Heading	Inter / Poppins	H1	32px	SemiBold
+Subheading	Inter / Poppins	H2	24px	Medium
+Body Text	Inter / Roboto	P	16px	Regular
+Button Text	Inter	Button	16px	Medium (Uppercase optional)
+
+2. Colors (Grayscale for wireframes)
+Name	Hex Code	Use Case
+Primary Gray	#333333	Headings
+Medium Gray	#666666	Body text
+Light Gray	#CCCCCC	Borders, placeholders
+Background	#F5F5F5	Background fill
+White	#FFFFFF	Cards, container backgrounds
+Accent Gray	#E0E0E0	Button hover, secondary areas
+
+3. Icons
+Use Feather Icons, Lucide, or Heroicons for wireframe-friendly stroke icons.
+
+Section	Icon Suggestions
+Services	Clipboard, Stethoscope, Plus Circle
+Testimonial	Quote Left
+Clinic Hours	Clock, Calendar
+Navigation	Menu, Home, Log In
+
+You can install them from:
+
+https://www.figma.com/community/plugin/1213591006187858474/lucide-icons
+
+https://www.figma.com/community/plugin/747985167520744181/feather-icons
+
+4. Buttons
+Create as Figma Components with Auto Layout:
+
+Name	Layout	Properties
+PrimaryBtn	Auto Layout (H)	Padding: 12×24, Radius: 8px, Fill: #CCCCCC
+OutlineBtn	Stroke only	Border: 1px #666, Radius: 8px
+
+5. Grids and Layout
+Set grids and spacing per frame:
+
+Frame Type	Grid	Notes
+Desktop	12 Columns, 1140px	Gutter: 24px, Margin: 120px
+Mobile	4 Columns	Gutter: 16px, Margin: 20px
+
+6. Images / Avatars (for mockup stage)
+For now (wireframe), use gray rectangles or avatar placeholders:
+
+Patient image = 64×64 px circle
+
+Doctor image = 300×300 px square
+
+CTA illustration = 600×300 px rectangle
+
+7. Auto Layout Rules
+Container	Direction	Spacing	Padding
+Header	Horizontal	32px	24px
+Hero Section	Vertical	24px	64px top/bottom
+Services Cards	Horizontal (wrap)	16px	24px
+Testimonials	Vertical	16px	32px
