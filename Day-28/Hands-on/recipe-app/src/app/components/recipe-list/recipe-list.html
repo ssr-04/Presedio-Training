@@ -1,0 +1,15 @@
+<div class="container py-5">
+  <h2 class="mb-4 text-center" style="color: antiquewhite;">South Indian Recipes</h2>
+
+  @if (FetchedRecipes().length === 0) {
+    <div class="alert alert-warning text-center">No recipes found</div>
+  } @else {
+    <div class="row g-4">
+      @for (recipe of FetchedRecipes(); track recipe.name) {
+        <div class="col-12 col-md-6 col-lg-4">
+          <app-recipe-card [recipe]="recipe"></app-recipe-card>
+        </div>
+      }
+    </div>
+  }
+</div>

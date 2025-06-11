@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Dosa",
+    "cuisine": "South Indian",
+    "cookTimeMinutes": 10,
+    "ingredients": ["rice", "urad dal", "fenugreek", "salt"],
+    "image": "https://i.ytimg.com/vi/hJBwHXC_tlw/maxresdefault.jpg"
+  },
+  {
+    "name": "Idli",
+    "cuisine": "South Indian",
+    "cookTimeMinutes": 15,
+    "ingredients": ["rice", "urad dal", "salt"],
+    "image": "https://yummy-valley.com/wp-content/uploads/2024/01/millet-idli.webp"
+  },
+  {
+    "name": "Upma",
+    "cuisine": "South Indian",
+    "cookTimeMinutes": 20,
+    "ingredients": ["rava", "mustard", "curry leaves", "green chili"],
+    "image": "https://yummy-valley.com/wp-content/uploads/2023/11/Carrot-and-Broken-Wheat-Upma-1.webp"
+  },
+  {
+    "name": "Pongal",
+    "cuisine": "South Indian",
+    "cookTimeMinutes": 30,
+    "ingredients": ["rice", "moong dal", "pepper", "ghee", "cashew"],
+    "image": "https://yummy-valley.com/wp-content/uploads/2024/01/millet-porridge-1.webp"
+  },
+  {
+    "name": "Sambar",
+    "cuisine": "South Indian",
+    "cookTimeMinutes": 35,
+    "ingredients": ["toor dal", "tamarind", "drumstick", "mustard", "sambar powder"],
+    "image": "https://www.mathrubhumi.com/image/contentid/policy:1.4800754:1644546514/image.jpg?$p=0f6e831&f=4x3&w=1080&q=0.8"
+  },
+  {
+    "name": "Rasam",
+    "cuisine": "South Indian",
+    "cookTimeMinutes": 20,
+    "ingredients": ["tamarind", "tomato", "mustard", "pepper", "cumin"],
+    "image": "https://www.mathrubhumi.com/image/contentid/policy:1.6293697:1644406450/image.jpg?$p=0f6e831&f=4x3&w=1080&q=0.8"
+  },
+  {
+    "name": "Medu Vada",
+    "cuisine": "South Indian",
+    "cookTimeMinutes": 25,
+    "ingredients": ["urad dal", "pepper", "onion", "curry leaves"],
+    "image": "https://www.yummytummyaarthi.com/wp-content/uploads/2022/08/medu-vada-4.jpeg"
+  },
+  {
+    "name": "Lemon Rice",
+    "cuisine": "South Indian",
+    "cookTimeMinutes": 15,
+    "ingredients": ["rice", "mustard", "lemon", "turmeric", "chili"],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfz-lA-4W4LcADX9VYx_bfqCLOmlXQzN4llg&s"
+  },
+  {
+    "name": "Tamarind Rice",
+    "cuisine": "South Indian",
+    "cookTimeMinutes": 25,
+    "ingredients": ["rice", "tamarind", "mustard", "peanut", "sesame"],
+    "image": "https://www.indianhealthyrecipes.com/wp-content/uploads/2018/08/puliyogare-recipe-500x500.jpg"
+  },
+  {
+    "name": "Curd Rice",
+    "cuisine": "South Indian",
+    "cookTimeMinutes": 10,
+    "ingredients": ["rice", "curd", "mustard", "coriander"],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7c4y_loctYh3BQbCJAfjOYB5RMDXktb9XRw&s"
+  }
+]
