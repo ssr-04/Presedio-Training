@@ -1,0 +1,30 @@
+<div class="customer-card card shadow-sm p-4 mb-4">
+    <h4 class="card-title text-primary">{{customerData.name}} Details</h4>
+    <div class="card-body">
+        <p><strong>Email:</strong> {{customerData.email}}</p>
+        <p><strong>Phone:</strong> {{customerData.phone}}</p>
+        <p><strong>Address:</strong> {{customerData.address}}</p>
+        <p><strong>Bio:</strong> {{customerData.bio}}</p>
+    </div>
+
+    <div class="feedback-section d-flex align-items-center mt-3">
+        <button class="btn btn-sm me-2"
+        [class.btn-success]="currentInteraction === 'liked'"
+        [class.btn-outline-success]="currentInteraction !== 'liked'"
+        (click)="onLike()">
+            <i class="bi bi-hand-thumbs-up"
+            [class.bi-hand-thumbs-up-fill] = "currentInteraction === 'liked'">
+            </i>
+        </button>
+        <span class="badge bg-success me-2">{{ customerData.likeCount }}</span>
+
+        <button class="btn btn-sm me-2"
+              [class.btn-danger]="currentInteraction === 'disliked'"
+              [class.btn-outline-danger]="currentInteraction !== 'disliked'"
+              (click)="onDislike()">
+        <i class="bi bi-hand-thumbs-down"
+           [class.bi-hand-thumbs-down-fill]="currentInteraction === 'disliked'"></i>
+      </button>
+      <span class="badge bg-danger">{{ customerData.dislikeCount }}</span>
+    </div>
+</div>

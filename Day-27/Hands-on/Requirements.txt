@@ -1,0 +1,4 @@
+1) Create a new component to display customer details.
+2) Create a new component that will display 3 products(try with images)- Each product should have a add to cart button
+   When the button is clicked increase the count on the badge on the cart icon(per se the cart icon should be on display and should show 0 initially)
+3) On the customer details show like(thumbs up) and dislike(thumbs down) icon. User can like or unlike as many times as they please. Show count in-between like and dislike(example is YouTube)

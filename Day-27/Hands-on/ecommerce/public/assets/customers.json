@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 1,
+    "name": "Marques",
+    "email": "mkbhd@test.com",
+    "phone": "123-456-7890",
+    "address": "123 Main St, Anytown, USA",
+    "bio": "Passionate about technology and cars.",
+    "likeCount": 0,
+    "dislikeCount": 0
+  },
+  {
+    "Id": 2,
+    "name": "Arun Maini",
+    "email": "arun@test.com",
+    "phone": "987-654-3210",
+    "address": "456 Main St, Anytown, London",
+    "bio": "A product reviewer and tech enthusiast.",
+    "likeCount": 0,
+    "dislikeCount": 0
+  },
+  {
+    "Id": 3,
+    "name": "Carl Pie",
+    "email": "carl@example.com",
+    "phone": "555-111-2222",
+    "address": "789 Any st, Anytown, USA",
+    "bio": "Enjoys designing nothing phones.",
+    "likeCount": 0,
+    "dislikeCount": 0
+  }
+]

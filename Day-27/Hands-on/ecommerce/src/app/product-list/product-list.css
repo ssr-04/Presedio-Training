@@ -1,0 +1,43 @@
+.product-container {
+  max-width: 1400px;
+}
+
+.product-image {
+  width: 100%;
+  object-fit: cover; 
+  border-bottom: 1px solid #eee;
+}
+
+.card {
+  border-radius: 8px;
+  overflow: hidden; 
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px); 
+}
+
+.card-title {
+  color: #333;
+  font-weight: 600;
+}
+
+.price {
+  font-weight: bold;
+}
+
+
+.d-flex button {
+  width: 38px; 
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px; 
+}
+
+.d-flex .mx-2 {
+  min-width: 40px; 
+  text-align: center;
+}

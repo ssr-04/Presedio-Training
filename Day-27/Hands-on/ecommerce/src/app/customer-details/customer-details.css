@@ -1,0 +1,21 @@
+.customer-card {
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 8px;
+}
+
+.feedback-section {
+    font-size: 1.2rem;
+}
+
+.feedback-section .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-section .badge {
+  font-size: 1em;
+  min-width: 30px;
+  text-align: center;
+}

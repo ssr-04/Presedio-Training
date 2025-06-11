@@ -1,0 +1,30 @@
+<!-- Navbar for the Cart Icon -->
+<nav class="navbar navbar-light bg-light shadow-sm p-3 mb-5">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1 text-primary">{{ title }}</span>
+    <div class="d-flex">
+      <div class="position-relative me-3">
+        <i class="bi bi-cart-fill fs-3 text-success"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{ cartCount }}
+          <span class="visually-hidden">cart items</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h2 class="text-center text-secondary mb-4">Customers</h2>
+  <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+    <!-- Loops through customers to display multiple customer details -->
+    <div class="col-md-6" *ngFor="let customer of customers">
+      <app-customer-details [customerData]="customer"></app-customer-details>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Product List Component -->
+  <app-product-list (addToCartEvent)="onProductAddedToCart($event)"></app-product-list>
+</div>

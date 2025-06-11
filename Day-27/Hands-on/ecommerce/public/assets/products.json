@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Gaming Laptop",
+    "price": 95000,
+    "imageUrl": "https://m.media-amazon.com/images/I/71iyBsDDwQL._AC_UF1000,1000_QL80_.jpg",
+    "description": "High-performance laptop for AAA games and creative tasks."
+  },
+  {
+    "id": 2,
+    "name": "4K Monitor",
+    "price": 30000,
+    "imageUrl": "https://m.media-amazon.com/images/I/A1Iqr2v1SIL.jpg",
+    "description": "Stunning clarity and vibrant colors for an immersive viewing experience."
+  },
+  {
+    "id": 3,
+    "name": "Ergonomic Chair",
+    "price": 15000,
+    "imageUrl": "https://m.media-amazon.com/images/I/61EUUoaKNPL._AC_UF894,1000_QL80_.jpg",
+    "description": "Comfortable and supportive chair for long hours of work or gaming."
+  },
+  {
+    "id": 4,
+    "name": "External SSD",
+    "price": 8000,
+    "imageUrl": "https://themaczone.in/wp-content/uploads/2024/07/Amazon-Basics-1TB-2-1.webp",
+    "description": "Fast and portable storage solution for all your files."
+  }
+]
