@@ -13,6 +13,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
     {
         private readonly IProjectRepository _projectRepository;
         private readonly IUserRepository _userRepository; // To verify client/freelancer existence
+        private readonly IFreelancerProfileRepository _freelancerRepository;
         private readonly ISkillRepository _skillRepository;
         private readonly IProjectSkillRepository _projectSkillRepository;
         private readonly IFileService _fileService; 
@@ -27,6 +28,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
         public ProjectService(
             IProjectRepository projectRepository,
             IUserRepository userRepository,
+            IFreelancerProfileRepository freelancerProfileRepository,
             ISkillRepository skillRepository,
             IProjectSkillRepository projectSkillRepository,
             IFileService fileService,
@@ -35,6 +37,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
         {
             _projectRepository = projectRepository;
             _userRepository = userRepository;
+            _freelancerRepository = freelancerProfileRepository;
             _skillRepository = skillRepository;
             _projectSkillRepository = projectSkillRepository;
             _fileService = fileService;
@@ -254,6 +257,20 @@ namespace FreelanceProjectBoardApi.Services.Implementations
 
             project.Status = ProjectStatus.Completed;
             project.CompletionDate = DateTime.UtcNow;
+
+            var freelancerId = project.AssignedFreelancerId;
+
+            if (freelancerId != null && freelancerId.HasValue)
+            {
+                var freelancer = await _freelancerRepository.GetByIdAsync(freelancerId.Value);
+                if (freelancer != null)
+                {
+                    freelancer.ProjectsCompleted += 1;
+                    await _freelancerRepository.UpdateAsync(freelancer);
+                    await _freelancerRepository.SaveChangesAsync();
+                }
+                
+            }
 
             await _projectRepository.UpdateAsync(project);
             await _projectRepository.SaveChangesAsync();

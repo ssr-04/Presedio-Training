@@ -72,6 +72,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
 
             var newUser = new User
             {
+                Name = registerDto.Name,
                 Email = registerDto.Email,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password),
                 Type = Enum.TryParse<FreelanceProjectBoardApi.Models.UserType>(registerDto.UserType, out var parsedUserType)

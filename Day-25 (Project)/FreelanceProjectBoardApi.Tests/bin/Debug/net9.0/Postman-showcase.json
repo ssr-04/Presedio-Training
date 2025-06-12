@@ -1,0 +1,1506 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-a7b8-c9d0-e1f2a3b4c5d6",
+		"name": "Freelance Project Board API - Full Showcase",
+		"description": "A comprehensive Postman collection for showcasing the Freelance Project Board API, demonstrating all 61 endpoints with automation for a smooth presentation.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register New Client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"client.showcase@example.com\",\n  \"password\": \"Password123!\",\n  \"confirmPassword\": \"Password123!\",\n  \"userType\": \"Client\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register New Freelancer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"freelancer.showcase@example.com\",\n  \"password\": \"Password123!\",\n  \"confirmPassword\": \"Password123!\",\n  \"userType\": \"Freelancer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login as Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"",
+									"if (responseData && responseData.accessToken) {",
+									"    pm.collectionVariables.set(\"jwt_token\", responseData.accessToken);",
+									"    console.log(\"Client JWT Token saved!\");",
+									"}",
+									"if (responseData && responseData.user && responseData.user.id) {",
+									"    pm.collectionVariables.set(\"clientId\", responseData.user.id);",
+									"    console.log(\"Client ID saved: \" + responseData.user.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"client.showcase@example.com\",\n  \"password\": \"Password123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login as Freelancer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"",
+									"if (responseData && responseData.accessToken) {",
+									"    pm.collectionVariables.set(\"jwt_token\", responseData.accessToken);",
+									"    console.log(\"Freelancer JWT Token saved!\");",
+									"}",
+									"if (responseData && responseData.user && responseData.user.id) {",
+									"    pm.collectionVariables.set(\"freelancerId\", responseData.user.id);",
+									"    console.log(\"Freelancer ID saved: \" + responseData.user.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"freelancer.showcase@example.com\",\n  \"password\": \"Password123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login as Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"",
+									"if (responseData && responseData.accessToken) {",
+									"    pm.collectionVariables.set(\"jwt_token\", responseData.accessToken);",
+									"    console.log(\"Admin JWT Token saved!\");",
+									"}",
+									"if (responseData && responseData.user && responseData.user.id) {",
+									"    pm.collectionVariables.set(\"adminId\", responseData.user.id);",
+									"    console.log(\"Admin ID saved: \" + responseData.user.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"AdminPassword123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by ID (Client)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Users/{{clientId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Users",
+								"{{clientId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User (Self)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"John-Updated\",\n    \"lastName\": \"Doe-Showcase\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Users/{{clientId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Users",
+								"{{clientId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password (Self)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"currentPassword\": \"Password123!\",\n    \"newPassword\": \"NewPassword456!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Users/{{clientId}}/change-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Users",
+								"{{clientId}}",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Users/{{freelancerId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Users",
+								"{{freelancerId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Skills",
+			"item": [
+				{
+					"name": "Create Skill (Admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"if (responseData && responseData.id) {",
+									"    pm.collectionVariables.set(\"skillId\", responseData.id);",
+									"    console.log(\"New Skill ID saved: \" + responseData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Postman Demo Skill\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Skills",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Skills"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Skills",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Skills",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Skills"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Skill by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Skills/{{skillId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Skills",
+								"{{skillId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Skill (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Skills/{{skillId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Skills",
+								"{{skillId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client Profiles",
+			"item": [
+				{
+					"name": "Create Client Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"if (responseData && responseData.id) {",
+									"    pm.collectionVariables.set(\"clientProfileId\", responseData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"companyName\": \"Showcase Inc.\",\n  \"location\": \"Remote\",\n  \"description\": \"A company for demonstrating this awesome API.\",\n  \"contactPersonName\": \"John Doe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ClientProfiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ClientProfiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Client Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ClientProfiles/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ClientProfiles",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Client Profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"An updated description for our showcase company.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ClientProfiles/{{clientProfileId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ClientProfiles",
+								"{{clientProfileId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Client Profile by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ClientProfiles/{{clientProfileId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ClientProfiles",
+								"{{clientProfileId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Client Profiles (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ClientProfiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ClientProfiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Client Profile (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ClientProfiles/{{clientProfileId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ClientProfiles",
+								"{{clientProfileId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Freelancer Profiles",
+			"item": [
+				{
+					"name": "Create Freelancer Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"if (responseData && responseData.id) {",
+									"    pm.collectionVariables.set(\"freelancerProfileId\", responseData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"headline\": \"Expert .NET & API Developer\",\n  \"bio\": \"I build robust and scalable APIs for modern applications.\",\n  \"skills\": [\n    { \"name\": \"C#\" },\n    { \"name\": \"ASP.NET Core\" },\n    { \"name\": \"Postman Demo Skill\" }\n  ],\n  \"experienceLevel\": \"Senior\",\n  \"hourlyRate\": 95,\n  \"isAvailable\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/FreelancerProfiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FreelancerProfiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Freelancer Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/FreelancerProfiles/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FreelancerProfiles",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Freelancer Profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bio\": \"I build robust and scalable APIs for modern applications, and I excel at live demonstrations.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/FreelancerProfiles/{{freelancerProfileId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FreelancerProfiles",
+								"{{freelancerProfileId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Profile Picture",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/FreelancerProfiles/{{freelancerProfileId}}/profile-picture",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FreelancerProfiles",
+								"{{freelancerProfileId}}",
+								"profile-picture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Resume",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/FreelancerProfiles/{{freelancerProfileId}}/resume",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FreelancerProfiles",
+								"{{freelancerProfileId}}",
+								"resume"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Freelancer Profiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/FreelancerProfiles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FreelancerProfiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Freelancer Profile by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/FreelancerProfiles/{{freelancerProfileId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FreelancerProfiles",
+								"{{freelancerProfileId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Resume",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/FreelancerProfiles/{{freelancerProfileId}}/resume",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FreelancerProfiles",
+								"{{freelancerProfileId}}",
+								"resume"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Profile Picture",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/FreelancerProfiles/{{freelancerProfileId}}/profile-picture",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FreelancerProfiles",
+								"{{freelancerProfileId}}",
+								"profile-picture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Freelancer Profile (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/FreelancerProfiles/{{freelancerProfileId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FreelancerProfiles",
+								"{{freelancerProfileId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Create Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"if (responseData && responseData.id) {",
+									"    pm.collectionVariables.set(\"projectId\", responseData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Live Demo Project - Website Redesign\",\n  \"description\": \"A project to redesign the main company website, created during the showcase.\",\n  \"budget\": 10000,\n  \"skills\": [\n    { \"name\": \"C#\" }\n  ],\n  \"deadline\": \"2025-12-31T23:59:59Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Projects",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Projects/{{projectId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects",
+								"{{projectId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Projects",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Project Attachment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"if (responseData && responseData.id) {",
+									"    pm.collectionVariables.set(\"attachmentId\", responseData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Projects/{{projectId}}/attachments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects",
+								"{{projectId}}",
+								"attachments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project Attachments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Projects/{{projectId}}/attachments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects",
+								"{{projectId}}",
+								"attachments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download Project Attachment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Projects/{{projectId}}/attachments/{{attachmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects",
+								"{{projectId}}",
+								"attachments",
+								"{{attachmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project Attachment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Projects/{{projectId}}/attachments/{{attachmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects",
+								"{{projectId}}",
+								"attachments",
+								"{{attachmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"This project is to redesign the main company website, with an added focus on mobile responsiveness.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Projects/{{projectId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects",
+								"{{projectId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Freelancer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Projects/{{projectId}}/assign-freelancer/{{freelancerId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects",
+								"{{projectId}}",
+								"assign-freelancer",
+								"{{freelancerId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Project Completed",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Projects/{{projectId}}/mark-completed",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects",
+								"{{projectId}}",
+								"mark-completed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Project",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Projects/{{projectId}}/cancel",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects",
+								"{{projectId}}",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Projects/{{projectId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Projects",
+								"{{projectId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Proposals",
+			"item": [
+				{
+					"name": "Create Proposal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"if (responseData && responseData.id) {",
+									"    pm.collectionVariables.set(\"proposalId\", responseData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"projectId\": \"{{projectId}}\",\n  \"coverLetter\": \"I am the perfect candidate for this live demo project.\",\n  \"proposedAmount\": 9500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Proposals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Proposals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Proposal by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Proposals/{{proposalId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Proposals",
+								"{{proposalId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Proposal Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newStatus\": \"Accepted\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Proposals/{{proposalId}}/status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Proposals",
+								"{{proposalId}}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Proposals For Project",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Proposals/for-project/{{projectId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Proposals",
+								"for-project",
+								"{{projectId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Proposals By Freelancer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Proposals/by-freelancer/{{freelancerId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Proposals",
+								"by-freelancer",
+								"{{freelancerId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Proposal",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Proposals/{{proposalId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Proposals",
+								"{{proposalId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ratings",
+			"item": [
+				{
+					"name": "Create Rating (Client rates Freelancer)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"if (responseData && responseData.id) {",
+									"    pm.collectionVariables.set(\"ratingId\", responseData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"projectId\": \"{{projectId}}\",\n  \"rateeId\": \"{{freelancerId}}\",\n  \"ratingValue\": 5,\n  \"comment\": \"Excellent work on the demo project! Very professional.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Ratings",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Ratings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rating by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Ratings/{{ratingId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Ratings",
+								"{{ratingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ratings Received By User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Ratings/received-by/{{freelancerId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Ratings",
+								"received-by",
+								"{{freelancerId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ratings Given By User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Ratings/given-by/{{clientId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Ratings",
+								"given-by",
+								"{{clientId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Average Rating For User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Ratings/average-for/{{freelancerId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Ratings",
+								"average-for",
+								"{{freelancerId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Rating (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Ratings/{{ratingId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Ratings",
+								"{{ratingId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Get File Metadata",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Files/{{attachmentId}}/metadata",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Files",
+								"{{attachmentId}}",
+								"metadata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download File",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Files/{{attachmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Files",
+								"{{attachmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete File (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Files/{{attachmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Files",
+								"{{attachmentId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:7247/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "jwt_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "clientId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "freelancerId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "adminId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "clientProfileId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "freelancerProfileId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "projectId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "proposalId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "skillId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "ratingId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "attachmentId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

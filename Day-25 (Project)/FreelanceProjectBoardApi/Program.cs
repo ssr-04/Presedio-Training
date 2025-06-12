@@ -19,6 +19,8 @@ using Asp.Versioning;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Asp.Versioning.ApiExplorer;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 // Serilog is configured outside the main try-catch to log any errors during startup.
 Log.Logger = new LoggerConfiguration()
@@ -57,6 +59,23 @@ try
 
     // Add HttpContextAccessor to services
     builder.Services.AddHttpContextAccessor(); // Acccessed in Db context
+
+    // Add Open telemetry configuration for APM - jaeger running in docker
+    builder.Services.AddOpenTelemetry()
+        .ConfigureResource(resource => resource
+            .AddService(serviceName: builder.Environment.ApplicationName))
+        .WithTracing(tracing => tracing
+            .AddAspNetCoreInstrumentation() // Automatic traces for ASP.NET Core
+            .AddHttpClientInstrumentation()   // Automatic traces for HttpClient
+            .AddEntityFrameworkCoreInstrumentation(options => // Automatic traces for EF Core
+            {
+                options.SetDbStatementForText = true; // Records the text of the SQL query
+            })
+            .AddConsoleExporter() // Exports traces to the console
+            .AddOtlpExporter(otlpOptions =>
+{
+    otlpOptions.Endpoint = new Uri(builder.Configuration.GetValue<string>("Otlp:Endpoint")!);
+}));
 
     // DBContext
     builder.Services.AddDbContext<FreelanceContext>(options =>
