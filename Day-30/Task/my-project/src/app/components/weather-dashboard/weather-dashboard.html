@@ -1,0 +1,34 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-4xl font-bold text-center text-gray-800 my-6">Weather Dashboard</h1>
+
+  <app-city-search></app-city-search>
+
+  <div class="mt-4">
+    <div *ngIf="error$ | async as error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative max-w-lg mx-auto text-center" role="alert">
+      <strong class="font-bold">Error: </strong>
+      <span class="block sm:inline">{{ error }}</span>
+    </div>
+
+    <div *ngIf="weather$ | async as weather; else loadingOrInitial">
+      <app-weather-card [weather]="weather"></app-weather-card>
+    </div>
+    
+    <ng-template #loadingOrInitial>
+      <div *ngIf="!(error$ | async)" class="text-center text-gray-500 mt-8">
+        <p>Loading weather data...</p>
+      </div>
+    </ng-template>
+
+    <div *ngIf="searchHistory$ | async as history" class="mt-8 max-w-lg mx-auto">
+      <h3 *ngIf="history.length > 0" class="text-xl font-semibold text-gray-700 mb-2 text-center">Recent Searches</h3>
+      <div class="flex flex-wrap justify-center gap-2">
+        <button 
+          *ngFor="let city of history" 
+          (click)="onHistoryClick(city)"
+          class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-full transition-colors text-sm">
+          {{ city }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

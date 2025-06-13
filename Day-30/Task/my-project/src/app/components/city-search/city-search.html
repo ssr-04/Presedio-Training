@@ -1,0 +1,19 @@
+<div class="flex justify-center p-4">
+  <form (ngSubmit)="search()" class="flex w-full max-w-lg">
+    <input
+      type="text"
+      [(ngModel)]="cityName"
+      name="cityName"
+      placeholder="Enter city name..."
+      class="flex-grow p-3 border-2 border-gray-300 rounded-l-lg focus:outline-none focus:border-blue-500 transition-colors"
+      required
+    />
+    <button
+      type="submit"
+      class="bg-blue-600 text-white px-6 py-3 rounded-r-lg hover:bg-blue-700 transition-colors disabled:bg-blue-300"
+      [disabled]="!cityName.trim()"
+    >
+      Search
+    </button>
+  </form>
+</div>

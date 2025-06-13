@@ -1,0 +1,25 @@
+
+<div *ngIf="weather" class="bg-white rounded-xl shadow-lg p-6 w-full max-w-sm mx-auto text-gray-800">
+
+  
+  <h2 class="text-3xl font-bold text-center text-gray-700">{{ weather.name }}</h2>
+
+  <div class="flex items-center justify-center my-4">
+    <img [src]="weather.icon" alt="Weather Icon" class="w-24 h-24">
+    <div class="text-6xl font-extrabold ml-4">{{ weather.temp }}°C</div>
+  </div>
+
+  <p class="text-xl text-center text-gray-600 font-medium">{{ weather.description }}</p>
+
+  <div class="mt-6 flex justify-around border-t pt-4">
+    <div class="text-center">
+      <div class="font-semibold text-lg">{{ weather.humidity }}%</div>
+      <div class="text-sm text-gray-500">Humidity</div>
+    </div>
+    <div class="text-center">
+      <div class="font-semibold text-lg">{{ weather.windSpeed }} km/h</div>
+      <div class="text-sm text-gray-500">Wind Speed</div>
+    </div>
+  </div>
+
+</div>

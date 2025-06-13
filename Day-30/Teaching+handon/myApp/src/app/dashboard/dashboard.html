@@ -1,0 +1,28 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header text-center">
+          <h3>User Dashboard</h3>
+        </div>
+        <div class="card-body">
+          <div *ngIf="currentUser; else notLoggedIn" class="user-info">
+            <h4>Welcome, {{ currentUser.username }}!</h4>
+            <p><strong>Email:</strong> {{ currentUser.email }}</p>
+            <p><strong>Role:</strong> {{ currentUser.role }}</p>
+            <hr>
+            <h5>Session Information:</h5>
+            <p *ngIf="lastActivity">
+              <strong>Last Activity (from sessionStorage):</strong> {{ lastActivity | date:'medium' }}
+            </p>
+            <p *ngIf="!lastActivity" class="text-muted">No session activity found.</p>
+            <button (click)="onLogout()" class="btn btn-danger mt-3">Logout</button>
+          </div>
+          <ng-template #notLoggedIn>
+            <p class="text-center">You are not logged in. Please <a routerLink="/login">Login here</a>.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
