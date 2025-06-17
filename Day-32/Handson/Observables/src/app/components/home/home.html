@@ -1,0 +1,30 @@
+
+<!-- search bar -->
+ <div class="mb-6">
+    <input type="text" placeholder="Search for products" 
+    (input)="onSearch($event)"
+    class="w-full p-3 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"/>
+ </div>
+
+ <!-- Loading Indicator -->
+  @if (isLoading()) {
+    <div class="flex justify-center my-8">
+      <app-loader></app-loader>
+    </div>
+  }
+
+ <!-- peoduct cards -->
+  @if (products().length>0) {
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        @for (item of products(); track item.id) {
+            <app-product-card [product]="item" [searchTerm]="currentSearchTerm" class="border-3 hover:-translate-y-1.5"/>
+        }
+    </div>
+  }
+  @else {
+    @if (!isLoading()) {
+        <div class="text-center text-gray-500 mt-8">
+            <p>No products found. Try a different search term.</p>
+        </div>
+    }
+}

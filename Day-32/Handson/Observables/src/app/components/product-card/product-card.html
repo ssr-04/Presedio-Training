@@ -1,0 +1,11 @@
+
+<a [routerLink]="['/product', product.id]" class="block h-full">
+    <div class="card rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <img [src]="product.thumbnail" [alt]="product.title" class="w-full h-74">
+        <div class="p-4 flex flex-col flex-grow">
+            <h3 class="text-lg font-semibold mb-2 flex-grow" [innerHTML]="product.title | highlight : searchTerm"></h3>
+            <p class="mb-4 font-medium wrap-break-word">{{product.description}}</p>
+            <p class="text-xl font-bold text-blue-600 mt-auto">{{product.price | currency}}</p>
+        </div>
+    </div>
+</a>
