@@ -1,0 +1,45 @@
+<div class="bg-white p-4 rounded-lg shadow-md sticky top-20">
+    <h3 class="text-lg font-semibold border-b pb-2 mb-4">Filters</h3>
+    <div class="space-y-4">
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Gender</label>
+            <select [(ngModel)]="filters['gender']" (ngModelChange)="onFilterChange()"
+            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                <option value="">All</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700">State</label>
+            <select [(ngModel)]="filters['state']" (ngModelChange)="onFilterChange()" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                <option value="">All</option>
+                @for (state of states; track $index) {
+                    <option [value]="state">{{ state }}</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700">University</label>
+            <select [(ngModel)]="filters['university']" (ngModelChange)="onFilterChange()" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                <option value="">All</option>
+                @for (university of universities; track $index) {
+                    <option [value]="university">{{ university }}</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Department</label>
+            <select [(ngModel)]="filters['department']" (ngModelChange)="onFilterChange()" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                <option value="">All</option>
+                @for (department of departments; track $index) {
+                    <option [value]="department">{{ department }}</option>
+                }
+            </select>
+        </div>
+
+        <button (click)="resetFilters()" class="w-full mt-4 px-4 py-2 text-sm font-medium text-white bg-gray-600 rounded-lg hover:bg-gray-700">
+            Reset Filters
+        </button>
+    </div>
+</div>

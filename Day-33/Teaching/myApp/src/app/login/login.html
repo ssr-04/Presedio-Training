@@ -1,0 +1,40 @@
+<!-- Template based -->
+
+<!-- <div class="loginDiv">
+    <label class="form-control">Username</label>
+    <input class="form-control" type="text" required [(ngModel)]="user.username" #un="ngModel"/>
+    @if(un.control.touched && un.control.errors)
+    {
+        <span class="alert alert-danger">Username cannot be empty</span>
+    }
+     <label class="form-control">Password</label>
+    <input class="form-control" type="text" required [(ngModel)]="user.password" #pass="ngModel"/>
+     @if(pass.control.touched && pass.control.errors)
+    {
+        <span class="alert alert-danger">Psssword cannot be empty</span>
+    }
+    <button class="btn btn-success" (click)="handleLogin(un,pass)">Login</button>
+</div> -->
+
+<!-- Reactive form based  -->
+ <form [formGroup]="loginForm" class="loginDiv" (ngSubmit)="handleLogin()">
+    <label class="form-control">Username</label>
+    <input class="form-control" type="text" formControlName="un"/>
+    @if(un.touched && un.errors)
+    {
+        <p class="alert alert-danger">Username cannot be empty</p>
+    }
+     <label class="form-control">Password</label>
+    <input class="form-control" type="text" formControlName="pass"/>
+     @if(pass.touched && pass.errors)
+    {
+        @if (pass.errors?.required) {
+            <p class="alert alert-danger">Psssword can't be empty</p>
+        }
+
+        @if (pass.errors?.lessSecure) {
+            <p class="alert alert-danger">Psssword should be strong (6 chars, uppercase, lowercase and numbers)</p>
+        }
+    }
+    <button class="btn btn-success" [disabled]="loginForm.invalid">Login</button>
+</form>

@@ -1,0 +1,38 @@
+<div class="flex flex-col md:flex-row gap-6">
+    <!-- Filter Menu -->
+     <aside class="w-full md:w-1/4 lg:w-1/5">
+        <app-filter-menu
+            (filtersChanged)="onFilterChange($event)"
+            [states]="uniqueStates()"
+            [universities]="uniqueUniversities()"
+            [departments]="uniqueDepartments()"
+        >
+        </app-filter-menu>
+     </aside>
+
+     <!-- User Grid -->
+      <section class="w-full md:w-3/4 lg:w-4/5">
+        @if (filteredUsers().length > 0) {
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- app card -->
+                 @for (user of filteredUsers(); track $index) {
+                    <app-user-card [user]="user"></app-user-card>
+                 }
+            </div>
+        }
+        @else {
+            @if (!isLoading()) {
+                <div class="flex items-center justify-center h-64 bg-white rounded-lg shadow">
+                    <p class="text-xl text-gray-500">No Users found matching the filters.</p>
+                </div>
+            }
+        }
+
+        <!-- Loader -->
+         @if (isLoading()) {
+            <div class="flexx justify-center my-8">
+                <!-- app loader -->
+            </div>
+         }
+      </section>
+</div>

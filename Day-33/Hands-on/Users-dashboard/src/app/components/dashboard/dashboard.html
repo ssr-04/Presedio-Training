@@ -1,0 +1,49 @@
+<div class="flex flex-col md:flex-row gap-6">
+  <aside class="w-full md:w-1/4 lg:w-1/5">
+    <app-filter-menu
+      (filtersChanged)="onFilterChange($event)"
+      [states]="uniqueStates()"
+      [universities]="uniqueUniversities()"
+      [departments]="uniqueDepartments()">
+    </app-filter-menu>
+  </aside>
+
+  <!-- Charts Grid -->
+  <section class="w-full md:w-3/4 lg:w-4/5">
+    <div *ngIf="isLoading()" class="flex justify-center items-center h-96">
+      <app-loader></app-loader>
+    </div>
+    <div *ngIf="!isLoading()" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      
+      <!-- Gender Distribution Card -->
+      <div class="bg-white p-4 rounded-lg shadow-md h-96 flex flex-col">
+        <h3 class="text-lg font-semibold mb-2 text-gray-700">Gender Distribution</h3>
+        <div class="relative flex-grow">
+          <canvas id="genderChart"></canvas>
+        </div>
+      </div>
+      
+      <!-- Age Distribution Card -->
+      <div class="bg-white p-4 rounded-lg shadow-md h-96 flex flex-col">
+        <h3 class="text-lg font-semibold mb-2 text-gray-700">Age Distribution</h3>
+        <div class="relative flex-grow">
+          <canvas id="ageChart"></canvas>
+        </div>
+      </div>
+
+      <!-- State Distribution Card -->
+      <div class="bg-white p-4 rounded-lg shadow-md h-96 flex flex-col lg:col-span-2">
+        <h3 class="text-lg font-semibold mb-2 text-gray-700">User Distribution by State (Top 10)</h3>
+        <div class="relative flex-grow">
+          <canvas id="stateChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noData>
+      <div class="flex items-center justify-center h-64 bg-white rounded-lg shadow">
+        <p class="text-xl text-gray-500">No data available for the selected filters.</p>
+      </div>
+    </ng-template>
+  </section>
+</div>

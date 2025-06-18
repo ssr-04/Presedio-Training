@@ -1,0 +1,11 @@
+<a [routerLink]="['/user', user.id]" class="block bg-white rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+  <div class="h-40 bg-gray-200 flex items-end p-4" [style.background-image]="'url(' + user.image + ')'" [style.background-size]="'cover'" [style.background-position]="'center'">
+      <h3 class="text-xl font-bold text-white" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7);">{{ user.firstName }} {{ user.lastName }}</h3>
+  </div>
+  <div class="p-4 space-y-2">
+    <p class="text-sm text-gray-600"><strong>Age:</strong> {{ user.age }}, {{ user.gender }}</p>
+    <p class="text-sm text-gray-600 truncate" title="{{user.university}}"><strong>University:</strong> {{ user.university }}</p>
+    <p class="text-sm text-gray-600 truncate" title="{{user.company.title}} @ {{user.company.name}}"><strong>Role:</strong> {{ user.company.title }}</p>
+    <p class="text-sm text-gray-600"><strong>Location:</strong> {{user.address.state}}, {{user.address.country}}</p>
+  </div>
+</a>

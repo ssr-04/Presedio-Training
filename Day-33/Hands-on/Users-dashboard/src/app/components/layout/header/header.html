@@ -1,0 +1,23 @@
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="container mx-auto px-4 md:px-6 py-3 flex justify-between items-center">
+        
+        <a routerLink="/users" class="text-2xl font-bold text-blue-600 hover:text-blue-800 transition-colors">Social-verse</a>
+        
+        <div class="flex items-center space-x-4">
+            <ul class="flex space-x-6">
+                <li>
+                    <a routerLink="/dashboard" routerLinkActive="text-blue-500 font-semibold"
+                    class="text-gray-600 hover:text-blue-500 transition-colors">Dashboard</a>
+                </li>
+                <li>
+                    <a routerLink="/users" routerLinkActive="text-blue-500 font-semibold"
+                    class="text-gray-600 hover:text-blue-500 transition-colors">Users</a>
+                </li>
+            </ul>
+            <a routerLink="/users/add"
+                class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700">
+                Add User
+            </a>
+        </div>
+    </nav>
+</header>

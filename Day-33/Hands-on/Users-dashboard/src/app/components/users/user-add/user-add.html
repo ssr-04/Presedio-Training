@@ -1,0 +1,121 @@
+<div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-lg shadow-xl">
+  <h2 class="text-2xl md:text-3xl font-bold mb-6 border-b pb-4">Add New User</h2>
+  
+  <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- First Name -->
+      <div>
+        <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+        <input type="text" id="firstName" formControlName="firstName"
+               class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+               [ngClass]="{ 'border-red-500': f['firstName'].invalid && f['firstName'].touched }">
+        @if (f['firstName'].invalid && (f['firstName'].dirty || f['firstName'].touched)) {
+            <div class="text-red-600 text-sm mt-1">
+          <span *ngIf="f['firstName'].errors?.['required']">First Name is required.</span>
+          <span *ngIf="f['firstName'].errors?.['minlength']">Must be at least 2 characters.</span>
+        </div>
+        }
+      </div>
+
+      <!-- Last Name -->
+      <div>
+        <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName"
+               class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+               [ngClass]="{ 'border-red-500': f['lastName'].invalid && f['lastName'].touched }">
+        <div *ngIf="f['lastName'].invalid && (f['lastName'].dirty || f['lastName'].touched)" class="text-red-600 text-sm mt-1">
+          <span *ngIf="f['lastName'].errors?.['required']">Last Name is required.</span>
+          <span *ngIf="f['lastName'].errors?.['minlength']">Must be at least 2 characters.</span>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" id="email" formControlName="email"
+               class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+               [ngClass]="{ 'border-red-500': f['email'].invalid && f['email'].touched }">
+        <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="text-red-600 text-sm mt-1">
+          <span *ngIf="f['email'].errors?.['required']">Email is required.</span>
+          <span *ngIf="f['email'].errors?.['email']">Please enter a valid email address.</span>
+        </div>
+      </div>
+
+      <!-- Age -->
+      <div>
+        <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
+        <input type="number" id="age" formControlName="age"
+               class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+               [ngClass]="{ 'border-red-500': f['age'].invalid && f['age'].touched }">
+        <div *ngIf="f['age'].invalid && (f['age'].dirty || f['age'].touched)" class="text-red-600 text-sm mt-1">
+          <span *ngIf="f['age'].errors?.['required']">Age is required.</span>
+          <span *ngIf="f['age'].errors?.['min']">Age must be at least 18.</span>
+          <span *ngIf="f['age'].errors?.['max']">Age must be less than 100.</span>
+        </div>
+      </div>
+      
+      <!-- Username -->
+      <div class="md:col-span-2">
+        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+        <input type="text" id="username" formControlName="username"
+               class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+               [ngClass]="{ 'border-red-500': f['username'].invalid && f['username'].touched }">
+        <div *ngIf="f['username'].invalid && (f['username'].dirty || f['username'].touched)" class="text-red-600 text-sm mt-1">
+          <span *ngIf="f['username'].errors?.['required']">Username is required.</span>
+          <span *ngIf="f['username'].errors?.['pattern']">Username can only contain letters and numbers.</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Company Details -->
+    <div formGroupName="company" class="mt-6 border-t pt-6">
+        <h3 class="text-xl font-semibold mb-4">Company Details</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Company Name -->
+            <div>
+                <label for="companyName" class="block text-sm font-medium text-gray-700">Company Name</label>
+                <input type="text" id="companyName" formControlName="name"
+                       class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       [ngClass]="{ 'border-red-500': companyControls['name'].invalid && companyControls['name'].touched }">
+            </div>
+            <!-- Department -->
+            <div>
+                <label for="department" class="block text-sm font-medium text-gray-700">Department</label>
+                <input type="text" id="department" formControlName="department"
+                       class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       [ngClass]="{ 'border-red-500': companyControls['department'].invalid && companyControls['department'].touched }">
+            </div>
+            <!-- Title -->
+            <div>
+                <label for="title" class="block text-sm font-medium text-gray-700">Job Title</label>
+                <input type="text" id="title" formControlName="title"
+                       class="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       [ngClass]="{ 'border-red-500': companyControls['title'].invalid && companyControls['title'].touched }">
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Messages -->
+    <div *ngIf="successMessage()" class="mt-6 p-4 text-sm text-green-700 bg-green-100 rounded-lg">
+      {{ successMessage() }}
+    </div>
+    <div *ngIf="errorMessage()" class="mt-6 p-4 text-sm text-red-700 bg-red-100 rounded-lg">
+      {{ errorMessage() }}
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mt-8 flex justify-end">
+      <button type="submit" [disabled]="addUserForm.invalid || isLoading()"
+              class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-300 disabled:cursor-not-allowed">
+        <span *ngIf="!isLoading()">Add User</span>
+        <span *ngIf="isLoading()" class="flex items-center">
+          <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Adding...
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
