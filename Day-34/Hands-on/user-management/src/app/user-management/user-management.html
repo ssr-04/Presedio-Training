@@ -1,0 +1,131 @@
+<!-- Main -->
+<div class="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">User Management</h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+      <!-- Left side: Add User Form -->
+      <div class="lg:col-span-1 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold text-gray-700 mb-4">Add New User</h2>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- Username -->
+          <div class="mb-4">
+            <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+            <input type="text" id="username" formControlName="username" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" [ngClass]="{'border-red-500': username?.invalid && (username?.dirty || username?.touched)}">
+            <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="text-red-600 text-sm mt-1">
+              <div *ngIf="username?.errors?.['required']">Username is required.</div>
+              <div *ngIf="username?.errors?.['bannedWord']">Username cannot be 'admin' or 'root'.</div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="email" formControlName="email" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" [ngClass]="{'border-red-500': email?.invalid && (email?.dirty || email?.touched)}">
+            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-red-600 text-sm mt-1">
+              <div *ngIf="email?.errors?.['required']">Email is required.</div>
+              <div *ngIf="email?.errors?.['email']">Please enter a valid email address.</div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-4">
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <input type="password" id="password" formControlName="password" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" [ngClass]="{'border-red-500': password?.invalid && (password?.dirty || password?.touched)}">
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-red-600 text-sm mt-1">
+              <div *ngIf="password?.errors?.['required']">Password is required.</div>
+              <div *ngIf="password?.errors?.['passwordStrength'] as errors">
+                <p *ngIf="!errors.hasMinLength">Must be at least 8 characters long.</p>
+                <p *ngIf="!errors.hasNumber">Must contain at least one number.</p>
+                <p *ngIf="!errors.hasSymbol">Must contain at least one symbol.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="mb-4">
+            <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+            <input type="password" id="confirmPassword" formControlName="confirmPassword" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" [ngClass]="{'border-red-500': confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched) || userForm.errors?.['passwordMismatch']}">
+            <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)" class="text-red-600 text-sm mt-1">
+              <div *ngIf="confirmPassword?.errors?.['required']">Confirming password is required.</div>
+            </div>
+            <div *ngIf="userForm.errors?.['passwordMismatch'] && confirmPassword?.touched" class="text-red-600 text-sm mt-1">
+              Passwords do not match.
+            </div>
+          </div>
+
+          <!-- Role Dropdown -->
+          <div class="mb-6">
+            <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
+            <select id="role" formControlName="role" class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+              <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" [disabled]="userForm.invalid" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-gray-400 disabled:cursor-not-allowed">
+            Add User
+          </button>
+        </form>
+      </div>
+
+      <!-- Right side: User List and Filters (Only in large devices)-->
+      <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-md">
+        <!-- Search and Filter Controls -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-4">
+          <div class="flex-grow">
+            <label for="search" class="sr-only">Search</label>
+            <input #searchInput type="text" id="search" placeholder="Search by username or email..." class="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
+          <div>
+            <label for="roleFilter" class="sr-only">Filter by role</label>
+            <select id="roleFilter" (change)="onRoleFilterChange($event)" class="block w-full sm:w-auto px-4 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+              <option value="all">All Roles</option>
+              <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- User List Table -->
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Username</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr *ngFor="let user of filteredUsers$ | async" class="hover:bg-gray-50">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ user.username }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ user.email }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
+                    [ngClass]="{
+                      'bg-green-100 text-green-800': user.role === 'Admin',
+                      'bg-blue-100 text-blue-800': user.role === 'User',
+                      'bg-yellow-100 text-yellow-800': user.role === 'Guest'
+                    }">
+                    {{ user.role }}
+                  </span>
+                </td>
+              </tr>
+              <!-- Empty State -->
+              <tr *ngIf="(filteredUsers$ | async)?.length === 0">
+                <td colspan="3" class="px-6 py-4 text-center text-gray-500">No users found.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div *ngIf="showToast"
+  class="fixed top-5 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg animate-fade-in-out">
+  {{ toastMessage }}
+</div>
