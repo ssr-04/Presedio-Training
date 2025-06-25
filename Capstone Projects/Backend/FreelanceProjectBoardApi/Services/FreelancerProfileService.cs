@@ -123,15 +123,30 @@ namespace FreelanceProjectBoardApi.Services.Implementations
             _mapper.Map(updateDto, profile);
 
             // Updating skills
-            if (updateDto.Skills != null) // If skill IDs are provided
+            if (updateDto.Skills != null && updateDto.Skills.Any())
             {
-                List<Guid> skillIds = new();
+                await _freelancerSkillRepository.DeleteFreelancerSkills(id);
+                var freelancerSkillsToAdd = new List<FreelancerSkill>();
                 foreach (var skill in updateDto.Skills)
                 {
-                    var addedSkillId = await _skillRepository.AddAsync(_mapper.Map<Skill>(skill));
-                    skillIds.Add(addedSkillId.Id);
+                    var existingSkill = await _skillRepository.GetSkillByNameAsync(skill.Name);
+                    
+                    if (existingSkill == null)
+                        {
+                            existingSkill = await _skillRepository.AddAsync(_mapper.Map<Skill>(skill));
+                        }
+                    
+                    freelancerSkillsToAdd.Add(new FreelancerSkill
+                    {
+                        FreelancerProfileId = id,
+                        SkillId = existingSkill.Id,
+                        FreelancerProfile = profile,
+                        Skill = existingSkill
+                    });
                 }
-                await UpdateSkillsForFreelancerProfile(profile.Id, skillIds);
+                // Add all freelancer skills at once
+                await _freelancerSkillRepository.AddRangeAsync(freelancerSkillsToAdd);
+                await _freelancerSkillRepository.SaveChangesAsync();
             }
 
             await _freelancerProfileRepository.UpdateAsync(profile);
@@ -240,6 +255,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
 
             // Skills to add
             var skillsToAdd = newSkillIds.Except(currentSkillIds).ToList();
+            System.Console.WriteLine($"Hit\n\n\n {currentSkillIds[0]} {newSkillIds[0]} {skillsToAdd[1]} The end\n\n\n");
             foreach (var skillId in skillsToAdd)
             {
                 var skillExists = await _skillRepository.GetByIdAsync(skillId);
@@ -251,7 +267,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
                         SkillId = skillId,
                         FreelancerProfile = (await _freelancerProfileRepository.GetByIdAsync(freelancerProfileId))!,
                         Skill = skillExists
-                        
+
                     });
                 }
             }

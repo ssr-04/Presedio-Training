@@ -96,6 +96,7 @@ try
     builder.Services.AddScoped<ISkillRepository, SkillRepository>();
     builder.Services.AddScoped<IFreelancerSkillRepository, FreelancerSkillRepository>();
     builder.Services.AddScoped<IProjectSkillRepository, ProjectSkillRepository>();
+    builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
     // Register Services
     builder.Services.AddScoped<IAuthService, AuthService>();
@@ -107,6 +108,11 @@ try
     builder.Services.AddScoped<IFileService, FileService>();
     builder.Services.AddScoped<IRatingService, RatingService>();
     builder.Services.AddScoped<ISkillService, SkillService>();
+    builder.Services.AddScoped<INotificationService, NotificationService>();
+
+
+    // Add SignalR services
+    builder.Services.AddSignalR();
 
     // API Versioning
     builder.Services.AddApiVersioning(options =>

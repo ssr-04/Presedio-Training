@@ -26,10 +26,10 @@ namespace FreelanceProjectBoardApi.Repositories
                 query = query.Where(p => p.Title.ToLower().Contains(filter.SearchQuery.ToLower()) || p.Description.ToLower().Contains(filter.SearchQuery.ToLower())
                 || (p.ProjectSkills != null && p.ProjectSkills.Any(ps => ps.Skill.Name.ToLower() == filter.SearchQuery.ToLower())));
             }
-            
+
             if (filter.Status != null && Enum.TryParse<ProjectStatus>(filter.Status, true, out var statusValue))
             {
-                    query = query.Where(p => p.Status == statusValue);
+                query = query.Where(p => p.Status == statusValue);
             }
             if (filter.MinBudget.HasValue)
             {
@@ -112,6 +112,19 @@ namespace FreelanceProjectBoardApi.Repositories
                 .Include(p => p.ProjectSkills)
                 .Include(p => p.Attachments)
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<Project>> GetProjectsByUser(Guid userId)
+        {
+            return await _dbSet
+                .Where(p => !p.IsDeleted && p.ClientId == userId)
+                .Include(p => p.ProjectSkills!).ThenInclude(ps => ps.Skill)
+                .Include(p => p.Client).ThenInclude(c => c.ClientProfile) //client with profile
+                .Include(p => p.AssignedFreelancer).ThenInclude(f => f!.FreelancerProfile)
+                .Include(p => p.Proposals)
+                .Include(p => p.ProjectSkills)
+                .Include(p => p.Attachments)
+                .ToListAsync();
         }
     }
 }

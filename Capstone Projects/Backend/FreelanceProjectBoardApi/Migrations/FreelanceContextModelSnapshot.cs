@@ -246,6 +246,48 @@ namespace FreelanceProjectBoardApi.Migrations
                     b.ToTable("FreelancerSkills");
                 });
 
+            modelBuilder.Entity("FreelanceProjectBoardApi.Models.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Category")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("ReceiverId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("FreelanceProjectBoardApi.Models.Project", b =>
                 {
                     b.Property<Guid>("Id")
@@ -623,6 +665,17 @@ namespace FreelanceProjectBoardApi.Migrations
                     b.Navigation("FreelancerProfile");
 
                     b.Navigation("Skill");
+                });
+
+            modelBuilder.Entity("FreelanceProjectBoardApi.Models.Notification", b =>
+                {
+                    b.HasOne("FreelanceProjectBoardApi.Models.User", "Receiver")
+                        .WithMany()
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Receiver");
                 });
 
             modelBuilder.Entity("FreelanceProjectBoardApi.Models.Project", b =>

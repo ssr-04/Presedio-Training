@@ -3,6 +3,7 @@ using AutoMapper;
 using FreelanceProjectBoardApi.DTOs.ClientProfiles;
 using FreelanceProjectBoardApi.DTOs.Files;
 using FreelanceProjectBoardApi.DTOs.FreelancerProfiles;
+using FreelanceProjectBoardApi.DTOs.Notifications;
 using FreelanceProjectBoardApi.DTOs.Projects;
 using FreelanceProjectBoardApi.DTOs.Proposals;
 using FreelanceProjectBoardApi.DTOs.Ratings;
@@ -84,6 +85,8 @@ namespace FreelanceProjectBoardApi.Mapper
             CreateMap<CreateProposalDto, Proposal>()
             .ForMember(dest => dest.ProposedDeadLine, opt => opt.Ignore());
             // UpdateProposalStatusDto only maps to status, handled in service directly 
+            CreateMap<UpdateProposalDto, Proposal>();
+                
 
             //File mappings
             CreateMap<Models.File, FileResponseDto>().ReverseMap();
@@ -99,6 +102,11 @@ namespace FreelanceProjectBoardApi.Mapper
             // Skill mappings
             CreateMap<Skill, SkillDto>().ReverseMap();
             CreateMap<CreateSkillDto, Skill>();
+
+            // Notification Mappings
+            CreateMap<Notification, NotificationDto>()
+                .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.ToString()));
+            CreateMap<CreateNotificationDto, Notification>();
 
             // Join Table Mappings (for nested collections) 
             CreateMap<FreelancerSkill, SkillDto>()

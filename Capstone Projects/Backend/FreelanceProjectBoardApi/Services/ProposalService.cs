@@ -1,6 +1,7 @@
 using System.Globalization;
 using AutoMapper;
 using FreelanceProjectBoardApi.DTOs.Files;
+using FreelanceProjectBoardApi.DTOs.Notifications;
 using FreelanceProjectBoardApi.DTOs.Proposals;
 using FreelanceProjectBoardApi.Interfaces.Repositories;
 using FreelanceProjectBoardApi.Models;
@@ -15,6 +16,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
         private readonly IProjectRepository _projectRepository; // To verify project status/existence
         private readonly IUserRepository _userRepository; // To verify freelancer existence
         private readonly IFileService _fileService;
+        private readonly INotificationService _notificationService;
         private readonly IMapper _mapper;
 
         public ProposalService(
@@ -22,12 +24,14 @@ namespace FreelanceProjectBoardApi.Services.Implementations
             IProjectRepository projectRepository,
             IUserRepository userRepository,
             IFileService fileService,
+            INotificationService notificationService,
             IMapper mapper)
         {
             _proposalRepository = proposalRepository;
             _projectRepository = projectRepository;
             _userRepository = userRepository;
             _fileService = fileService;
+            _notificationService = notificationService;
             _mapper = mapper;
         }
 
@@ -98,6 +102,13 @@ namespace FreelanceProjectBoardApi.Services.Implementations
             await _proposalRepository.AddAsync(proposal);
             await _proposalRepository.SaveChangesAsync();
 
+            await _notificationService.CreateNotificationAsync(new CreateNotificationDto
+            {
+                ReceiverId = project.ClientId,
+                Category = NotificationCategory.NewProposal,
+                Message = $"You have received a new proposal for your project '{project.Title}'."
+            });
+
             var createdProposal = await _proposalRepository.GetProposalDetailsAsync(proposal.Id);
             return _mapper.Map<ProposalResponseDto>(createdProposal);
         }
@@ -106,6 +117,38 @@ namespace FreelanceProjectBoardApi.Services.Implementations
         {
             var proposal = await _proposalRepository.GetProposalDetailsAsync(id);
             return proposal == null ? null : _mapper.Map<ProposalResponseDto>(proposal);
+        }
+
+        public async Task<ProposalResponseDto?> UpdateProposalAsync(Guid id, UpdateProposalDto updateDto)
+        {
+            var proposal = await _proposalRepository.GetByIdAsync(id);
+            if (proposal == null)
+            {
+                return null;
+            }
+
+            if (proposal.Status != ProposalStatus.Pending)
+            {
+                return null;
+            }
+            
+            _mapper.Map(updateDto, proposal);
+
+            // --- CONVERSION FROM IST STRING TO UTC DATETIME (DONE HERE) ---
+            DateTime deadlineDateTimeUtc = ConvertIstStringToUtcDateTime(updateDto.ProposedDeadline, nameof(updateDto.ProposedDeadline));
+
+            if (deadlineDateTimeUtc <= DateTime.UtcNow)
+            {
+                throw new InvalidOperationException("deadline must be in the future.");
+            }
+            proposal.ProposedDeadLine = deadlineDateTimeUtc;
+            
+            await _proposalRepository.UpdateAsync(proposal);
+            await _proposalRepository.SaveChangesAsync();
+
+            var updatedProposal = await _proposalRepository.GetByIdAsync(proposal.Id);
+            var dto = _mapper.Map<ProposalResponseDto>(updatedProposal);
+            return dto;
         }
 
         public async Task<ProposalResponseDto?> UpdateProposalStatusAsync(Guid proposalId, UpdateProposalStatusDto updateDto)

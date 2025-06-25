@@ -5103,11 +5103,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sabari/Documents/Learning/Presedio-Training/Day-25 (Project)/FreelanceProjectBoardApi/FreelanceProjectBoardApi.csproj",
+      "projectUniqueName": "/Users/sabari/Documents/Learning/Presedio-Training/Capstone Projects/Backend/FreelanceProjectBoardApi/FreelanceProjectBoardApi.csproj",
       "projectName": "FreelanceProjectBoardApi",
-      "projectPath": "/Users/sabari/Documents/Learning/Presedio-Training/Day-25 (Project)/FreelanceProjectBoardApi/FreelanceProjectBoardApi.csproj",
+      "projectPath": "/Users/sabari/Documents/Learning/Presedio-Training/Capstone Projects/Backend/FreelanceProjectBoardApi/FreelanceProjectBoardApi.csproj",
       "packagesPath": "/Users/sabari/.nuget/packages/",
-      "outputPath": "/Users/sabari/Documents/Learning/Presedio-Training/Day-25 (Project)/FreelanceProjectBoardApi/obj/",
+      "outputPath": "/Users/sabari/Documents/Learning/Presedio-Training/Capstone Projects/Backend/FreelanceProjectBoardApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/sabari/.nuget/NuGet/NuGet.Config"

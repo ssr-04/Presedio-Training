@@ -25,10 +25,21 @@ namespace FreelanceProjectBoardApi.Repositories
             return await _dbSet
                     .AnyAsync(ps => !ps.IsDeleted && ps.ProjectId == projectId && ps.SkillId == skillId);
         }
-        
+
         public async Task AddRangeAsync(IEnumerable<ProjectSkill> projectSkills)
         {
             await _dbSet.AddRangeAsync(projectSkills);
+        }
+
+        public async Task DeleteProjectSkills(Guid projectId)
+        {
+            var projectSkills = await _dbSet
+                .Where(ps => !ps.IsDeleted && ps.ProjectId == projectId)
+                .Include(fs => fs.Skill)
+                .ToListAsync();
+
+            _dbSet.RemoveRange(projectSkills); 
+            await _context.SaveChangesAsync();  
         }
     }
 }

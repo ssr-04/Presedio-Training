@@ -8,6 +8,7 @@ namespace FreelanceProjectBoardApi.Services.Interfaces
     {
         Task<ProposalResponseDto?> CreateProposalAsync(Guid freelancerId, CreateProposalDto createDto);
         Task<ProposalResponseDto?> GetProposalByIdAsync(Guid id);
+        Task<ProposalResponseDto?> UpdateProposalAsync(Guid id, UpdateProposalDto updateDto);
         Task<ProposalResponseDto?> UpdateProposalStatusAsync(Guid proposalId, UpdateProposalStatusDto updateDto); // For client to accept/reject, freelancer to withdraw
         Task<bool> DeleteProposalAsync(Guid id);
         Task<IEnumerable<ProposalResponseDto>> GetProposalsForProjectAsync(Guid projectId);

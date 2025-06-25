@@ -20,5 +20,7 @@ namespace FreelanceProjectBoardApi.Services.Interfaces
         Task<IEnumerable<FileResponseDto>> GetProjectAttachmentsMetadataAsync(Guid projectId); // Lists all attachments for a project
         Task<FileResponseDto?> GetProjectAttachmentMetadataAsync(Guid attachmentId); // Get single attachment metadata
 
+        Task<IEnumerable<ProjectResponseDto>> GetMyProjectsAsync(Guid userId);
+
     }
 }

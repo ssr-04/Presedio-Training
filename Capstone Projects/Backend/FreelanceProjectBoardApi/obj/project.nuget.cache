@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+fBw9phOAok=",
+  "dgSpecHash": "45f+swmDCSk=",
   "success": true,
-  "projectFilePath": "/Users/sabari/Documents/Learning/Presedio-Training/Day-25 (Project)/FreelanceProjectBoardApi/FreelanceProjectBoardApi.csproj",
+  "projectFilePath": "/Users/sabari/Documents/Learning/Presedio-Training/Capstone Projects/Backend/FreelanceProjectBoardApi/FreelanceProjectBoardApi.csproj",
   "expectedPackageFiles": [
     "/Users/sabari/.nuget/packages/asp.versioning.abstractions/8.1.0/asp.versioning.abstractions.8.1.0.nupkg.sha512",
     "/Users/sabari/.nuget/packages/asp.versioning.http/8.1.0/asp.versioning.http.8.1.0.nupkg.sha512",

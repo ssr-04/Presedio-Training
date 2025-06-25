@@ -16,8 +16,8 @@ namespace FreelanceProjectBoardApi.Services.Implementations
         private readonly IFreelancerProfileRepository _freelancerRepository;
         private readonly ISkillRepository _skillRepository;
         private readonly IProjectSkillRepository _projectSkillRepository;
-        private readonly IFileService _fileService; 
-        private readonly IProposalService _proposalService; 
+        private readonly IFileService _fileService;
+        private readonly IProposalService _proposalService;
         private readonly IMapper _mapper;
 
         // As postgres needs time in UTC so converting
@@ -149,15 +149,27 @@ namespace FreelanceProjectBoardApi.Services.Implementations
 
 
             // Updates skills
-            if (updateDto.Skills != null)
+            if (updateDto.Skills != null && updateDto.Skills.Any())
             {
-                List<Guid> skillIds = new();
+                await _projectSkillRepository.DeleteProjectSkills(project.Id);
+                var projectSkillsToAdd = new List<ProjectSkill>();
                 foreach (var skill in updateDto.Skills)
                 {
-                    var addedSkillId = await _skillRepository.AddAsync(_mapper.Map<Skill>(skill));
-                    skillIds.Add(addedSkillId.Id);
+                    var existingSkill = await _skillRepository.GetSkillByNameAsync(skill.Name);
+                    if (existingSkill == null)
+                    {
+                        existingSkill = await _skillRepository.AddAsync(_mapper.Map<Skill>(skill));
+                    }
+                    projectSkillsToAdd.Add(new ProjectSkill
+                    {
+                        ProjectId = project.Id,
+                        Project = project,
+                        Skill = existingSkill,
+                        SkillId = existingSkill.Id
+                    });
                 }
-                await UpdateSkillsForProject(project.Id, skillIds);
+                await _projectSkillRepository.AddRangeAsync(projectSkillsToAdd);
+                await _projectSkillRepository.SaveChangesAsync();
             }
 
             // Handles assigned freelancer if it's explicitly set in the updateDto
@@ -269,7 +281,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
                     await _freelancerRepository.UpdateAsync(freelancer);
                     await _freelancerRepository.SaveChangesAsync();
                 }
-                
+
             }
 
             await _projectRepository.UpdateAsync(project);
@@ -353,7 +365,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
                 }
             }
         }
-        
+
         public async Task<FileResponseDto?> UploadProjectAttachmentAsync(Guid projectId, Guid uploaderId, IFormFile file)
         {
             var project = await _projectRepository.GetByIdAsync(projectId);
@@ -408,6 +420,14 @@ namespace FreelanceProjectBoardApi.Services.Implementations
         {
             // Uses FileService to get the metadata of a specific file
             return await _fileService.GetFileMetadataAsync(attachmentId);
+        }
+
+        public async Task<IEnumerable<ProjectResponseDto>> GetMyProjectsAsync(Guid userId)
+        {
+            var projects = await _projectRepository.GetProjectsByUser(userId);
+            var projectDtos = _mapper.Map<IEnumerable<ProjectResponseDto>>(projects);
+
+            return projectDtos;
         }
 
     }
