@@ -18,13 +18,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         // Optional: Customize token validation parameters if needed
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            // Ensure the token has an audience claim
             ValidateAudience = true,
-            // Ensure the token was issued by the correct authority
             ValidateIssuer = true,
-            // Ensure the token is not expired
             ValidateLifetime = true,
-            // Ensure the signing key is valid (handled by Auth0 SDK)
             ValidateIssuerSigningKey = true,
         };
         
@@ -64,19 +60,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 // Building new claims for the current user, incorporating local data
                 var claims = new List<Claim>();
 
-                // Add existing claims from Auth0 token (e.g., Auth0 sub, email, name, etc.)
+                // Adding existing claims from Auth0 token (e.g., Auth0 sub, email, name, etc.)
                 foreach (var claim in context.Principal!.Claims)
                 {
-                    // Filter out claims you might replace or don't need from Auth0,
-                    // or just add all of them.
-                    // Example: If Auth0 sends a 'role' claim you don't trust, exclude it here.
                     claims.Add(claim);
                 }
                 
                 claims.Add(new Claim(ClaimTypes.Role, localUser.Role));
                 claims.Add(new Claim("Auth0UserId", localUser.Auth0UserId));
 
-                // Replace the existing Principal with a new one that contains all desired claims
                 var appIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
                 context.Principal = new ClaimsPrincipal(appIdentity);
                 System.Console.WriteLine("-------Auth success ------------");
@@ -84,7 +76,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             },
             OnAuthenticationFailed = context =>
             {
-                // Log authentication failures for debugging
                 Console.WriteLine($"Authentication failed: {context.Exception.Message}");
                 return Task.CompletedTask;
             }

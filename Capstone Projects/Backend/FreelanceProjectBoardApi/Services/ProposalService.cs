@@ -146,6 +146,13 @@ namespace FreelanceProjectBoardApi.Services.Implementations
             await _proposalRepository.UpdateAsync(proposal);
             await _proposalRepository.SaveChangesAsync();
 
+            await _notificationService.CreateNotificationAsync(new CreateNotificationDto
+            {
+                ReceiverId = proposal.Project.ClientId,
+                Category = NotificationCategory.General,
+                Message = $"{proposal.Freelancer.Name} has updated proposal for your project '{proposal.Project.Title}'."
+            });
+
             var updatedProposal = await _proposalRepository.GetByIdAsync(proposal.Id);
             var dto = _mapper.Map<ProposalResponseDto>(updatedProposal);
             return dto;
@@ -179,6 +186,25 @@ namespace FreelanceProjectBoardApi.Services.Implementations
 
             await _proposalRepository.UpdateAsync(proposal);
             await _proposalRepository.SaveChangesAsync();
+
+            if (updateDto.NewStatus == "Accepted" || updateDto.NewStatus == "Rejected")
+            {
+                await _notificationService.CreateNotificationAsync(new CreateNotificationDto
+                {
+                    ReceiverId = proposal.Freelancer.Id,
+                    Category = NotificationCategory.General,
+                    Message = $"Your Proposal for '{proposal.Project.Title}' has been {updateDto.NewStatus}."
+                });
+            }
+            if (updateDto.NewStatus == "Withdrawn")
+            {
+                await _notificationService.CreateNotificationAsync(new CreateNotificationDto
+                {
+                    ReceiverId = proposal.Project.Client.Id,
+                    Category = NotificationCategory.General,
+                    Message = $"{proposal.Freelancer.Name} has withdrawn proposal for your project '{proposal.Project.Title}'."
+                });
+            }
 
             return _mapper.Map<ProposalResponseDto>(proposal);
         }
@@ -220,6 +246,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
             // Calls FileService to handle the upload and database entry for the file,
             // associating it with the proposal via ProposalId.
             var uploadedFileDto = await _fileService.UploadFileAsync(file, uploaderId, FileCategory.ProposalAttachment, associatedEntityId: proposalId);
+            
 
             return uploadedFileDto;
         }
