@@ -1,0 +1,31 @@
+<div class="container mx-auto p-4 md:p-8">
+
+  <ng-container *ngIf="recipes$ | async as recipes; else loadingOrError">
+    
+    <div *ngIf="recipes.length > 0; else noRecipes" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      
+      <app-recipe-card *ngFor="let recipe of recipes" [recipe]="recipe"></app-recipe-card>
+    </div>
+
+    <ng-template #noRecipes>
+      <div class="text-center py-16">
+        <p class="text-xl text-gray-500">No recipes found.</p>
+      </div>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #loadingOrError>
+    
+    <div *ngIf="error; else loading" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-md" role="alert">
+      <p class="font-bold">Error</p>
+      <p>{{ error }}</p>
+    </div>
+
+    <ng-template #loading>
+      <div class="flex justify-center items-center py-16">
+        <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-500"></div>
+        <span class="ml-4 text-xl text-gray-600">Loading Recipes...</span>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
