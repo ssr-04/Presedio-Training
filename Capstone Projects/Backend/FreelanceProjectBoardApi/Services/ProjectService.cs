@@ -291,19 +291,15 @@ namespace FreelanceProjectBoardApi.Services.Implementations
             project.Status = ProjectStatus.Completed;
             project.CompletionDate = DateTime.UtcNow;
 
-            var freelancerId = project.AssignedFreelancerId;
+            var freelancerId = project.AssignedFreelancer.FreelancerProfile.Id;
+            System.Console.WriteLine($"Hit 231 {freelancerId}");
+            var freelancer = await _freelancerRepository.GetByIdAsync(project.AssignedFreelancer.FreelancerProfile.Id);
+            freelancer.ProjectsCompleted ++;
+            System.Console.WriteLine($"Hit..{ freelancer.ProjectsCompleted}");
+            await _freelancerRepository.UpdateAsync(freelancer);
+            await _freelancerRepository.SaveChangesAsync();
 
-            if (freelancerId != null && freelancerId.HasValue)
-            {
-                var freelancer = await _freelancerRepository.GetByIdAsync(freelancerId.Value);
-                if (freelancer != null)
-                {
-                    freelancer.ProjectsCompleted += 1;
-                    await _freelancerRepository.UpdateAsync(freelancer);
-                    await _freelancerRepository.SaveChangesAsync();
-                }
-
-            }
+            
 
             await _projectRepository.UpdateAsync(project);
             await _projectRepository.SaveChangesAsync();

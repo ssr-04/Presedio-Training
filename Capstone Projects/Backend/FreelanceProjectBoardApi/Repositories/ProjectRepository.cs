@@ -111,6 +111,7 @@ namespace FreelanceProjectBoardApi.Repositories
                 .Include(p => p.Proposals)
                 .Include(p => p.ProjectSkills)
                 .Include(p => p.Attachments)
+                .Include(p => p.Ratings)
                 .FirstOrDefaultAsync();
         }
 
@@ -124,6 +125,7 @@ namespace FreelanceProjectBoardApi.Repositories
                 .Include(p => p.Proposals)
                 .Include(p => p.ProjectSkills)
                 .Include(p => p.Attachments)
+                .Include(p => p.Ratings)
                 .ToListAsync();
         }
     }
