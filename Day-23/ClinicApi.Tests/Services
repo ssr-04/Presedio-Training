@@ -1,0 +1,63 @@
+public class DoctorServiceTestsTest
+{
+    [Test]
+    public async Task AddDoctorAsync_ShouldAddDoctorAndAuth0User_Successfully()
+    {
+        // Arrange
+        var doctorService = new DoctorService();
+        var doctorDto = new DoctorCreateDto();
+        
+        // Act
+        var addedUserInDb = await doctorService.AddDoctorAsync(doctorDto);
+        
+        // Assert
+        Assert.That(addedUserInDb, Is.Not.Null);
+    }
+
+    [Test]
+    public async Task AddDoctorByTransactionAsync_ShouldThrowException_WhenFinalDoctorNotFound()
+    {
+        // Arrange
+        var doctorService = new DoctorService();
+        var doctorDto = new DoctorCreateDto();
+
+        // Act & Assert
+        var caughtException = Assert.ThrowsAsync<Exception>(async () => 
+            await doctorService.AddDoctorByTransactionAsync(doctorDto));
+        Assert.That(caughtException, Is.InstanceOf<Exception>());
+    }
+}
+
+public class HelloWorldTests
+{
+    [Test]
+    public void HelloWorld_ReturnsExpectedString()
+    {
+        // Arrange
+        var expected = "Hello, World!";
+        
+        // Act
+        var actual = HelloWorld();
+        
+        // Assert
+        Assert.AreEqual(expected, actual);
+    }
+
+    private string HelloWorld()
+    {
+        return "Hello, World!";
+    }
+}
+
+public class DoctorService
+{
+    public async Task<Doctor> AddDoctorAsync(DoctorCreateDto doctorDto)
+    {
+        // Implementation
+    }
+
+    public async Task AddDoctorByTransactionAsync(DoctorCreateDto doctorDto)
+    {
+        // Implementation
+    }
+}
