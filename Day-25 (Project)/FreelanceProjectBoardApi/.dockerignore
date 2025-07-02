@@ -1,0 +1,8 @@
+bin/
+obj/
+.vscode/
+*.db
+*.pfx
+*.user
+*.suo
+FreelanceProjectBoard_Uploads/

@@ -34,22 +34,22 @@ try
     var builder = WebApplication.CreateBuilder(args);
 
     // KESTREL HTTPS CONFIGURATION
-    builder.WebHost.ConfigureKestrel(serverOptions =>
-    {
-        // Listens on the port specified in launchSettings for HTTPS
-        serverOptions.ListenAnyIP(7247, listenOptions =>
-        {
-            // Use HTTPS
-            listenOptions.UseHttps(httpsOptions =>
-            {
-                // Enforces TLS 1.2 or 1.3
-                httpsOptions.SslProtocols = SslProtocols.Tls12 | SslProtocols.Tls13;
-            });
-        });
+    // builder.WebHost.ConfigureKestrel(serverOptions =>
+    // {
+    //     // Listens on the port specified in launchSettings for HTTPS
+    //     serverOptions.ListenAnyIP(7247, listenOptions =>
+    //     {
+    //         // Use HTTPS
+    //         listenOptions.UseHttps(httpsOptions =>
+    //         {
+    //             // Enforces TLS 1.2 or 1.3
+    //             httpsOptions.SslProtocols = SslProtocols.Tls12 | SslProtocols.Tls13;
+    //         });
+    //     });
 
-        // Also listens to the HTTP port for redirection to work
-        serverOptions.ListenAnyIP(5071); 
-    });
+    //     // Also listens to the HTTP port for redirection to work
+    //     serverOptions.ListenAnyIP(5071); 
+    // });
 
     // Serilog
     builder.Host.UseSerilog((context, services, configuration) => configuration
@@ -262,7 +262,7 @@ try
 
     }
 
-    app.UseHttpsRedirection();
+    // app.UseHttpsRedirection();
 
     app.UseCors("AllowFrontend");
 
