@@ -21,6 +21,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using Asp.Versioning.ApiExplorer;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using FreelanceProjectBoardApi.Hubs;
 
 // Serilog is configured outside the main try-catch to log any errors during startup.
 Log.Logger = new LoggerConfiguration()
@@ -33,7 +34,7 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
-    // KESTREL HTTPS CONFIGURATION
+    // // KESTREL HTTPS CONFIGURATION
     // builder.WebHost.ConfigureKestrel(serverOptions =>
     // {
     //     // Listens on the port specified in launchSettings for HTTPS
@@ -96,6 +97,7 @@ try
     builder.Services.AddScoped<ISkillRepository, SkillRepository>();
     builder.Services.AddScoped<IFreelancerSkillRepository, FreelancerSkillRepository>();
     builder.Services.AddScoped<IProjectSkillRepository, ProjectSkillRepository>();
+    builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
     // Register Services
     builder.Services.AddScoped<IAuthService, AuthService>();
@@ -107,6 +109,11 @@ try
     builder.Services.AddScoped<IFileService, FileService>();
     builder.Services.AddScoped<IRatingService, RatingService>();
     builder.Services.AddScoped<ISkillService, SkillService>();
+    builder.Services.AddScoped<INotificationService, NotificationService>();
+
+
+    // Add SignalR services
+    builder.Services.AddSignalR();
 
     // API Versioning
     builder.Services.AddApiVersioning(options =>
@@ -186,6 +193,23 @@ try
     builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
         {
+            options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+
+                        // If the request is for our hub...
+                        var path = context.HttpContext.Request.Path;
+                        if (!string.IsNullOrEmpty(accessToken) &&
+                            path.StartsWithSegments("/notificationHub"))
+                        {
+                            // Read the token from the query string
+                            context.Token = accessToken;
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,
@@ -265,11 +289,13 @@ try
     // app.UseHttpsRedirection();
 
     app.UseCors("AllowFrontend");
-
+    
     app.UseAuthentication();
     app.UseAuthorization();
 
     app.UseRateLimiter();
+
+    app.MapHub<NotificationHub>("/notificationHub");
 
     app.MapControllers();
 

@@ -66,10 +66,10 @@ namespace FreelanceProjectBoardApi.Controllers
             var currentUserId = GetUserId();
             var currentUserType = GetUserType();
 
-            if (userId != currentUserId && currentUserType != UserType.Admin.ToString())
-            {
-                return Forbid("You do not have permission to view ratings received by this user.");
-            }
+            // if (userId != currentUserId && currentUserType != UserType.Admin.ToString())
+            // {
+            //     return Forbid("You do not have permission to view ratings received by this user.");
+            // }
 
             var ratings = await _ratingService.GetRatingsReceivedByUserIdAsync(userId);
             return Ok(ratings);

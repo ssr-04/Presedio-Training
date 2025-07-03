@@ -74,6 +74,54 @@ namespace FreelanceProjectBoardApi.Controllers
             return Ok(proposal);
         }
 
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ProposalResponseDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateProposal(Guid id, [FromBody] UpdateProposalDto updateDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var currentUserId = GetUserId();
+            var currentUserType = GetUserType();
+
+            var proposal = await _proposalService.GetProposalByIdAsync(id);
+            if (proposal == null)
+            {
+                return NotFound($"Proposal with ID {id} not found.");
+            }
+
+            // Authorization and logic for status transitions
+            bool isClient = currentUserType == UserType.Client.ToString();
+            bool isFreelancer = currentUserType == UserType.Freelancer.ToString();
+            bool isAdmin = currentUserType == UserType.Admin.ToString();
+            System.Console.WriteLine($"Hitted {isFreelancer} {proposal.FreelancerId} {currentUserId}");
+            if (isFreelancer && proposal.FreelancerId == currentUserId)
+            {
+                if (proposal.Status != "Pending")
+                {
+                    return Forbid($"You can't modify {proposal.Status.ToString()} proposal.");
+                }
+            }
+            else
+            {
+                return Forbid($"You can't modify this proposal.");
+            }
+
+            var updatedProposal = await _proposalService.UpdateProposalAsync(id, updateDto);
+            if (updatedProposal == null)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Failed to update proposal.");
+            }
+            return Ok(updatedProposal);
+        }
+
 
         [HttpPut("{id}/status")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ProposalResponseDto))]

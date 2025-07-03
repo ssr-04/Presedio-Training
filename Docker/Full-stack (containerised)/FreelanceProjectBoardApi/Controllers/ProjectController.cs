@@ -379,7 +379,7 @@ namespace FreelanceProjectBoardApi.Controllers
             {
                 return NotFound($"Attachment metadata with ID {attachmentId} not found.");
             }
-            
+
             return Ok(fileMetadata);
         }
 
@@ -412,6 +412,21 @@ namespace FreelanceProjectBoardApi.Controllers
                 return BadRequest(new { message = "Failed to remove attachment. It might not exist or belong to this project." });
             }
             return NoContent(); // 204 No Content for successful deletion
+        }
+
+        [HttpGet("MyProjects")]
+        [Authorize(Roles = "Client")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ProjectResponseDto>))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetMyProjects()
+        {
+            
+            var currentUserId = GetUserId();
+            var projects = await _projectService.GetMyProjectsAsync(currentUserId);
+            
+            return Ok(projects);
         }
     }
 }

@@ -19,15 +19,28 @@ namespace FreelanceProjectBoardApi.Repositories
 
         public async Task<IEnumerable<FreelancerSkill>> GetSkillsForFreelancerAsync(Guid freelancerProfileId)
         {
-            return await _dbSet
+            var result = await _dbSet
                 .Where(fs => !fs.IsDeleted && fs.FreelancerProfileId == freelancerProfileId)
                 .Include(fs => fs.Skill)
                 .ToListAsync();
+            System.Console.WriteLine($"Hit-1 {freelancerProfileId} {result.Count()}");
+            return result;
         }
-        
+
         public async Task AddRangeAsync(IEnumerable<FreelancerSkill> freelancerSkills)
         {
             await _dbSet.AddRangeAsync(freelancerSkills);
+        }
+
+        public async Task DeleteFreelancerSkills(Guid freelancerProfileId)
+        {
+            var freelancerSkills = await _dbSet
+                .Where(fs => !fs.IsDeleted && fs.FreelancerProfileId == freelancerProfileId)
+                .Include(fs => fs.Skill)
+                .ToListAsync();
+
+            _dbSet.RemoveRange(freelancerSkills); 
+            await _context.SaveChangesAsync();   
         }
     }
 }

@@ -1,4 +1,5 @@
 using AutoMapper;
+using FreelanceProjectBoardApi.DTOs.Notifications;
 using FreelanceProjectBoardApi.DTOs.Ratings;
 using FreelanceProjectBoardApi.Interfaces.Repositories;
 using FreelanceProjectBoardApi.Models;
@@ -11,17 +12,20 @@ namespace FreelanceProjectBoardApi.Services.Implementations
         private readonly IRatingRepository _ratingRepository;
         private readonly IProjectRepository _projectRepository; // To verify project
         private readonly IUserRepository _userRepository; // To verify rater/ratee
+        private readonly INotificationService _notificationService;
         private readonly IMapper _mapper;
 
         public RatingService(
             IRatingRepository ratingRepository,
             IProjectRepository projectRepository,
             IUserRepository userRepository,
+            INotificationService notificationService,
             IMapper mapper)
         {
             _ratingRepository = ratingRepository;
             _projectRepository = projectRepository;
             _userRepository = userRepository;
+            _notificationService = notificationService;
             _mapper = mapper;
         }
 
@@ -75,6 +79,13 @@ namespace FreelanceProjectBoardApi.Services.Implementations
 
             await _ratingRepository.AddAsync(rating);
             await _ratingRepository.SaveChangesAsync();
+
+            await _notificationService.CreateNotificationAsync(new CreateNotificationDto
+            {
+                ReceiverId = rating.RateeId,
+                Category = NotificationCategory.NewRating,
+                Message = $"{project.Client.Name} has rated you for the project {project.Title}"
+            });
 
             var createdRating = await _ratingRepository.GetByIdAsync(rating.Id); // Reload to ensure full object
             return _mapper.Map<RatingResponseDto>(createdRating);

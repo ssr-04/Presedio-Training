@@ -1,3 +1,4 @@
+using FreelanceProjectBoardApi.DTOs.Files;
 using FreelanceProjectBoardApi.DTOs.FreelancerProfiles;
 using FreelanceProjectBoardApi.Helpers;
 using FreelanceProjectBoardApi.Models;
@@ -11,10 +12,12 @@ namespace FreelanceProjectBoardApi.Controllers
     public class FreelancerProfilesController : BaseApiController
     {
         private readonly IFreelancerProfileService _freelancerProfileService;
+        private readonly IFileService _fileService;
 
-        public FreelancerProfilesController(IFreelancerProfileService freelancerProfileService)
+        public FreelancerProfilesController(IFreelancerProfileService freelancerProfileService, IFileService fileService)
         {
             _freelancerProfileService = freelancerProfileService;
+            _fileService = fileService;
         }
 
         [HttpPost]
@@ -179,6 +182,31 @@ namespace FreelanceProjectBoardApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Failed to upload resume.");
             }
             return Ok(updatedProfile);
+        }
+
+        [HttpGet("{id}/resume")]
+        [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(FileResponseDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetResume(Guid id)
+        {
+            
+            var profile = await _freelancerProfileService.GetFreelancerProfileByIdAsync(id);
+            if (profile == null) return NotFound($"Freelancer profile with ID {id} not found.");
+            var resume = profile.ResumeFile;
+
+            if (resume == null)
+            {
+                return NotFound($"Freelancer profile with ID {id} doesn't have a resume uploaded.");
+            }
+
+            var fileStream = await _fileService.DownloadFileAsync(resume.Id);
+            
+            return Ok(fileStream);
         }
 
         [HttpDelete("{id}/resume")]

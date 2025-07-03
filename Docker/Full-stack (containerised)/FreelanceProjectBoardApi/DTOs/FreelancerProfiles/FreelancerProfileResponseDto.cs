@@ -1,5 +1,7 @@
 using FreelanceProjectBoardApi.DTOs.Files;
 using FreelanceProjectBoardApi.DTOs.Skills;
+using FreelanceProjectBoardApi.DTOs.Users;
+using FreelanceProjectBoardApi.Models;
 
 namespace FreelanceProjectBoardApi.DTOs.FreelancerProfiles
 {

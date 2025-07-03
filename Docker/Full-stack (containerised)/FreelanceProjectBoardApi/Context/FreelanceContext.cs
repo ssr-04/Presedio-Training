@@ -12,6 +12,7 @@ namespace FreelanceProjectBoardApi.Context
         {
             _httpContextAccessor = httpContextAccessor; 
         }
+        
 
         public DbSet<User> Users { get; set; }
         public DbSet<ClientProfile> ClientProfiles { get; set; }
@@ -23,6 +24,8 @@ namespace FreelanceProjectBoardApi.Context
         public DbSet<Skill> Skills { get; set; }
         public DbSet<FreelancerSkill> FreelancerSkills { get; set; }
         public DbSet<ProjectSkill> ProjectSkills { get; set; }
+
+         public DbSet<Notification> Notifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -179,6 +182,13 @@ namespace FreelanceProjectBoardApi.Context
                       .HasForeignKey(ps => ps.SkillId)
                       .OnDelete(DeleteBehavior.Cascade); // If a skill is deleted, removing the associations
             });
+
+            //10. Notifications
+            modelBuilder.Entity<Notification>()
+                .HasOne(n => n.Receiver)
+                .WithMany() // A user can have many notifications, but a notification has one receiver.
+                .HasForeignKey(n => n.ReceiverId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
         // Over riding Savechanges to auto update audit columns
