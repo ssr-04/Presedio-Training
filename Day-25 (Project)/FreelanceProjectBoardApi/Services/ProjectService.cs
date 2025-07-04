@@ -1,5 +1,6 @@
 using AutoMapper;
 using FreelanceProjectBoardApi.DTOs.Files;
+using FreelanceProjectBoardApi.DTOs.Notifications;
 using FreelanceProjectBoardApi.DTOs.Projects;
 using FreelanceProjectBoardApi.Helpers;
 using FreelanceProjectBoardApi.Interfaces.Repositories;
@@ -16,8 +17,9 @@ namespace FreelanceProjectBoardApi.Services.Implementations
         private readonly IFreelancerProfileRepository _freelancerRepository;
         private readonly ISkillRepository _skillRepository;
         private readonly IProjectSkillRepository _projectSkillRepository;
-        private readonly IFileService _fileService; 
-        private readonly IProposalService _proposalService; 
+        private readonly IFileService _fileService;
+        private readonly IProposalService _proposalService;
+        private readonly INotificationService _notificationService;
         private readonly IMapper _mapper;
 
         // As postgres needs time in UTC so converting
@@ -33,6 +35,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
             IProjectSkillRepository projectSkillRepository,
             IFileService fileService,
             IProposalService proposalService,
+            INotificationService notificationService,
             IMapper mapper)
         {
             _projectRepository = projectRepository;
@@ -42,6 +45,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
             _projectSkillRepository = projectSkillRepository;
             _fileService = fileService;
             _proposalService = proposalService;
+            _notificationService = notificationService;
             _mapper = mapper;
         }
 
@@ -115,6 +119,9 @@ namespace FreelanceProjectBoardApi.Services.Implementations
                 await _projectSkillRepository.AddRangeAsync(ProjectSkillsToAdd);
                 await _projectSkillRepository.SaveChangesAsync();
             }
+
+            // To-Do: Notify suitable freelancers
+
             var createdProject = await _projectRepository.GetProjectDetailsAsync(project.Id);
             return _mapper.Map<ProjectResponseDto>(createdProject);
         }
@@ -149,15 +156,27 @@ namespace FreelanceProjectBoardApi.Services.Implementations
 
 
             // Updates skills
-            if (updateDto.Skills != null)
+            if (updateDto.Skills != null && updateDto.Skills.Any())
             {
-                List<Guid> skillIds = new();
+                await _projectSkillRepository.DeleteProjectSkills(project.Id);
+                var projectSkillsToAdd = new List<ProjectSkill>();
                 foreach (var skill in updateDto.Skills)
                 {
-                    var addedSkillId = await _skillRepository.AddAsync(_mapper.Map<Skill>(skill));
-                    skillIds.Add(addedSkillId.Id);
+                    var existingSkill = await _skillRepository.GetSkillByNameAsync(skill.Name);
+                    if (existingSkill == null)
+                    {
+                        existingSkill = await _skillRepository.AddAsync(_mapper.Map<Skill>(skill));
+                    }
+                    projectSkillsToAdd.Add(new ProjectSkill
+                    {
+                        ProjectId = project.Id,
+                        Project = project,
+                        Skill = existingSkill,
+                        SkillId = existingSkill.Id
+                    });
                 }
-                await UpdateSkillsForProject(project.Id, skillIds);
+                await _projectSkillRepository.AddRangeAsync(projectSkillsToAdd);
+                await _projectSkillRepository.SaveChangesAsync();
             }
 
             // Handles assigned freelancer if it's explicitly set in the updateDto
@@ -242,7 +261,21 @@ namespace FreelanceProjectBoardApi.Services.Implementations
             await _projectRepository.UpdateAsync(project);
             await _projectRepository.SaveChangesAsync();
 
-            await _proposalService.UpdateProposalStatusAsync(proposalID.Id, new DTOs.Proposals.UpdateProposalStatusDto { NewStatus = "Accepted" });
+            //await _proposalService.UpdateProposalStatusAsync(proposalID.Id, new DTOs.Proposals.UpdateProposalStatusDto { NewStatus = "Accepted" });
+            System.Console.WriteLine("Hit123");
+            foreach (Proposal currentProposal in project.Proposals!)
+            {
+                if (currentProposal != null && currentProposal.FreelancerId != freelancerId)
+                {
+                    await _proposalService.UpdateProposalStatusAsync(currentProposal.Id, new DTOs.Proposals.UpdateProposalStatusDto { NewStatus = "Rejected" });
+                    await _notificationService.CreateNotificationAsync(new CreateNotificationDto
+                    {
+                        ReceiverId = currentProposal.FreelancerId,
+                        Category = NotificationCategory.General,
+                        Message = $"'{project.Title}' has been assigned with a differnt Freelancer. Better luck next time!"
+                    });
+                }
+            }
 
             return _mapper.Map<ProjectResponseDto>(project);
         }
@@ -258,23 +291,27 @@ namespace FreelanceProjectBoardApi.Services.Implementations
             project.Status = ProjectStatus.Completed;
             project.CompletionDate = DateTime.UtcNow;
 
-            var freelancerId = project.AssignedFreelancerId;
+            var freelancerId = project.AssignedFreelancer.FreelancerProfile.Id;
+            System.Console.WriteLine($"Hit 231 {freelancerId}");
+            var freelancer = await _freelancerRepository.GetByIdAsync(project.AssignedFreelancer.FreelancerProfile.Id);
+            freelancer.ProjectsCompleted ++;
+            System.Console.WriteLine($"Hit..{ freelancer.ProjectsCompleted}");
+            await _freelancerRepository.UpdateAsync(freelancer);
+            await _freelancerRepository.SaveChangesAsync();
 
-            if (freelancerId != null && freelancerId.HasValue)
-            {
-                var freelancer = await _freelancerRepository.GetByIdAsync(freelancerId.Value);
-                if (freelancer != null)
-                {
-                    freelancer.ProjectsCompleted += 1;
-                    await _freelancerRepository.UpdateAsync(freelancer);
-                    await _freelancerRepository.SaveChangesAsync();
-                }
-                
-            }
+            
 
             await _projectRepository.UpdateAsync(project);
             await _projectRepository.SaveChangesAsync();
-
+            if (project.AssignedFreelancerId != null)
+            {
+                await _notificationService.CreateNotificationAsync(new CreateNotificationDto
+                {
+                    ReceiverId = project.AssignedFreelancer!.Id,
+                    Category = NotificationCategory.General,
+                    Message = $"'{project.Title}' has been marked as completed."
+                });
+            }
             return _mapper.Map<ProjectResponseDto>(project);
         }
 
@@ -291,7 +328,16 @@ namespace FreelanceProjectBoardApi.Services.Implementations
 
             await _projectRepository.UpdateAsync(project);
             await _projectRepository.SaveChangesAsync();
-
+            if (project.AssignedFreelancerId != null)
+            {
+                await _notificationService.CreateNotificationAsync(new CreateNotificationDto
+                {
+                    ReceiverId = project.AssignedFreelancer!.Id,
+                    Category = NotificationCategory.General,
+                    Message = $"'{project.Title}' has been cancelled by client."
+                });
+            }
+            
             return _mapper.Map<ProjectResponseDto>(project);
         }
 
@@ -353,7 +399,7 @@ namespace FreelanceProjectBoardApi.Services.Implementations
                 }
             }
         }
-        
+
         public async Task<FileResponseDto?> UploadProjectAttachmentAsync(Guid projectId, Guid uploaderId, IFormFile file)
         {
             var project = await _projectRepository.GetByIdAsync(projectId);
@@ -408,6 +454,14 @@ namespace FreelanceProjectBoardApi.Services.Implementations
         {
             // Uses FileService to get the metadata of a specific file
             return await _fileService.GetFileMetadataAsync(attachmentId);
+        }
+
+        public async Task<IEnumerable<ProjectResponseDto>> GetMyProjectsAsync(Guid userId)
+        {
+            var projects = await _projectRepository.GetProjectsByUser(userId);
+            var projectDtos = _mapper.Map<IEnumerable<ProjectResponseDto>>(projects);
+
+            return projectDtos;
         }
 
     }

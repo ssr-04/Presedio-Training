@@ -7,5 +7,6 @@ namespace FreelanceProjectBoardApi.Interfaces.Repositories
     {
         Task<Project?> GetProjectDetailsAsync(Guid id);
         Task<PageResult<Project>> GetAllProjectsAsync(ProjectFilter filter, PaginationParams pagination);
+        Task<IEnumerable<Project>> GetProjectsByUser(Guid userId);
     }
 }

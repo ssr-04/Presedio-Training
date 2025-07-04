@@ -1,0 +1,27 @@
+1) Creating swarm for services
+docker swarm init
+
+2) Creating services with update delay
+docker service create \
+  --name webapp \
+  --replicas 3 \
+  --publish 8090:80 \
+  --update-delay 10s \
+  httpd
+
+3) Verifying
+docker service ls
+docker service ps webapp
+
+4) Running update
+docker service update \
+  --image httpd:alpine \
+  webapp
+
+5) Watching update (in another terminal)
+docker service ps webapp
+
+6) Clean up
+docker service rm nginx-service
+docker swarm leave --force
+

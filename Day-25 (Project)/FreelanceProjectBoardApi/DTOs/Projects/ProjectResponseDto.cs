@@ -1,5 +1,6 @@
 using FreelanceProjectBoardApi.DTOs.Files;
 using FreelanceProjectBoardApi.DTOs.Proposals;
+using FreelanceProjectBoardApi.DTOs.Ratings;
 using FreelanceProjectBoardApi.DTOs.Skills;
 using FreelanceProjectBoardApi.DTOs.Users;
 using FreelanceProjectBoardApi.Models;
@@ -21,6 +22,7 @@ namespace FreelanceProjectBoardApi.DTOs.Projects
         public UserResponseDto? AssignedFreelancer { get; set; } // Basic freelancer info
         public DateTime? CompletionDate { get; set; }
         public List<FileResponseDto>? Attachments { get; set; }
+        public List<RatingResponseDto>? Ratings { get; set; }
         public List<ProposalResponseDto>? Proposals { get; set; } // Limited details for proposals
         public DateTime CreatedAt { get; set; }
     }

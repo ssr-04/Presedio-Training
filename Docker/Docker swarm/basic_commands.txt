@@ -1,0 +1,21 @@
+docker swarm init
+
+docker build -t api:latest ./api
+
+
+docker build -t web:latest ./web
+
+docker stack deploy -c docker-compose.yml mystack
+
+
+docker stack services mystack
+
+
+docker service scale mystack_web=5
+
+
+docker stack rm mystack
+
+
+docker swarm leave --force
+------------------------------------------------------

@@ -1,0 +1,57 @@
+1) Pulling the latest mysql image
+docker pull mysql:latest
+
+2) Running it inside a named container
+docker run --name some-mysql \
+-e MYSQL_ROOT_PASSWORD=pass \
+-d \
+-p 3306:3306 \
+-v mydbdata:/var/lib/mysql \
+mysql:latest
+
+3) Verifying volume creation
+docker volume ls
+
+4) Connecting to Mysql within docker
+docker run -it --network container:some-mysql mysql:latest bash
+
+5) Within the bash
+mysql -h 127.0.0.1 -u root -p
+(enter pass)
+
+6) Inserting some data
+CREATE DATABASE myapp_db;
+USE myapp_db;
+CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255));
+INSERT INTO users (name) VALUES ('Alice');
+INSERT INTO users (name) VALUES ('Bob');
+SELECT * FROM users;
+
+7) Exiting from mysql
+exit;
+
+8) Stopping and removing container
+docker stop some-mysql
+docker rm some-mysql
+
+9) Running container again to check data
+docker run --name some-mysql \
+-e MYSQL_ROOT_PASSWORD=pass \
+-d \
+-p 3306:3306 \
+-v mydbdata:/var/lib/mysql \
+mysql:latest
+
+docker run -it --network container:some-mysql mysql:latest bash
+
+10) Checking for data
+mysql -h 127.0.0.1 -u root -p
+(enter pass)
+
+USE myapp_db;
+SELECT * FROM users;
+
+11) Clean up
+docker stop some-mysql
+docker rm some-mysql
+docker volume rm mydbdata

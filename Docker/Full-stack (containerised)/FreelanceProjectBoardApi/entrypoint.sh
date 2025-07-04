@@ -3,12 +3,10 @@ set -e
 
 echo "🔄 Running EF Core migrations..."
 
-# Change to root where the .csproj exists
-cd /app
-
-# Run EF database update by pointing to the project
+# Point to the original source directory
+cd /src
 dotnet ef database update --project FreelanceProjectBoardApi.csproj
 
 echo "🚀 Starting API..."
-cd /app/out
+cd /app
 exec dotnet FreelanceProjectBoardApi.dll

@@ -1,0 +1,8 @@
+
+1) Compose and building
+
+docker-compose up --build
+
+2) Cleanup
+
+docker-compose down

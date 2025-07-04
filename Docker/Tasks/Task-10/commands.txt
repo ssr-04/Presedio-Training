@@ -1,0 +1,20 @@
+1) Running the visualizer (single-node or manager node)
+
+docker swarm init
+
+docker service create \
+  --name=viz \
+  --publish=8081:8080 \
+  --constraint=node.role==manager \
+  --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+  dockersamples/visualizer
+
+2) Viewing nodes
+visit localhost -> 8081
+
+3) Adding some services
+docker service create --name test --replicas 2 nginx
+
+4) cleanup
+docker service rm viz test
+docker swarm leave --force

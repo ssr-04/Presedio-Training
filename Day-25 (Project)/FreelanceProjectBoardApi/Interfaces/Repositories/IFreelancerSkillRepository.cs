@@ -7,5 +7,7 @@ namespace FreelanceProjectBoardApi.Interfaces.Repositories
         Task<IEnumerable<FreelancerSkill>> GetSkillsForFreelancerAsync(Guid freelancerProfileId);
         Task<bool> FreelancerHasSkillAsync(Guid freelancerProfileId, Guid skillId);
         Task AddRangeAsync(IEnumerable<FreelancerSkill> freelancerSkills);
+
+        Task DeleteFreelancerSkills(Guid freelancerProfileId);
     }
 }

@@ -1,16 +1,39 @@
-# Use .NET SDK as base (includes dotnet-ef + runtime)
+# Stage 1: Build & Generate Self-Signed Certificate
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
+
+# Install OpenSSL and generate cert
+RUN apt-get update && apt-get install -y openssl && \
+    mkdir /https && \
+    openssl req -x509 -nodes -days 365 \
+        -newkey rsa:2048 \
+        -keyout /https/aspnetcore.key \
+        -out /https/aspnetcore.crt \
+        -subj "/CN=localhost" && \
+    openssl pkcs12 -export \
+        -out /https/aspnetcore.pfx \
+        -inkey /https/aspnetcore.key \
+        -in /https/aspnetcore.crt \
+        -passout pass:password
+
+# Copy everything and restore/build
+COPY . ./
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app/out
+
+# Stage 2: Final runtime container
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS final
 WORKDIR /app
 
-# Copy everything and build
-COPY . ./
-RUN dotnet restore
-RUN dotnet publish -c Release -o out
+# Copy published output
+COPY --from=build /app/out ./
 
-# Move to runtime context
-WORKDIR /app/out
+COPY --from=build /src /src
 
-# Copy startup script
+# Copy cert
+COPY --from=build /https /https
+
+# Copy entry script
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
@@ -18,5 +41,8 @@ RUN chmod +x /app/entrypoint.sh
 RUN dotnet tool install --global dotnet-ef
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
-EXPOSE 80
+# Expose HTTP and HTTPS ports
+EXPOSE 8080
+EXPOSE 8081
+
 ENTRYPOINT ["bash", "/app/entrypoint.sh"]

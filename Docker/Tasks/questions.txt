@@ -1,0 +1,65 @@
+Docker Basics Tasks
+ 
+1. Build and Run a Simple Container
+Task: Create a Dockerfile for a basic Node.js app that serves "Hello World" on port 3000.
+Steps:
+Write the app (index.js).
+Write the Dockerfile.
+Build the image.
+Run the container.
+Verify it works in the browser.
+2. Use Docker Volumes
+Task: Run a MySQL container with a named volume to persist data.
+Steps:
+Pull the mysql:latest image.
+Run with -v mydbdata:/var/lib/mysql.
+Connect via mysql client.
+Insert some data.
+Stop and remove the container.
+Start again and verify the data is still there.
+3. Multi-Stage Builds
+Task: Create a multi-stage Dockerfile that:
+Builds a React app.
+Copies the build/ folder into a lightweight Nginx image.
+Outcome: A small production-ready image serving your app.
+4. Networking Containers
+Task: Connect a backend API and frontend via Docker network.
+Steps:
+Create a user-defined bridge network.
+Run the API container.
+Run the frontend container on the same network.
+Make sure the frontend can reach the API by container name.
+Docker Compose Tasks
+ 
+Compose helps you manage multi-container apps.
+ 
+5. Docker Compose
+Task: Write a docker-compose.yml file to:
+Start a Node.js API.
+Start a MongoDB container.
+Link them together.
+Test: The Node.js app connects to MongoDB via MONGO_URL=mongodb://mongo:27017/db.
+Basic Docker Swarm Tasks
+ 
+initialize Swarm:
+docker swarm init
+6. Create a Swarm Service
+Task: Deploy an Nginx service with 3 replicas.
+Verify:
+docker service ls
+docker service ps nginx-web
+curl localhost:8080
+7. Update a Service
+Task: Update the Nginx service image to a newer version (nginx:alpine).
+Verify: Check that containers are updated without downtime.
+8. Scale a Service
+Task: Scale the Nginx service to 5 replicas.
+9. Rolling Update with Delay
+Task: Deploy a test service with rolling updates.
+Example:
+docker service create --name webapp --replicas 3 --update-delay 10s httpd
+Then:
+ 
+docker service update --image httpd:alpine webapp
+10. Visualize Swarm
+Task: Install Docker Swarm visualizer to see your nodes and services graphically.

@@ -1,0 +1,29 @@
+// using Microsoft.EntityFrameworkCore;
+// using Microsoft.EntityFrameworkCore.Design;
+// using FreelanceProjectBoardApi.Context;
+
+// namespace FreelanceProjectBoardApi.Context
+// {
+//     // This factory is used only by the EF Core tools (e.g., for creating migrations)
+//     // It allows the tools to create a DbContext instance without needing to run the full application host,
+//     // which solves issues with dependencies like SignalR's IHubContext that fail in a design-time context.
+//     public class FreelanceContextFactory : IDesignTimeDbContextFactory<FreelanceContext>
+//     {
+//         public FreelanceContext CreateDbContext(string[] args)
+//         {
+//             // This code manually builds the configuration to read appsettings.json,
+//             // just like the WebApplication.CreateBuilder does.
+//             IConfigurationRoot configuration = new ConfigurationBuilder()
+//                 .SetBasePath(Directory.GetCurrentDirectory())
+//                 .AddJsonFile("appsettings.json")
+//                 .Build();
+
+//             var optionsBuilder = new DbContextOptionsBuilder<FreelanceContext>();
+//             var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+//             optionsBuilder.UseNpgsql(connectionString);
+
+//             return new FreelanceContext(optionsBuilder.Options);
+//         }
+//     }
+// }

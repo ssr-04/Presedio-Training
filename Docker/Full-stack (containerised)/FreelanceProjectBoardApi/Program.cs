@@ -202,7 +202,7 @@ try
                         // If the request is for our hub...
                         var path = context.HttpContext.Request.Path;
                         if (!string.IsNullOrEmpty(accessToken) &&
-                            path.StartsWithSegments("/notificationHub"))
+                            path.StartsWithSegments("/api/notificationHub"))
                         {
                             // Read the token from the query string
                             context.Token = accessToken;
@@ -295,7 +295,7 @@ try
 
     app.UseRateLimiter();
 
-    app.MapHub<NotificationHub>("/notificationHub");
+    app.MapHub<NotificationHub>("/api/notificationHub");
 
     app.MapControllers();
 

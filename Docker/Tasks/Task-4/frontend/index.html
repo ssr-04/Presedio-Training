@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Frontend</title>
+</head>
+
+<body>
+    <h1>Frontend</h1>
+    <button onclick="fetchMessage()">Call Backend</button>
+    <p id="response"></p>
+
+    <script>
+        async function fetchMessage() {
+            const res = await fetch('/api/hello');
+            const data = await res.json();
+            document.getElementById('response').innerText = data.message;
+        }
+    </script>
+
+</body>
+
+</html>

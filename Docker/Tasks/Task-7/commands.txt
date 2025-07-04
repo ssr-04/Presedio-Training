@@ -1,0 +1,31 @@
+1) Creating swarm for services
+docker swarm init
+
+2) Initial services (outdated)
+docker service create \
+  --name nginx-service \
+  --replicas 3 \
+  --publish 8080:80 \
+  nginx:1.25-alpine
+
+3) Updating them while running
+docker service update \
+--image nginx:alpine \
+nginx-service
+
+Note:
+- Performs rolling updates (one task at a time by default)
+- Ensures no downtime
+
+4) verification
+
+docker service ls
+docker service ps nginx-service
+
+Note:
+Look for tasks with Shutdown, Running, and New states. You should see old containers being replaced one by one.
+
+5) Cleanup
+
+docker service rm nginx-service
+docker swarm leave --force

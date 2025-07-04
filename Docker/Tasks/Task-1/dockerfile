@@ -1,0 +1,20 @@
+# Using official Node.js as parent image
+FROM node:20-alpine
+
+# Setting work directory
+WORKDIR /usr/src/app
+
+# As there are no dependencies so we can skip npm install and package.json
+
+# Copying everything
+COPY . .
+
+# Exposing port 3000
+EXPOSE 3000
+
+# Running the app
+CMD ["node", "index.js"]
+
+# Terminal commands
+# docker build -t task-1 ./Task-1
+# docker run -p 3000:3000 task-1
